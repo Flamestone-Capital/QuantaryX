@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资讯 - Quantaryx Technologies</title>
+    <meta name="description" content="探索Quantaryx Technologies的资讯，了解最新的AI與資產管理趨勢、用戶案例和產品更新。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* 资讯頁面特定樣式 */
+        .blog-section {
+            padding: 100px 0;
+        }
+        
+        .blog-section:nth-child(even) {
+            background-color: var(--dark-color);
+        }
+        
+        .blog-section:nth-child(odd) {
+            background-color: #0c0c0c;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 60px;
+            padding-top: 100px;
+        }
+        
+        .blog-posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .blog-post {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-10px);
+            background-color: rgba(0, 112, 243, 0.1);
+            border-color: rgba(0, 112, 243, 0.2);
+        }
+        
+        .blog-post-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .blog-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-post:hover .blog-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-post-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .blog-post-content {
+            padding: 30px;
+        }
+        
+        .blog-post-date {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-post-date i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        .blog-post-title {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .blog-post-excerpt {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .blog-post-author {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .blog-post-author-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .blog-post-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .blog-post-author-info {
+            flex: 1;
+        }
+        
+        .blog-post-author-name {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .blog-post-author-title {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+        
+        .blog-post-read-more {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            margin-top: 10px;
+        }
+        
+        .blog-post-read-more:hover {
+            color: white;
+        }
+        
+        .blog-post-read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .blog-post-read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .blog-sidebar {
+            position: sticky;
+            top: 120px;
+            align-self: start;
+        }
+        
+        .sidebar-widget {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-widget h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-search {
+            position: relative;
+        }
+        
+        .sidebar-search input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-right: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .sidebar-search input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .sidebar-search button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .sidebar-search button:hover {
+            color: white;
+        }
+        
+        .categories-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .categories-list li {
+            margin-bottom: 12px;
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .categories-list a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #aaa;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary-color);
+        }
+        
+        .categories-list a span {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .categories-list a:hover span {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .recent-posts-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .recent-post {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .recent-post:last-child {
+            margin-bottom: 0;
+        }
+        
+        .recent-post-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .recent-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recent-post-info {
+            flex: 1;
+        }
+        
+        .recent-post-title {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.4;
+            transition: var(--transition);
+        }
+        
+        .recent-post-title:hover {
+            color: var(--primary-color);
+        }
+        
+        .recent-post-date {
+            color: #aaa;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .recent-post-date i {
+            margin-right: 5px;
+            color: var(--primary-color);
+            font-size: 0.7rem;
+        }
+        
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 5px 15px;
+            color: #aaa;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .newsletter-form {
+            margin-top: 20px;
+        }
+        
+        .newsletter-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: white;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .newsletter-submit {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-submit:hover {
+            background-color: #0058c1;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        
+        .pagination-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .pagination-item:hover, .pagination-item.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .pagination-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .pagination-item.disabled:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #aaa;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .featured-posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .featured-post {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .featured-post:hover {
+            transform: translateY(-10px);
+        }
+        
+        .featured-post-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .featured-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-post:hover .featured-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-post-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+            z-index: 2;
+        }
+        
+        .featured-post-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            z-index: 3;
+        }
+        
+        .featured-post-category {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .featured-post-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .featured-post-date {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .featured-post-date i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 1200px) {
+            .featured-posts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-sidebar {
+                position: static;
+                margin-top: 60px;
+            }
+            
+            .blog-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-post-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .featured-posts {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-post {
+                height: 350px;
+            }
+            
+            .blog-post-image {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-post-title {
+                font-size: 1.3rem;
+            }
+            
+            .blog-post-content {
+                padding: 20px;
+            }
+            
+            .featured-post-title {
+                font-size: 1.3rem;
+            }
+            
+            .featured-post-content {
+                padding: 20px;
+            }
+            
+            .sidebar-widget {
+                padding: 20px;
+            }
+        }
+        
+        /* 添加链接样式 */
+        .featured-post-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .featured-post-link:hover .featured-post-image img {
+            transform: scale(1.05);
+        }
+        
+        .featured-post-link:hover .featured-post-title {
+            color: var(--primary-color);
+        }
+        
+        .featured-post-link:hover .featured-post-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>Quantaryx</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">
+                        <span class="zh-hant-content">首頁</span>
+                        <span class="zh-hans-content">首页</span>
+                        <span class="en-content">Home</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">
+                        <span class="zh-hant-content">關於我們</span>
+                        <span class="zh-hans-content">关于我们</span>
+                        <span class="en-content">About Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-link">
+                        <span class="zh-hant-content">產品</span>
+                        <span class="zh-hans-content">产品</span>
+                        <span class="en-content">Products</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="solutions.html" class="navbar-link">
+                        <span class="zh-hant-content">解決方案</span>
+                        <span class="zh-hans-content">解决方案</span>
+                        <span class="en-content">Solutions</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link active">
+                        <span class="zh-hant-content">創科視界</span>
+                        <span class="zh-hans-content">创科视界</span>
+                        <span class="en-content">Blog</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="compliance.html" class="navbar-link">
+                        <span class="zh-hant-content">法規與安全</span>
+                        <span class="zh-hans-content">法规与安全</span>
+                        <span class="en-content">Compliance & Security</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">
+                        <span class="zh-hant-content">聯絡我們</span>
+                        <span class="zh-hans-content">联系我们</span>
+                        <span class="en-content">Contact Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item language-selector">
+                    <select id="language-select">
+                        <option value="zh-hant">繁體中文</option>
+                        <option value="zh-hans">简体中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 精選文章 -->
+    <section class="blog-section">
+        <div class="container">
+            <h2 class="section-title animate">
+                <span class="zh-hant-content">精選文章</span>
+                <span class="zh-hans-content">精选文章</span>
+                <span class="en-content">Featured Articles</span>
+            </h2>
+            <p class="section-subtitle animate delay-1">
+                <span class="zh-hant-content">我們精心挑選的最新見解和分析</span>
+                <span class="zh-hans-content">我们精心挑选的最新见解和分析</span>
+                <span class="en-content">Our carefully curated latest insights and analyses</span>
+            </p>
+            
+            <div class="featured-posts">
+                <div class="featured-post animate delay-2">
+                    <a href="https://www.sohu.com/a/822872977_122041751" target="_blank" class="featured-post-link">
+                        <div class="featured-post-image">
+                            <img src="images/blog-featured-1.jpg" alt="AI在資產管理中的應用">
+                        </div>
+                        <div class="featured-post-overlay"></div>
+                        <div class="featured-post-content">
+                            <span class="featured-post-category">
+                                <span class="zh-hant-content">人工智慧</span>
+                                <span class="zh-hans-content">人工智能</span>
+                                <span class="en-content">Artificial Intelligence</span>
+                            </span>
+                            <h3 class="featured-post-title">
+                                <span class="zh-hant-content">AI如何重塑資產管理行業的未來</span>
+                                <span class="zh-hans-content">AI如何重塑资产管理行业的未来</span>
+                                <span class="en-content">How AI is Reshaping the Future of Asset Management</span>
+                            </h3>
+                            <div class="featured-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-04-10</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="featured-post animate delay-3">
+                    <a href="https://www.fargowealth.com/en/home/cfsj/cfsj_detail/id/36.html" target="_blank" class="featured-post-link">
+                        <div class="featured-post-image">
+                            <img src="images/blog-featured-2.jpg" alt="Family Office數字化轉型">
+                        </div>
+                        <div class="featured-post-overlay"></div>
+                        <div class="featured-post-content">
+                            <span class="featured-post-category">
+                                <span class="zh-hant-content">數字化轉型</span>
+                                <span class="zh-hans-content">数字化转型</span>
+                                <span class="en-content">Digital Transformation</span>
+                            </span>
+                            <h3 class="featured-post-title">
+                                <span class="zh-hant-content">Family Office的數字化轉型：挑戰與機遇</span>
+                                <span class="zh-hans-content">Family Office的数字化转型：挑战与机遇</span>
+                                <span class="en-content">Digital Transformation of Family Offices: Challenges and Opportunities</span>
+                            </h3>
+                            <div class="featured-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-03-28</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="featured-post animate delay-4">
+                    <a href="https://www.schroders.com/zh-hk/hk/individual/insights/year-ahead-2025-asian-multi-asset-and-income/" target="_blank" class="featured-post-link">
+                        <div class="featured-post-image">
+                            <img src="images/blog-featured-3.jpg" alt="金融科技法規合規">
+                        </div>
+                        <div class="featured-post-overlay"></div>
+                        <div class="featured-post-content">
+                            <span class="featured-post-category">
+                                <span class="zh-hant-content">法規合規</span>
+                                <span class="zh-hans-content">法规合规</span>
+                                <span class="en-content">Regulatory Compliance</span>
+                            </span>
+                            <h3 class="featured-post-title">
+                                <span class="zh-hant-content">2025年金融科技法規展望：亞洲市場焦點</span>
+                                <span class="zh-hans-content">2025年金融科技法规展望：亚洲市场焦点</span>
+                                <span class="en-content">2025 Fintech Regulatory Outlook: Focus on Asian Markets</span>
+                            </h3>
+                            <div class="featured-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-03-15</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="blog-container">
+                <div class="blog-posts">
+                    <div class="blog-post animate">
+                        <div class="blog-post-image">
+                            <img src="images/blog-post-1.jpg" alt="大語言模型在投資分析中的應用">
+                            <span class="blog-post-category">
+                                <span class="zh-hant-content">人工智慧</span>
+                                <span class="zh-hans-content">人工智能</span>
+                                <span class="en-content">Artificial Intelligence</span>
+                            </span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-04-05</span>
+                            </div>
+                            <h3 class="blog-post-title">
+                                <span class="zh-hant-content">大語言模型如何革新投資分析與決策過程</span>
+                                <span class="zh-hans-content">大语言模型如何革新投资分析与决策过程</span>
+                                <span class="en-content">How Large Language Models are Revolutionizing Investment Analysis and Decision-Making</span>
+                            </h3>
+                            <p class="blog-post-excerpt">
+                                <span class="zh-hant-content">隨著大語言模型(LLM)技術的快速發展，投資分析領域正經歷前所未有的變革。本文探討LLM如何幫助分析師處理海量數據、識別市場趨勢，並提供更精準的投資建議。</span>
+                                <span class="zh-hans-content">随着大语言模型(LLM)技术的快速发展，投资分析领域正经历前所未有的变革。本文探讨LLM如何帮助分析师处理海量数据、识别市场趋势，并提供更精准的投资建议。</span>
+                                <span class="en-content">With the rapid development of Large Language Model (LLM) technology, the field of investment analysis is experiencing unprecedented changes. This article explores how LLMs help analysts process massive amounts of data, identify market trends, and provide more precise investment recommendations.</span>
+                            </p>
+                            <a href="https://www.sohu.com/a/836593475_122066678" target="_blank" class="blog-post-read-more">
+                                <span class="zh-hant-content">閱讀更多</span>
+                                <span class="zh-hans-content">阅读更多</span>
+                                <span class="en-content">Read More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-image">
+                                    <img src="images/author-1.jpg" alt="作者頭像">
+                                </div>
+                                <div class="blog-post-author-info">
+                                    <div class="blog-post-author-name">
+                                        <span class="zh-hant-content">張明宇</span>
+                                        <span class="zh-hans-content">张明宇</span>
+                                        <span class="en-content">Ming-Yu Zhang</span>
+                                    </div>
+                                    <div class="blog-post-author-title">
+                                        <span class="zh-hant-content">AI研究主管</span>
+                                        <span class="zh-hans-content">AI研究主管</span>
+                                        <span class="en-content">Head of AI Research</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-post animate delay-1">
+                        <div class="blog-post-image">
+                            <img src="images/blog-post-2.jpg" alt="量化交易策略">
+                            <span class="blog-post-category">
+                                <span class="zh-hant-content">量化交易</span>
+                                <span class="zh-hans-content">量化交易</span>
+                                <span class="en-content">Quantitative Trading</span>
+                            </span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-03-22</span>
+                            </div>
+                            <h3 class="blog-post-title">
+                                <span class="zh-hant-content">機器學習驅動的量化交易策略：從理論到實踐</span>
+                                <span class="zh-hans-content">机器学习驱动的量化交易策略：从理论到实践</span>
+                                <span class="en-content">Machine Learning-Driven Quantitative Trading Strategies: From Theory to Practice</span>
+                            </h3>
+                            <p class="blog-post-excerpt">
+                                <span class="zh-hant-content">機器學習技術正在徹底改變量化交易領域。本文深入探討如何將先進的機器學習算法應用於交易策略開發，包括特徵工程、模型選擇、過擬合防範以及實時部署的最佳實踐。</span>
+                                <span class="zh-hans-content">机器学习技术正在彻底改变量化交易领域。本文深入探讨如何将先进的机器学习算法应用于交易策略开发，包括特征工程、模型选择、过拟合防范以及实时部署的最佳实践。</span>
+                                <span class="en-content">Machine learning technologies are fundamentally changing the field of quantitative trading. This article delves into how to apply advanced machine learning algorithms to trading strategy development, including feature engineering, model selection, overfitting prevention, and best practices for real-time deployment.</span>
+                            </p>
+                            <a href="https://zhuanlan.zhihu.com/p/302910547" target="_blank" class="blog-post-read-more">
+                                <span class="zh-hant-content">閱讀更多</span>
+                                <span class="zh-hans-content">阅读更多</span>
+                                <span class="en-content">Read More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-image">
+                                    <img src="#" alt="作者頭像">
+                                </div>
+                                <div class="blog-post-author-info">
+                                    <div class="blog-post-author-name">
+                                        <span class="zh-hant-content">李偉成</span>
+                                        <span class="zh-hans-content">李伟成</span>
+                                        <span class="en-content">Wei-Cheng Li</span>
+                                    </div>
+                                    <div class="blog-post-author-title">
+                                        <span class="zh-hant-content">量化策略總監</span>
+                                        <span class="zh-hans-content">量化策略总监</span>
+                                        <span class="en-content">Director of Quantitative Strategies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-post animate delay-2">
+                        <div class="blog-post-image">
+                            <img src="images/blog-post-3.jpg" alt="ESG投資">
+                            <span class="blog-post-category">
+                                <span class="zh-hant-content">ESG投資</span>
+                                <span class="zh-hans-content">ESG投资</span>
+                                <span class="en-content">ESG Investing</span>
+                            </span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-03-10</span>
+                            </div>
+                            <h3 class="blog-post-title">
+                                <span class="zh-hant-content">數據驅動的ESG投資：超越評級的深度分析</span>
+                                <span class="zh-hans-content">数据驱动的ESG投资：超越评级的深度分析</span>
+                                <span class="en-content">Data-Driven ESG Investing: In-Depth Analysis Beyond Ratings</span>
+                            </h3>
+                            <p class="blog-post-excerpt">
+                                <span class="zh-hant-content">隨著ESG投資的普及，投資者需要更深入的數據分析來做出明智決策。本文探討如何利用替代數據源和先進分析技術，超越標準ESG評級，發現隱藏的風險和機會。</span>
+                                <span class="zh-hans-content">随着ESG投资的普及，投资者需要更深入的数据分析来做出明智决策。本文探讨如何利用替代数据源和先进分析技术，超越标准ESG评级，发现隐藏的风险和机会。</span>
+                                <span class="en-content">As ESG investing becomes mainstream, investors need deeper data analysis to make informed decisions. This article explores how to use alternative data sources and advanced analytical techniques to go beyond standard ESG ratings and uncover hidden risks and opportunities.</span>
+                            </p>
+                            <a href="http://gjs.cass.cn/kydt/kydt_kycg/202406/t20240606_5757404.shtml" target="_blank" class="blog-post-read-more">
+                                <span class="zh-hant-content">閱讀更多</span>
+                                <span class="zh-hans-content">阅读更多</span>
+                                <span class="en-content">Read More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-image">
+                                    <img src="images/author-3.jpg" alt="作者頭像">
+                                </div>
+                                <div class="blog-post-author-info">
+                                    <div class="blog-post-author-name">
+                                        <span class="zh-hant-content">陳美玲</span>
+                                        <span class="zh-hans-content">陈美玲</span>
+                                        <span class="en-content">Mei-Ling Chen</span>
+                                    </div>
+                                    <div class="blog-post-author-title">
+                                        <span class="zh-hant-content">ESG研究分析師</span>
+                                        <span class="zh-hans-content">ESG研究分析师</span>
+                                        <span class="en-content">ESG Research Analyst</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-post animate delay-3">
+                        <div class="blog-post-image">
+                            <img src="images/blog-post-4.jpg" alt="客戶體驗">
+                            <span class="blog-post-category">
+                                <span class="zh-hant-content">客戶體驗</span>
+                                <span class="zh-hans-content">客户体验</span>
+                                <span class="en-content">Customer Experience</span>
+                            </span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-02-28</span>
+                            </div>
+                            <h3 class="blog-post-title">
+                                <span class="zh-hant-content">重新定義資產管理中的客戶體驗：數字化與個性化的融合</span>
+                                <span class="zh-hans-content">重新定义资产管理中的客户体验：数字化与个性化的融合</span>
+                                <span class="en-content">Redefining Client Experience in Asset Management: The Convergence of Digitalization and Personalization</span>
+                            </h3>
+                            <p class="blog-post-excerpt">
+                                <span class="zh-hant-content">在數字化時代，資產管理公司必須重新思考客戶體驗策略。本文分析如何結合先進技術與人性化服務，創造卓越的客戶旅程，同時提高客戶忠誠度和資產留存率。</span>
+                                <span class="zh-hans-content">在数字化时代，资产管理公司必须重新思考客户体验策略。本文分析如何结合先进技术与人性化服务，创造卓越的客户旅程，同时提高客户忠诚度和资产留存率。</span>
+                                <span class="en-content">In the digital age, asset management companies must rethink their client experience strategies. This article analyzes how to combine advanced technology with humanized service to create an exceptional client journey while increasing client loyalty and asset retention rates.</span>
+                            </p>
+                            <a href="https://www.ibm.com/cn-zh/topics/digital-asset-management" target="_blank" class="blog-post-read-more">
+                                <span class="zh-hant-content">閱讀更多</span>
+                                <span class="zh-hans-content">阅读更多</span>
+                                <span class="en-content">Read More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-image">
+                                    <img src="images/author-4.jpg" alt="作者頭像">
+                                </div>
+                                <div class="blog-post-author-info">
+                                    <div class="blog-post-author-name">
+                                        <span class="zh-hant-content">王思遠</span>
+                                        <span class="zh-hans-content">王思远</span>
+                                        <span class="en-content">Si-Yuan Wang</span>
+                                    </div>
+                                    <div class="blog-post-author-title">
+                                        <span class="zh-hant-content">客戶體驗總監</span>
+                                        <span class="zh-hans-content">客户体验总监</span>
+                                        <span class="en-content">Director of Client Experience</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-post animate delay-4">
+                        <div class="blog-post-image">
+                            <img src="images/blog-post-5.jpg" alt="區塊鏈技術">
+                            <span class="blog-post-category">
+                                <span class="zh-hant-content">區塊鏈</span>
+                                <span class="zh-hans-content">区块链</span>
+                                <span class="en-content">Blockchain</span>
+                            </span>
+                        </div>
+                        <div class="blog-post-content">
+                            <div class="blog-post-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>2025-02-15</span>
+                            </div>
+                            <h3 class="blog-post-title">
+                                <span class="zh-hant-content">區塊鏈在資產管理中的實際應用：超越炒作的真實案例</span>
+                                <span class="zh-hans-content">区块链在资产管理中的实际应用：超越炒作的真实案例</span>
+                                <span class="en-content">Practical Applications of Blockchain in Asset Management: Real Cases Beyond the Hype</span>
+                            </h3>
+                            <p class="blog-post-excerpt">
+                                <span class="zh-hant-content">區塊鏈技術在資產管理領域的應用已經從概念階段進入實際落地。本文通過真實案例，展示區塊鏈如何在交易結算、資產代幣化、投資者身份驗證等方面創造實際價值。</span>
+                                <span class="zh-hans-content">区块链技术在资产管理领域的应用已经从概念阶段进入实际落地。本文通过真实案例，展示区块链如何在交易结算、资产代币化、投资者身份验证等方面创造实际价值。</span>
+                                <span class="en-content">The application of blockchain technology in asset management has moved from the conceptual stage to practical implementation. Through real cases, this article demonstrates how blockchain creates actual value in transaction settlement, asset tokenization, investor identity verification, and more.</span>
+                            </p>
+                            <a href="https://www.engineering.org.cn/sscae/CN/10.15302/J-SSCAE-2018.02.005" target="_blank" class="blog-post-read-more">
+                                <span class="zh-hant-content">閱讀更多</span>
+                                <span class="zh-hans-content">阅读更多</span>
+                                <span class="en-content">Read More</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-image">
+                                    <img src="images/author-5.jpg" alt="作者頭像">
+                                </div>
+                                <div class="blog-post-author-info">
+                                    <div class="blog-post-author-name">
+                                        <span class="zh-hant-content">林志強</span>
+                                        <span class="zh-hans-content">林志强</span>
+                                        <span class="en-content">Zhi-Qiang Lin</span>
+                                    </div>
+                                    <div class="blog-post-author-title">
+                                        <span class="zh-hant-content">區塊鏈技術主管</span>
+                                        <span class="zh-hans-content">区块链技术主管</span>
+                                        <span class="en-content">Head of Blockchain Technology</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="pagination-item disabled">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <a href="#" class="pagination-item active">1</a>
+                        <a href="#" class="pagination-item">2</a>
+                        <a href="#" class="pagination-item">3</a>
+                        <a href="#" class="pagination-item">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-sidebar">
+                    <div class="sidebar-widget animate">
+                        <h3>
+                            <span class="zh-hant-content">搜索</span>
+                            <span class="zh-hans-content">搜索</span>
+                            <span class="en-content">Search</span>
+                        </h3>
+                        <div class="sidebar-search">
+                            <input type="text" placeholder="搜索文章...">
+                            <button type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget animate delay-1">
+                        <h3>
+                            <span class="zh-hant-content">分類</span>
+                            <span class="zh-hans-content">分类</span>
+                            <span class="en-content">Categories</span>
+                        </h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">人工智慧</span>
+                                    <span class="zh-hans-content">人工智能</span>
+                                    <span class="en-content">Artificial Intelligence</span>
+                                    <span>12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">量化交易</span>
+                                    <span class="zh-hans-content">量化交易</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                    <span>8</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">法規合規</span>
+                                    <span class="zh-hans-content">法规合规</span>
+                                    <span class="en-content">Regulatory Compliance</span>
+                                    <span>7</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">數字化轉型</span>
+                                    <span class="zh-hans-content">数字化转型</span>
+                                    <span class="en-content">Digital Transformation</span>
+                                    <span>10</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">ESG投資</span>
+                                    <span class="zh-hans-content">ESG投资</span>
+                                    <span class="en-content">ESG Investing</span>
+                                    <span>6</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">客戶體驗</span>
+                                    <span class="zh-hans-content">客户体验</span>
+                                    <span class="en-content">Customer Experience</span>
+                                    <span>5</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="zh-hant-content">區塊鏈</span>
+                                    <span class="zh-hans-content">区块链</span>
+                                    <span class="en-content">Blockchain</span>
+                                    <span>4</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-widget animate delay-2">
+                        <h3>
+                            <span class="zh-hant-content">最新文章</span>
+                            <span class="zh-hans-content">最新文章</span>
+                            <span class="en-content">Recent Posts</span>
+                        </h3>
+                        <ul class="recent-posts-list">
+                            <li class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="images/blog-post-1.jpg" alt="最新文章">
+                                </div>
+                                <div class="recent-post-info">
+                                    <a href="https://www.sohu.com/a/836593475_122066678" target="_blank" class="recent-post-title">
+                                        <span class="zh-hant-content">大語言模型如何革新投資分析與決策過程</span>
+                                        <span class="zh-hans-content">大语言模型如何革新投资分析与决策过程</span>
+                                        <span class="en-content">How Large Language Models are Revolutionizing Investment Analysis</span>
+                                    </a>
+                                    <div class="recent-post-date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>2025-04-05</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="images/blog-post-2.jpg" alt="最新文章">
+                                </div>
+                                <div class="recent-post-info">
+                                    <a href="https://finance.sina.com.cn/jjxw/2025-04-14/doc-inetcuqp4919750.shtml" target="_blank"  class="recent-post-title">
+                                        <span class="zh-hant-content">AI如何重塑資產管理行業的未來</span>
+                                        <span class="zh-hans-content">AI如何重塑资产管理行业的未来</span>
+                                        <span class="en-content">How AI is Reshaping the Future of Asset Management</span>
+                                    </a>
+                                    <div class="recent-post-date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>2025-04-10</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="recent-post">
+                                <div class="recent-post-image">
+                                    <img src="images/blog-post-3.jpg" alt="最新文章">
+                                </div>
+                                <div class="recent-post-info">
+                                    <a href="https://zhuanlan.zhihu.com/p/302910547" target="_blank" class="recent-post-title">
+                                        <span class="zh-hant-content">機器學習驅動的量化交易策略：從理論到實踐</span>
+                                        <span class="zh-hans-content">机器学习驱动的量化交易策略：从理论到实践</span>
+                                        <span class="en-content">Machine Learning-Driven Quantitative Trading Strategies</span>
+                                    </a>
+                                    <div class="recent-post-date">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>2025-03-22</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-widget animate delay-3">
+                        <h3>
+                            <span class="zh-hant-content">標籤</span>
+                            <span class="zh-hans-content">标签</span>
+                            <span class="en-content">Tags</span>
+                        </h3>
+                        <div class="tags-list">
+                            <a href="#" class="tag">AI</a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">機器學習</span>
+                                <span class="zh-hans-content">机器学习</span>
+                                <span class="en-content">Machine Learning</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">大數據</span>
+                                <span class="zh-hans-content">大数据</span>
+                                <span class="en-content">Big Data</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">資產管理</span>
+                                <span class="zh-hans-content">资产管理</span>
+                                <span class="en-content">Asset Management</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">金融科技</span>
+                                <span class="zh-hans-content">金融科技</span>
+                                <span class="en-content">Fintech</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">投資策略</span>
+                                <span class="zh-hans-content">投资策略</span>
+                                <span class="en-content">Investment Strategy</span>
+                            </a>
+                            <a href="#" class="tag">ESG</a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">區塊鏈</span>
+                                <span class="zh-hans-content">区块链</span>
+                                <span class="en-content">Blockchain</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">法規</span>
+                                <span class="zh-hans-content">法规</span>
+                                <span class="en-content">Regulation</span>
+                            </a>
+                            <a href="#" class="tag">
+                                <span class="zh-hant-content">數字化</span>
+                                <span class="zh-hans-content">数字化</span>
+                                <span class="en-content">Digitalization</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar-widget animate delay-4">
+                        <h3>
+                            <span class="zh-hant-content">訂閱電子報</span>
+                            <span class="zh-hans-content">订阅电子报</span>
+                            <span class="en-content">Subscribe to Newsletter</span>
+                        </h3>
+                        <p>
+                            <span class="zh-hant-content">訂閱我們的電子報，獲取最新的行業見解和公司動態</span>
+                            <span class="zh-hans-content">订阅我们的电子报，获取最新的行业见解和公司动态</span>
+                            <span class="en-content">Subscribe to our newsletter to receive the latest industry insights and company updates</span>
+                        </p>
+                        <form class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="您的電子郵件地址" required>
+                            <button type="submit" class="newsletter-submit">
+                                <span class="zh-hant-content">訂閱</span>
+                                <span class="zh-hans-content">订阅</span>
+                                <span class="en-content">Subscribe</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 區域 -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title animate">
+                <span class="zh-hant-content">想了解更多關於我們的產品和服務？</span>
+                <span class="zh-hans-content">想了解更多关于我们的产品和服务？</span>
+                <span class="en-content">Want to Learn More About Our Products and Services?</span>
+            </h2>
+            <p class="cta-description animate delay-1">
+                <span class="zh-hant-content">聯繫我們，了解Quantaryx Technologies如何幫助您的業務實現數字化轉型</span>
+                <span class="zh-hans-content">联系我们，了解Quantaryx Technologies如何帮助您的业务实现数字化转型</span>
+                <span class="en-content">Contact us to learn how Quantaryx Technologies can help your business achieve digital transformation</span>
+            </p>
+            <div class="cta-buttons animate delay-2">
+                <a href="contact.html" class="btn btn-white">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                </a>
+                <a href="contact.html#demo" class="btn btn-transparent">
+                    <span class="zh-hant-content">預約演示</span>
+                    <span class="zh-hans-content">预约演示</span>
+                    <span class="en-content">Book a Demo</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <!-- Main sections in a row -->
+                <div class="footer-sections-row">
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">公司</span>
+                            <span class="zh-hans-content">公司</span>
+                            <span class="en-content">Company</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="about.html">
+                                    <span class="zh-hant-content">關於我們</span>
+                                    <span class="zh-hans-content">关于我们</span>
+                                    <span class="en-content">About Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="about.html#team">
+                                    <span class="zh-hant-content">團隊</span>
+                                    <span class="zh-hans-content">团队</span>
+                                    <span class="en-content">Team</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="compliance.html">
+                                    <span class="zh-hant-content">法規與安全</span>
+                                    <span class="zh-hans-content">法规与安全</span>
+                                    <span class="en-content">Compliance & Security</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="blog.html">
+                                    <span class="zh-hant-content">創科視界</span>
+                                    <span class="zh-hans-content">创科视界</span>
+                                    <span class="en-content">Blog</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">產品</span>
+                            <span class="zh-hans-content">产品</span>
+                            <span class="en-content">Products</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="products.html#aurelia">
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#wiselens">
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#nurocrm">
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#flamestone">
+                                    <span class="zh-hant-content">量化交易</span>
+                                    <span class="zh-hans-content">量化交易</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">解決方案</span>
+                            <span class="zh-hans-content">解决方案</span>
+                            <span class="en-content">Solutions</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="solutions.html#sfo">
+                                    <span class="zh-hant-content">Single Family Office</span>
+                                    <span class="zh-hans-content">Single Family Office</span>
+                                    <span class="en-content">Single Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#mfo">
+                                    <span class="zh-hant-content">Multi Family Office</span>
+                                    <span class="zh-hans-content">Multi Family Office</span>
+                                    <span class="en-content">Multi Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#am">
+                                    <span class="zh-hant-content">資產管理機構</span>
+                                    <span class="zh-hans-content">资产管理机构</span>
+                                    <span class="en-content">Asset Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#institutional">
+                                    <span class="zh-hant-content">機構投資者</span>
+                                    <span class="zh-hans-content">机构投资者</span>
+                                    <span class="en-content">Institutional Investors</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">聯絡</span>
+                            <span class="zh-hans-content">联系</span>
+                            <span class="en-content">Contact</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="contact.html">
+                                    <span class="zh-hant-content">聯絡我們</span>
+                                    <span class="zh-hans-content">联系我们</span>
+                                    <span class="en-content">Contact Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#demo">
+                                    <span class="zh-hant-content">預約演示</span>
+                                    <span class="zh-hans-content">预约演示</span>
+                                    <span class="en-content">Book a Demo</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#support">
+                                    <span class="zh-hant-content">支援中心</span>
+                                    <span class="zh-hans-content">支持中心</span>
+                                    <span class="en-content">Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Company description below -->
+                <div class="footer-company-info">
+                    <a href="index.html" class="footer-logo">Quantaryx</a>
+                    <p class="footer-description">
+                        <span class="zh-hant-content">專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span>
+                        <span class="zh-hans-content">专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span>
+                        <span class="en-content">A fintech company focused on asset management and artificial intelligence, committed to providing modular, scalable, and compliant solutions for professional institutions.</span>
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <span class="zh-hant-content">&copy; 2025 Quantaryx Technologies. 版權所有。</span>
+                    <span class="zh-hans-content">&copy; 2025 Quantaryx Technologies. 版权所有。</span>
+                    <span class="en-content">&copy; 2025 Quantaryx Technologies. All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 表單提交處理
+            const newsletterForm = document.querySelector('.newsletter-form');
+            
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 在實際應用中，這裡會有表單數據的處理和提交邏輯
+                    // 這裡僅作為示例，顯示一個成功消息
+                    
+                    const email = this.querySelector('.newsletter-input').value;
+                    
+                    console.log('訂閱電子報:', email);
+                    
+                    // 清空表單
+                    this.reset();
+                    
+                    // 顯示成功消息（在實際應用中可以使用更好的UI反饋）
+                    alert('感謝您的訂閱！您將定期收到我們的最新資訊。');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

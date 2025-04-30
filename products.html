@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>產品套件 - Quantaryx Technologies</title>
+    <meta
+      name="description"
+      content="Quantaryx Technologies 提供智能投資人管理平台、AI智能投顧平台、AI銷售與客戶管理系統和量化交易等全套金融投資解決方案。"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* 產品套件概覽樣式 */
+      .product-overview {
+        padding: 100px 0 60px;
+            background-color: var(--dark-color);
+            text-align: center;
+        }
+        
+      .product-tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .product-tab {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        padding: 15px 30px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+      }
+
+      .product-tab:hover,
+      .product-tab.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .product-tab {
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+      }
+
+      /* 產品內容展示區樣式 */
+      .product-content-display {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .product-content-item {
+        padding-top: 80px;
+        margin-top: -80px;
+        display: block;
+      }
+
+      .product-content-item.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .product-preview {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 40px;
+      }
+
+      .product-preview-image {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-preview-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .product-preview:hover .product-preview-image img {
+        transform: scale(1.05);
+      }
+
+      .product-preview-info {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-preview-info h3 {
+        color: white;
+        font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+      .product-preview-info p {
+            color: #aaa;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .product-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .product-features li {
+        display: flex;
+        align-items: center;
+        color: #aaa;
+      }
+
+      .product-features li i {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 992px) {
+        .product-preview {
+          grid-template-columns: 1fr;
+          padding: 30px;
+        }
+
+        .product-preview-image {
+          height: 300px;
+        }
+
+        .product-features {
+          grid-template-columns: 1fr;
+        }
+
+        .product-preview-info h3 {
+          font-size: 1.8rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .product-tab {
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+
+        .product-preview {
+          padding: 20px;
+        }
+
+        .product-preview-image {
+          height: 200px;
+        }
+
+        .product-preview-info h3 {
+          font-size: 1.5rem;
+        }
+
+        .product-preview-info p {
+          font-size: 1rem;
+        }
+      }
+
+      /* 產品頁面特定樣式 */
+        .product-section {
+            padding: 100px 0;
+        }
+        
+        .product-section:nth-child(odd) {
+            background-color: #0c0c0c;
+        }
+        
+        .product-section:nth-child(even) {
+            background-color: var(--dark-color);
+        }
+        
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .product-section:nth-child(odd) .product-container {
+            direction: rtl;
+        }
+        
+        .product-section:nth-child(odd) .product-content,
+        .product-section:nth-child(odd) .product-image {
+            direction: ltr;
+        }
+        
+        .product-content h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .product-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .product-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .product-features-list {
+            margin-top: 30px;
+        }
+        
+        .product-feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .product-feature-icon {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .product-feature-content h4 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .product-feature-content p {
+            color: #aaa;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .product-cta {
+            margin-top: 40px;
+        }
+        
+        .product-tech {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .product-tech h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background-color: rgba(0, 112, 243, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 112, 243, 0.3);
+        }
+        
+        @media (max-width: 992px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .product-section:nth-child(odd) .product-container {
+                direction: ltr;
+            }
+            
+            .product-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .product-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .product-header h1 {
+                font-size: 2rem;
+            }
+            
+            .product-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .product-feature-item {
+                flex-direction: column;
+            }
+            
+            .product-feature-icon {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>Quantaryx</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">
+                        <span class="zh-hant-content">首頁</span>
+                        <span class="zh-hans-content">首页</span>
+                        <span class="en-content">Home</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">
+                        <span class="zh-hant-content">關於我們</span>
+                        <span class="zh-hans-content">关于我们</span>
+                        <span class="en-content">About Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-link">
+                        <span class="zh-hant-content">產品</span>
+                        <span class="zh-hans-content">产品</span>
+                        <span class="en-content">Products</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="solutions.html" class="navbar-link">
+                        <span class="zh-hant-content">解決方案</span>
+                        <span class="zh-hans-content">解决方案</span>
+                        <span class="en-content">Solutions</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link">
+                        <span class="zh-hant-content">創科視界</span>
+                        <span class="zh-hans-content">创科视界</span>
+                        <span class="en-content">Blog</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="compliance.html" class="navbar-link">
+                        <span class="zh-hant-content">法規與安全</span>
+                        <span class="zh-hans-content">法规与安全</span>
+                        <span class="en-content">Compliance & Security</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">
+                        <span class="zh-hant-content">聯絡我們</span>
+                        <span class="zh-hans-content">联系我们</span>
+                        <span class="en-content">Contact Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item language-selector">
+                    <select id="language-select">
+                        <option value="zh-hant">繁體中文</option>
+                        <option value="zh-hans">简体中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 產品套件概覽 -->
+    <section class="product-overview">
+        <div class="container">
+        <h1 class="section-title animate">
+                <span class="zh-hant-content">我們的產品套件</span>
+                <span class="zh-hans-content">我们的产品套件</span>
+                <span class="en-content">Our Product Suite</span>
+            </h1>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content"
+            >Quantaryx Technologies
+            打造全套金融投資解決方案，融合數據安全、法規遵循、人工智慧與極致體驗設計</span
+          >
+          <span class="zh-hans-content"
+            >Quantaryx Technologies
+            打造全套金融投资解决方案，融合数据安全、法规遵循、人工智能与极致体验设计</span
+          >
+          <span class="en-content"
+            >Quantaryx Technologies creates comprehensive financial investment
+            solutions, combining data security, regulatory compliance,
+            artificial intelligence, and exceptional experience design</span
+          >
+        </p>
+
+        <div class="product-tabs">
+          <button
+            onclick="document.getElementById('product-aurelia').scrollIntoView({behavior: 'smooth', block: 'start'})"
+            class="product-tab active animate delay-2"
+          >
+                        <span class="zh-hant-content">智能投資人管理平台</span>
+                        <span class="zh-hans-content">智能投资人管理平台</span>
+            <span class="en-content">Intelligent Investor Management</span>
+          </button>
+          <button
+            onclick="document.getElementById('product-wiselens').scrollIntoView({behavior: 'smooth', block: 'start'})"
+            class="product-tab animate delay-3"
+          >
+                        <span class="zh-hant-content">AI 智能投顧平台</span>
+                        <span class="zh-hans-content">AI 智能投顾平台</span>
+            <span class="en-content">AI Investment Advisory</span>
+          </button>
+          <button
+            onclick="document.getElementById('product-sales').scrollIntoView({behavior: 'smooth', block: 'start'})"
+            class="product-tab animate delay-4"
+          >
+            <span class="zh-hant-content">AI銷售與客戶管理</span>
+            <span class="zh-hans-content">AI销售与客户管理</span>
+            <span class="en-content">AI Sales & CRM</span>
+          </button>
+          <button
+            onclick="document.getElementById('product-quant').scrollIntoView({behavior: 'smooth', block: 'start'})"
+            class="product-tab animate delay-5"
+          >
+            <span class="zh-hant-content">量化交易</span>
+            <span class="zh-hans-content">量化交易</span>
+            <span class="en-content">Quantitative Trading</span>
+          </button>
+            </div>
+        </div>
+    </section>
+
+        <div class="container">
+      <!-- 產品內容展示區 -->
+      <div class="product-content-display">
+        <!-- 智能投資人管理平台 -->
+        <div class="product-content-item active" id="product-aurelia">
+          <div class="product-preview">
+            <div class="product-preview-image">
+              <img src="images/product-aurelia.jpg" alt="Intelligent Investor Management Platform" />
+            </div>
+            <div class="product-preview-info">
+              <h3>
+                <span class="zh-hant-content">智能投資人管理平台</span>
+                <span class="zh-hans-content">智能投资人管理平台</span>
+                <span class="en-content">Intelligent Investor Management Platform</span>
+              </h3>
+              <p>
+                <span class="zh-hant-content">全方位的投資人管理解決方案，整合AI技術與數據分析，幫助資產管理公司更好地服務客戶。</span>
+                <span class="zh-hans-content">全方位的投资人管理解决方案，整合AI技术与数据分析，帮助资产管理公司更好地服务客户。</span>
+                <span class="en-content">A comprehensive investor management solution that integrates AI technology and data analytics to help asset management companies better serve their clients.</span>
+              </p>
+              <ul class="product-features">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">智能客戶分析</span>
+                  <span class="zh-hans-content">智能客户分析</span>
+                  <span class="en-content">Intelligent Client Analysis</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">投資組合追蹤</span>
+                  <span class="zh-hans-content">投资组合追踪</span>
+                  <span class="en-content">Portfolio Tracking</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">風險評估報告</span>
+                  <span class="zh-hans-content">风险评估报告</span>
+                  <span class="en-content">Risk Assessment Reports</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">即時市場洞察</span>
+                  <span class="zh-hans-content">实时市场洞察</span>
+                  <span class="en-content">Real-time Market Insights</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">自動化報表生成</span>
+                  <span class="zh-hans-content">自动化报表生成</span>
+                  <span class="en-content">Automated Report Generation</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">多維度數據可視化</span>
+                  <span class="zh-hans-content">多维度数据可视化</span>
+                  <span class="en-content">Multi-dimensional Data Visualization</span>
+                </li>
+              </ul>
+              <a href="https://fs-portal.tech/login" class="btn btn-primary" target="_blank">
+                <span class="zh-hant-content">了解更多</span>
+                <span class="zh-hans-content">了解更多</span>
+                <span class="en-content">Learn More</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- AI 智能投顧平台 -->
+        <div class="product-content-item active" id="product-wiselens">
+          <div class="product-preview">
+            <div class="product-preview-image">
+              <img src="images/product-wiselens.jpg" alt="AI Investment Advisory Platform" />
+            </div>
+            <div class="product-preview-info">
+              <h3>
+                <span class="zh-hant-content">AI 智能投顧平台</span>
+                <span class="zh-hans-content">AI 智能投顾平台</span>
+                <span class="en-content">AI Investment Advisory Platform</span>
+              </h3>
+              <p>
+                <span class="zh-hant-content">結合先進AI算法與專業投資顧問經驗，為客戶提供個性化的投資建議和組合管理服務。</span>
+                <span class="zh-hans-content">结合先进AI算法与专业投资顾问经验，为客户提供个性化的投资建议和组合管理服务。</span>
+                <span class="en-content">Combining advanced AI algorithms with professional investment advisory experience to provide personalized investment advice and portfolio management services.</span>
+              </p>
+              <ul class="product-features">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">智能資產配置</span>
+                  <span class="zh-hans-content">智能资产配置</span>
+                  <span class="en-content">Intelligent Asset Allocation</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">個性化投資建議</span>
+                  <span class="zh-hans-content">个性化投资建议</span>
+                  <span class="en-content">Personalized Investment Advice</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">市場趨勢分析</span>
+                  <span class="zh-hans-content">市场趋势分析</span>
+                  <span class="en-content">Market Trend Analysis</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">風險控制系統</span>
+                  <span class="zh-hans-content">风险控制系统</span>
+                  <span class="en-content">Risk Control System</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">實時投資監控</span>
+                  <span class="zh-hans-content">实时投资监控</span>
+                  <span class="en-content">Real-time Investment Monitoring</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">AI策略優化</span>
+                  <span class="zh-hans-content">AI策略优化</span>
+                  <span class="en-content">AI Strategy Optimization</span>
+                </li>
+              </ul>
+              <a href="https://wiselens.netlify.app" class="btn btn-primary" target="_blank">
+                <span class="zh-hant-content">了解更多</span>
+                <span class="zh-hans-content">了解更多</span>
+                <span class="en-content">Learn More</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- AI銷售與客戶管理 -->
+        <div class="product-content-item active" id="product-sales">
+          <div class="product-preview">
+            <div class="product-preview-image">
+              <img src="images/AI Sales & CRM.jpg" alt="AI Sales & CRM" />
+            </div>
+            <div class="product-preview-info">
+              <h3>
+                <span class="zh-hant-content">AI銷售與客戶管理</span>
+                <span class="zh-hans-content">AI销售与客户管理</span>
+                <span class="en-content">AI Sales & CRM</span>
+              </h3>
+              <p>
+                <span class="zh-hant-content">智能化的銷售和客戶關係管理系統，幫助企業提升銷售效率和客戶滿意度。</span>
+                <span class="zh-hans-content">智能化的销售和客户关系管理系统，帮助企业提升销售效率和客户满意度。</span>
+                <span class="en-content">Intelligent sales and customer relationship management system to help businesses improve sales efficiency and customer satisfaction.</span>
+              </p>
+              <ul class="product-features">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">智能銷售線索</span>
+                  <span class="zh-hans-content">智能销售线索</span>
+                  <span class="en-content">Intelligent Sales Leads</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">客戶行為分析</span>
+                  <span class="zh-hans-content">客户行为分析</span>
+                  <span class="en-content">Customer Behavior Analysis</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">自動化營銷</span>
+                  <span class="zh-hans-content">自动化营销</span>
+                  <span class="en-content">Automated Marketing</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">客戶關係追蹤</span>
+                  <span class="zh-hans-content">客户关系追踪</span>
+                  <span class="en-content">Customer Relationship Tracking</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">銷售績效分析</span>
+                  <span class="zh-hans-content">销售绩效分析</span>
+                  <span class="en-content">Sales Performance Analysis</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">智能客服系統</span>
+                  <span class="zh-hans-content">智能客服系统</span>
+                  <span class="en-content">Intelligent Customer Service System</span>
+                </li>
+              </ul>
+              <a href="https://nuro-crm.netlify.app" class="btn btn-primary" target="_blank">
+                <span class="zh-hant-content">了解更多</span>
+                <span class="zh-hans-content">了解更多</span>
+                <span class="en-content">Learn More</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- 量化交易 -->
+        <div class="product-content-item active" id="product-quant">
+          <div class="product-preview">
+            <div class="product-preview-image">
+              <img src="images/Quant-trade.jpg" alt="Quantitative Trading" />
+            </div>
+            <div class="product-preview-info">
+              <h3>
+                <span class="zh-hant-content">量化交易</span>
+                <span class="zh-hans-content">量化交易</span>
+                <span class="en-content">Quantitative Trading</span>
+              </h3>
+              <p>
+                <span class="zh-hant-content">專業的量化交易解決方案，結合機器學習和高頻交易技術，為機構投資者提供優質的交易策略。</span>
+                <span class="zh-hans-content">专业的量化交易解决方案，结合机器学习和高频交易技术，为机构投资者提供优质的交易策略。</span>
+                <span class="en-content">Professional quantitative trading solutions combining machine learning and high-frequency trading technology to provide quality trading strategies for institutional investors.</span>
+              </p>
+              <ul class="product-features">
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">策略回測系統</span>
+                  <span class="zh-hans-content">策略回测系统</span>
+                  <span class="en-content">Strategy Backtesting System</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">實時交易執行</span>
+                  <span class="zh-hans-content">实时交易执行</span>
+                  <span class="en-content">Real-time Trade Execution</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">風險管理系統</span>
+                  <span class="zh-hans-content">风险管理系统</span>
+                  <span class="en-content">Risk Management System</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">多市場接入</span>
+                  <span class="zh-hans-content">多市场接入</span>
+                  <span class="en-content">Multi-market Access</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">性能優化引擎</span>
+                  <span class="zh-hans-content">性能优化引擎</span>
+                  <span class="en-content">Performance Optimization Engine</span>
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <span class="zh-hant-content">策略監控預警</span>
+                  <span class="zh-hans-content">策略监控预警</span>
+                  <span class="en-content">Strategy Monitoring & Alerts</span>
+                </li>
+              </ul>
+              <a href="#" class="btn btn-primary">
+                <span class="zh-hant-content">了解更多</span>
+                <span class="zh-hans-content">了解更多</span>
+                <span class="en-content">Learn More</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+                            </div>
+
+    <!-- CTA 區域 -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title animate">
+                <span class="zh-hant-content">準備好提升您的資產管理能力了嗎？</span>
+                <span class="zh-hans-content">准备好提升您的资产管理能力了吗？</span>
+          <span class="en-content"
+            >Ready to Enhance Your Asset Management Capabilities?</span
+          >
+            </h2>
+            <p class="cta-description animate delay-1">
+          <span class="zh-hant-content"
+            >聯繫我們，了解Quantaryx
+            Technologies如何幫助您的機構實現數字化轉型</span
+          >
+          <span class="zh-hans-content"
+            >联系我们，了解Quantaryx
+            Technologies如何帮助您的机构实现数字化转型</span
+          >
+          <span class="en-content"
+            >Contact us to learn how Quantaryx Technologies can help your
+            institution achieve digital transformation</span
+          >
+            </p>
+            <div class="cta-buttons animate delay-2">
+                <a href="contact.html" class="btn btn-white">
+                    <span class="zh-hant-content">預約演示</span>
+                    <span class="zh-hans-content">预约演示</span>
+                    <span class="en-content">Book a Demo</span>
+                </a>
+                <a href="contact.html#contact-form" class="btn btn-transparent">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+          <!-- Main sections in a row -->
+          <div class="footer-sections-row">
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">公司</span>
+                <span class="zh-hans-content">公司</span>
+                <span class="en-content">Company</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="about.html">
+                    <span class="zh-hant-content">關於我們</span>
+                    <span class="zh-hans-content">关于我们</span>
+                    <span class="en-content">About Us</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="about.html#team">
+                    <span class="zh-hant-content">團隊</span>
+                    <span class="zh-hans-content">团队</span>
+                    <span class="en-content">Team</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="compliance.html">
+                    <span class="zh-hant-content">法規與安全</span>
+                    <span class="zh-hans-content">法规与安全</span>
+                    <span class="en-content">Compliance & Security</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="blog.html">
+                    <span class="zh-hant-content">創科視界</span>
+                    <span class="zh-hans-content">创科视界</span>
+                    <span class="en-content">Blog</span>
+                  </a>
+                </li>
+              </ul>
+                    </div>
+            <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">產品</span>
+                            <span class="zh-hans-content">产品</span>
+                            <span class="en-content">Products</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="#product-aurelia">
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="#product-wiselens">
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="#product-sales">
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="#product-quant">
+                                    <span class="zh-hant-content">量化交易</span>
+                                    <span class="zh-hans-content">量化交易</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">解決方案</span>
+                            <span class="zh-hans-content">解决方案</span>
+                            <span class="en-content">Solutions</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="solutions.html#sfo">
+                                    <span class="zh-hant-content">Single Family Office</span>
+                                    <span class="zh-hans-content">Single Family Office</span>
+                                    <span class="en-content">Single Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#mfo">
+                                    <span class="zh-hant-content">Multi Family Office</span>
+                                    <span class="zh-hans-content">Multi Family Office</span>
+                                    <span class="en-content">Multi Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#am">
+                                    <span class="zh-hant-content">資產管理機構</span>
+                                    <span class="zh-hans-content">资产管理机构</span>
+                                    <span class="en-content">Asset Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#institutional">
+                                    <span class="zh-hant-content">機構投資者</span>
+                                    <span class="zh-hans-content">机构投资者</span>
+                                    <span class="en-content">Institutional Investors</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">聯絡</span>
+                            <span class="zh-hans-content">联系</span>
+                            <span class="en-content">Contact</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="contact.html">
+                                    <span class="zh-hant-content">聯絡我們</span>
+                                    <span class="zh-hans-content">联系我们</span>
+                                    <span class="en-content">Contact Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#demo">
+                                    <span class="zh-hant-content">預約演示</span>
+                                    <span class="zh-hans-content">预约演示</span>
+                                    <span class="en-content">Book a Demo</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#support">
+                                    <span class="zh-hant-content">支援中心</span>
+                                    <span class="zh-hans-content">支持中心</span>
+                                    <span class="en-content">Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+          <!-- Company description below -->
+          <div class="footer-company-info">
+            <a href="index.html" class="footer-logo">Quantaryx</a>
+            <p class="footer-description">
+              <span class="zh-hant-content"
+                >專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span
+              >
+              <span class="zh-hans-content"
+                >专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span
+              >
+              <span class="en-content"
+                >A fintech company focused on asset management and artificial
+                intelligence, committed to providing modular, scalable, and
+                compliant solutions for professional institutions.</span
+              >
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+            <span class="zh-hant-content"
+              >&copy; 2025 Quantaryx Technologies. 版權所有。</span
+            >
+            <span class="zh-hans-content"
+              >&copy; 2025 Quantaryx Technologies. 版权所有。</span
+            >
+            <span class="en-content"
+              >&copy; 2025 Quantaryx Technologies. All rights reserved.</span
+            >
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於我們 - Quantaryx Technologies</title>
+    <meta name="description" content="了解Quantaryx Technologies的公司故事、團隊成員和使命願景，我們致力於為金融機構提供創新的資產管理與人工智慧解決方案。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* 關於我們頁面特定樣式 */
+        .about-header {
+            padding: 150px 0 80px;
+            background-color: var(--dark-color);
+            text-align: center;
+        }
+        
+        .about-header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .about-header p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-section {
+            padding: 100px 0;
+        }
+        
+        .about-section:nth-child(even) {
+            background-color: var(--dark-color);
+        }
+        
+        .about-section:nth-child(odd) {
+            background-color: #0c0c0c;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .mission-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 100px;
+            padding: 80px 0;
+        }
+        
+        .mission-value-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mission-value-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(0, 112, 243, 0.1);
+            border-color: rgba(0, 112, 243, 0.2);
+        }
+        
+        .mission-value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .mission-value-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .mission-value-card p {
+            color: #aaa;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .value-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(0, 112, 243, 0.1);
+            border-color: rgba(0, 112, 243, 0.2);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .value-description {
+            color: #aaa;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-header h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .mission-value-card {
+                padding: 20px;
+            }
+            
+            .mission-value-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* 删除团队相关的CSS样式 */
+        .team-section,
+        .team-title,
+        .team-subtitle,
+        .team-members,
+        .team-member,
+        .team-member-image,
+        .team-member-info,
+        .team-member-name,
+        .team-member-position,
+        .team-member-bio,
+        .team-member-social {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>Quantaryx</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">
+                        <span class="zh-hant-content">首頁</span>
+                        <span class="zh-hans-content">首页</span>
+                        <span class="en-content">Home</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">
+                        <span class="zh-hant-content">關於我們</span>
+                        <span class="zh-hans-content">关于我们</span>
+                        <span class="en-content">About Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-link">
+                        <span class="zh-hant-content">產品</span>
+                        <span class="zh-hans-content">产品</span>
+                        <span class="en-content">Products</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="solutions.html" class="navbar-link">
+                        <span class="zh-hant-content">解決方案</span>
+                        <span class="zh-hans-content">解决方案</span>
+                        <span class="en-content">Solutions</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link">
+                        <span class="zh-hant-content">創科視界</span>
+                        <span class="zh-hans-content">创科视界</span>
+                        <span class="en-content">Blog</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="compliance.html" class="navbar-link">
+                        <span class="zh-hant-content">法規與安全</span>
+                        <span class="zh-hans-content">法规与安全</span>
+                        <span class="en-content">Compliance & Security</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">
+                        <span class="zh-hant-content">聯絡我們</span>
+                        <span class="zh-hans-content">联系我们</span>
+                        <span class="en-content">Contact Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item language-selector">
+                    <select id="language-select">
+                        <option value="zh-hant">繁體中文</option>
+                        <option value="zh-hans">简体中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 關於我們頁面標題 -->
+    <header class="about-header" id="about-header">
+        <div class="container">
+            <h1 class="animate">
+                <span class="zh-hant-content">關於 Quantaryx Technologies</span>
+                <span class="zh-hans-content">关于 Quantaryx Technologies</span>
+                <span class="en-content">About Quantaryx Technologies</span>
+            </h1>
+            <p class="animate delay-1">
+                <span class="zh-hant-content">我們是一家專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供創新解決方案</span>
+                <span class="zh-hans-content">我们是一家专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供创新解决方案</span>
+                <span class="en-content">We are a fintech company focused on asset management and artificial intelligence, committed to providing innovative solutions for professional institutions</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- 公司故事 -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image animate">
+                    <img src="images/about-company.jpg" alt="Quantaryx Technologies 公司故事">
+                </div>
+                <div class="about-content animate delay-1">
+                    <h2>
+                        <span class="zh-hant-content">我們的故事</span>
+                        <span class="zh-hans-content">我们的故事</span>
+                        <span class="en-content">Our Story</span>
+                    </h2>
+                    <p>
+                        <span class="zh-hant-content">Quantaryx Technologies 成立於2022年，由一群來自金融和科技領域的專業人士共同創立。我們看到了傳統資產管理行業面臨的挑戰：複雜的監管環境、低效的運營流程、缺乏數據驅動的決策支持，以及日益增長的客戶期望。</span>
+                        <span class="zh-hans-content">Quantaryx Technologies 成立于2022年，由一群来自金融和科技领域的专业人士共同创立。我们看到了传统资产管理行业面临的挑战：复杂的监管环境、低效的运营流程、缺乏数据驱动的决策支持，以及日益增长的客户期望。</span>
+                        <span class="en-content">Quantaryx Technologies was founded in 2022 by a group of professionals from the finance and technology sectors. We recognized the challenges facing the traditional asset management industry: complex regulatory environments, inefficient operational processes, lack of data-driven decision support, and growing client expectations.</span>
+                    </p>
+                    <p>
+                        <span class="zh-hant-content">我們的創始團隊結合了在頂級投資銀行、資產管理公司和科技巨頭的豐富經驗，致力於打造一套全新的解決方案，將人工智慧、數據分析和用戶體驗設計融為一體，為專業金融機構提供模組化、可擴展且合規的工具。</span>
+                        <span class="zh-hans-content">我们的创始团队结合了在顶级投资银行、资产管理公司和科技巨头的丰富经验，致力于打造一套全新的解决方案，将人工智能、数据分析和用户体验设计融为一体，为专业金融机构提供模块化、可扩展且合规的工具。</span>
+                        <span class="en-content">Our founding team combined rich experience from top investment banks, asset management companies, and tech giants, dedicated to creating a new suite of solutions that integrate artificial intelligence, data analytics, and user experience design to provide modular, scalable, and compliant tools for professional financial institutions.</span>
+                    </p>
+                    <p>
+                        <span class="zh-hant-content">今天，Quantaryx Technologies 已經發展成為香港領先的金融科技創新者，我們的產品服務於亞太地區的眾多家族辦公室、基金管理公司和金融機構，幫助他們在數字化轉型的浪潮中保持競爭優勢。</span>
+                        <span class="zh-hans-content">今天，Quantaryx Technologies 已经发展成为香港领先的金融科技创新者，我们的产品服务于亚太地区的众多家族办公室、基金管理公司和金融机构，帮助他们在数字化转型的浪潮中保持竞争优势。</span>
+                        <span class="en-content">Today, Quantaryx Technologies has grown to become a leading fintech innovator in Hong Kong, with our products serving numerous family offices, fund management companies, and financial institutions across the Asia-Pacific region, helping them maintain a competitive edge in the wave of digital transformation.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使命與價值觀 -->
+    <section class="mission-values">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="zh-hant-content">我們的使命與價值觀</span>
+                <span class="zh-hans-content">我们的使命与价值观</span>
+                <span class="en-content">Our Mission and Values</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="zh-hant-content">我們的核心理念指引著我們的產品開發和業務發展</span>
+                <span class="zh-hans-content">我们的核心理念指引着我们的产品开发和业务发展</span>
+                <span class="en-content">Our core principles guide our product development and business growth</span>
+            </p>
+            
+            <div class="values-grid">
+                <div class="mission-value-card animate delay-2">
+                    <div class="mission-value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>
+                        <span class="zh-hant-content">創新</span>
+                        <span class="zh-hans-content">创新</span>
+                        <span class="en-content">Innovation</span>
+                    </h3>
+                    <p>
+                        <span class="zh-hant-content">我們不斷探索前沿技術和創新方法，為金融行業帶來突破性的解決方案。我們鼓勵團隊挑戰現狀，思考不同的可能性。</span>
+                        <span class="zh-hans-content">我们不断探索前沿技术和创新方法，为金融行业带来突破性的解决方案。我们鼓励团队挑战现状，思考不同的可能性。</span>
+                        <span class="en-content">We continuously explore cutting-edge technologies and innovative methods to bring breakthrough solutions to the financial industry. We encourage our team to challenge the status quo and think of different possibilities.</span>
+                    </p>
+                </div>
+                
+                <div class="mission-value-card animate delay-3">
+                    <div class="mission-value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>
+                        <span class="zh-hant-content">安全與合規</span>
+                        <span class="zh-hans-content">安全与合规</span>
+                        <span class="en-content">Security & Compliance</span>
+                    </h3>
+                    <p>
+                        <span class="zh-hant-content">我們將數據安全和法規遵循視為首要任務，確保我們的產品符合最嚴格的行業標準和監管要求，保護客戶的敏感信息。</span>
+                        <span class="zh-hans-content">我们将数据安全和法规遵循视为首要任务，确保我们的产品符合最严格的行业标准和监管要求，保护客户的敏感信息。</span>
+                        <span class="en-content">We prioritize data security and regulatory compliance, ensuring our products meet the most stringent industry standards and regulatory requirements to protect our clients' sensitive information.</span>
+                    </p>
+                </div>
+                
+                <div class="mission-value-card animate delay-4">
+                    <div class="mission-value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>
+                        <span class="zh-hant-content">客戶為中心</span>
+                        <span class="zh-hans-content">客户为中心</span>
+                        <span class="en-content">Client-Centric</span>
+                    </h3>
+                    <p>
+                        <span class="zh-hant-content">我們深入了解客戶的需求和挑戰，與客戶密切合作，提供量身定制的解決方案。我們的成功建立在客戶的成功之上。</span>
+                        <span class="zh-hans-content">我们深入了解客户的需求和挑战，与客户密切合作，提供量身定制的解决方案。我们的成功建立在客户的成功之上。</span>
+                        <span class="en-content">We deeply understand our clients' needs and challenges, working closely with them to provide tailored solutions. Our success is built on our clients' success.</span>
+                    </p>
+                </div>
+                
+                <div class="mission-value-card animate delay-5">
+                    <div class="mission-value-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>
+                        <span class="zh-hant-content">卓越表現</span>
+                        <span class="zh-hans-content">卓越表现</span>
+                        <span class="en-content">Excellence</span>
+                    </h3>
+                    <p>
+                        <span class="zh-hant-content">我們追求卓越，在產品開發、客戶服務和業務運營的每個環節都力求最高標準。我們不斷學習和改進，超越期望。</span>
+                        <span class="zh-hans-content">我们追求卓越，在产品开发、客户服务和业务运营的每个环节都力求最高标准。我们不断学习和改进，超越期望。</span>
+                        <span class="en-content">We pursue excellence, striving for the highest standards in every aspect of product development, customer service, and business operations. We continuously learn and improve to exceed expectations.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 區域 -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title animate">
+                <span class="zh-hant-content">加入 Quantaryx 的創新之旅</span>
+                <span class="zh-hans-content">加入 Quantaryx 的创新之旅</span>
+                <span class="en-content">Join Quantaryx's Innovation Journey</span>
+            </h2>
+            <p class="cta-description animate delay-1">
+                <span class="zh-hant-content">了解我們如何幫助專業金融機構實現數字化轉型</span>
+                <span class="zh-hans-content">了解我们如何帮助专业金融机构实现数字化转型</span>
+                <span class="en-content">Learn how we help professional financial institutions achieve digital transformation</span>
+            </p>
+            <div class="cta-buttons animate delay-2">
+                <a href="contact.html" class="btn btn-white">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                </a>
+                <a href="products.html" class="btn btn-transparent">
+                    <span class="zh-hant-content">探索產品</span>
+                    <span class="zh-hans-content">探索产品</span>
+                    <span class="en-content">Explore Products</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <!-- Main sections in a row -->
+                <div class="footer-sections-row">
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">公司</span>
+                            <span class="zh-hans-content">公司</span>
+                            <span class="en-content">Company</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="about.html">
+                                    <span class="zh-hant-content">關於我們</span>
+                                    <span class="zh-hans-content">关于我们</span>
+                                    <span class="en-content">About Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="#about-header">
+                                    <span class="zh-hant-content">團隊</span>
+                                    <span class="zh-hans-content">团队</span>
+                                    <span class="en-content">Team</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="compliance.html">
+                                    <span class="zh-hant-content">法規與安全</span>
+                                    <span class="zh-hans-content">法规与安全</span>
+                                    <span class="en-content">Compliance & Security</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="blog.html">
+                                    <span class="zh-hant-content">創科視界</span>
+                                    <span class="zh-hans-content">创科视界</span>
+                                    <span class="en-content">Blog</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">產品</span>
+                            <span class="zh-hans-content">产品</span>
+                            <span class="en-content">Products</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="products.html#aurelia">
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#wiselens">
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#nurocrm">
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#flamestone">
+                                    <span class="zh-hant-content">量化交易</span>
+                                    <span class="zh-hans-content">量化交易</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">解決方案</span>
+                            <span class="zh-hans-content">解决方案</span>
+                            <span class="en-content">Solutions</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="solutions.html#sfo">
+                                    <span class="zh-hant-content">Single Family Office</span>
+                                    <span class="zh-hans-content">Single Family Office</span>
+                                    <span class="en-content">Single Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#mfo">
+                                    <span class="zh-hant-content">Multi Family Office</span>
+                                    <span class="zh-hans-content">Multi Family Office</span>
+                                    <span class="en-content">Multi Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#am">
+                                    <span class="zh-hant-content">資產管理機構</span>
+                                    <span class="zh-hans-content">资产管理机构</span>
+                                    <span class="en-content">Asset Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#institutional">
+                                    <span class="zh-hant-content">機構投資者</span>
+                                    <span class="zh-hans-content">机构投资者</span>
+                                    <span class="en-content">Institutional Investors</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">聯絡</span>
+                            <span class="zh-hans-content">联系</span>
+                            <span class="en-content">Contact</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="contact.html">
+                                    <span class="zh-hant-content">聯絡我們</span>
+                                    <span class="zh-hans-content">联系我们</span>
+                                    <span class="en-content">Contact Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#demo">
+                                    <span class="zh-hant-content">預約演示</span>
+                                    <span class="zh-hans-content">预约演示</span>
+                                    <span class="en-content">Book a Demo</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#support">
+                                    <span class="zh-hant-content">支援中心</span>
+                                    <span class="zh-hans-content">支持中心</span>
+                                    <span class="en-content">Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Company description below -->
+                <div class="footer-company-info">
+                    <a href="index.html" class="footer-logo">Quantaryx</a>
+                    <p class="footer-description">
+                        <span class="zh-hant-content">專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span>
+                        <span class="zh-hans-content">专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span>
+                        <span class="en-content">A fintech company focused on asset management and artificial intelligence, committed to providing modular, scalable, and compliant solutions for professional institutions.</span>
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <span class="zh-hant-content">&copy; 2025 Quantaryx Technologies. 版權所有。</span>
+                    <span class="zh-hans-content">&copy; 2025 Quantaryx Technologies. 版权所有。</span>
+                    <span class="en-content">&copy; 2025 Quantaryx Technologies. All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

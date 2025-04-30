@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解決方案 - Quantaryx Technologies</title>
+    <meta name="description" content="Quantaryx Technologies 為單戶家族辦公室、多戶家族辦公室、資產管理機構和機構投資者提供專業的金融科技解決方案。">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* 解決方案頁面特定樣式 */
+        .solutions-header {
+            padding: 150px 0 80px;
+            background-color: var(--dark-color);
+            text-align: center;
+        }
+        
+        .solutions-header h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .solutions-header p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .solutions-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+        
+        .solution-tab {
+            padding: 15px 30px;
+            margin: 0 10px 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: #aaa;
+            font-weight: 500;
+        }
+        
+        .solution-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .solution-section {
+            padding: 80px 0;
+            background-color: #0c0c0c;
+        }
+        
+        .solution-section:nth-child(even) {
+            background-color: var(--dark-color);
+        }
+        
+        .solution-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .solution-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .solution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .solution-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .solution-content h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .solution-content p {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .solution-features {
+            margin-top: 30px;
+        }
+        
+        .solution-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .solution-feature i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .solution-feature-text h4 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .solution-feature-text p {
+            color: #aaa;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+        
+        .solution-products {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .solution-products h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .product-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .product-card {
+            background-color: rgba(0, 112, 243, 0.1);
+            border: 1px solid rgba(0, 112, 243, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            background-color: rgba(0, 112, 243, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .product-card-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .product-card h4 {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .product-card p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .solution-cta {
+            margin-top: 40px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin-top: 50px;
+            border-collapse: collapse;
+            color: white;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .comparison-table th {
+            background-color: rgba(0, 112, 243, 0.1);
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        
+        .check-icon {
+            color: #00c853;
+        }
+        
+        .cross-icon {
+            color: #ff3d00;
+        }
+        
+        .partial-icon {
+            color: #ffab00;
+        }
+        
+        @media (max-width: 992px) {
+            .solution-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .solution-image {
+                margin-bottom: 30px;
+            }
+            
+            .solutions-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .solutions-header {
+                padding: 120px 0 60px;
+            }
+            
+            .solutions-header h1 {
+                font-size: 2rem;
+            }
+            
+            .solution-content h2 {
+                font-size: 2rem;
+            }
+            
+            .solution-tab {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>Quantaryx</span>
+            </a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="navbar-menu" id="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-link">
+                        <span class="zh-hant-content">首頁</span>
+                        <span class="zh-hans-content">首页</span>
+                        <span class="en-content">Home</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-link">
+                        <span class="zh-hant-content">關於我們</span>
+                        <span class="zh-hans-content">关于我们</span>
+                        <span class="en-content">About Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-link">
+                        <span class="zh-hant-content">產品</span>
+                        <span class="zh-hans-content">产品</span>
+                        <span class="en-content">Products</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="solutions.html" class="navbar-link active">
+                        <span class="zh-hant-content">解決方案</span>
+                        <span class="zh-hans-content">解决方案</span>
+                        <span class="en-content">Solutions</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="blog.html" class="navbar-link">
+                        <span class="zh-hant-content">創科視界</span>
+                        <span class="zh-hans-content">创科视界</span>
+                        <span class="en-content">Blog</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="compliance.html" class="navbar-link">
+                        <span class="zh-hant-content">法規與安全</span>
+                        <span class="zh-hans-content">法规与安全</span>
+                        <span class="en-content">Compliance & Security</span>
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-link">
+                        <span class="zh-hant-content">聯絡我們</span>
+                        <span class="zh-hans-content">联系我们</span>
+                        <span class="en-content">Contact Us</span>
+                    </a>
+                </li>
+                <li class="navbar-item language-selector">
+                        <select id="language-select">
+                            <option value="zh-hant">繁體中文</option>
+                            <option value="zh-hans">简体中文</option>
+                            <option value="en">English</option>
+                        </select>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 解決方案頁頭 -->
+    <header class="solutions-header">
+        <div class="container">
+            <h1 class="animate">
+                <span class="zh-hant-content">專業解決方案</span>
+                <span class="zh-hans-content">专业解决方案</span>
+                <span class="en-content">Professional Solutions</span>
+            </h1>
+            <p class="animate delay-1">
+                <span class="zh-hant-content">Quantaryx Technologies 為不同類型的金融機構提供量身定制的解決方案，滿足您的特定需求和挑戰。</span>
+                <span class="zh-hans-content">Quantaryx Technologies 为不同类型的金融机构提供量身定制的解决方案，满足您的特定需求和挑战。</span>
+                <span class="en-content">Quantaryx Technologies offers tailored solutions for different types of financial institutions, addressing your specific needs and challenges.</span>
+            </p>
+        </div>
+    </header>
+
+    <!-- 解決方案標籤 -->
+    <div class="solutions-tabs">
+        <div class="solution-tab" data-target="sfo">
+            <span class="zh-hant-content">單戶家族辦公室</span>
+            <span class="zh-hans-content">单户家族办公室</span>
+            <span class="en-content">Single Family Office</span>
+        </div>
+        <div class="solution-tab" data-target="mfo">
+            <span class="zh-hant-content">多戶家族辦公室</span>
+            <span class="zh-hans-content">多户家族办公室</span>
+            <span class="en-content">Multi Family Office</span>
+        </div>
+        <div class="solution-tab" data-target="am">
+            <span class="zh-hant-content">資產管理機構</span>
+            <span class="zh-hans-content">资产管理机构</span>
+            <span class="en-content">Asset Management</span>
+        </div>
+        <div class="solution-tab" data-target="institutional">
+            <span class="zh-hant-content">機構投資者</span>
+            <span class="zh-hans-content">机构投资者</span>
+            <span class="en-content">Institutional Investors</span>
+        </div>
+    </div>
+
+    <!-- 單戶家族辦公室解決方案 -->
+    <section class="solution-section" id="sfo">
+        <div class="container">
+            <div class="solution-container">
+                <div class="solution-image animate">
+                    <img src="images/solution/單戶家族辦公室解決方案.png" alt="單戶家族辦公室解決方案">
+                </div>
+                <div class="solution-content animate delay-1">
+                    <h2>
+                        <span class="zh-hant-content">單戶家族辦公室解決方案</span>
+                        <span class="zh-hans-content">单户家族办公室解决方案</span>
+                        <span class="en-content">Single Family Office Solutions</span>
+                    </h2>
+                    <p>
+                        <span class="zh-hant-content">為服務單一超高淨值家族的專屬辦公室提供全方位的資產管理和財富規劃解決方案。我們的平台整合了投資管理、財務規劃、風險管理和家族治理等功能，幫助家族辦公室實現長期財富保值增值和代際傳承。</span>
+                        <span class="zh-hans-content">为服务单一超高净值家族的专属办公室提供全方位的资产管理和财富规划解决方案。我们的平台整合了投资管理、财务规划、风险管理和家族治理等功能，帮助家族办公室实现长期财富保值增值和代际传承。</span>
+                        <span class="en-content">Providing comprehensive asset management and wealth planning solutions for dedicated offices serving a single ultra-high-net-worth family. Our platform integrates investment management, financial planning, risk management, and family governance functions to help family offices achieve long-term wealth preservation, growth, and intergenerational transfer.</span>
+                    </p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">隱私與安全</span>
+                                    <span class="zh-hans-content">隐私与安全</span>
+                                    <span class="en-content">Privacy and Security</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">最高級別的數據加密和隱私保護，確保家族財務和個人信息的絕對安全。</span>
+                                    <span class="zh-hans-content">最高级别的数据加密和隐私保护，确保家族财务和个人信息的绝对安全。</span>
+                                    <span class="en-content">Highest level of data encryption and privacy protection, ensuring absolute security of family financial and personal information.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">全球資產整合視圖</span>
+                                    <span class="zh-hans-content">全球资产整合视图</span>
+                                    <span class="en-content">Global Asset Consolidated View</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">整合所有資產類別和投資工具的全面視圖，包括公開市場投資、私募股權、房地產、藝術品和收藏品等。</span>
+                                    <span class="zh-hans-content">整合所有资产类别和投资工具的全面视图，包括公开市场投资、私募股权、房地产、艺术品和收藏品等。</span>
+                                    <span class="en-content">Comprehensive view integrating all asset classes and investment vehicles, including public market investments, private equity, real estate, art, and collectibles.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-users"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">家族治理與傳承規劃</span>
+                                    <span class="zh-hans-content">家族治理与传承规划</span>
+                                    <span class="en-content">Family Governance and Succession Planning</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">支持家族憲章制定、繼任規劃、下一代教育和慈善事業管理，確保家族價值觀和財富的順利傳承。</span>
+                                    <span class="zh-hans-content">支持家族宪章制定、继任规划、下一代教育和慈善事业管理，确保家族价值观和财富的顺利传承。</span>
+                                    <span class="en-content">Supporting family charter development, succession planning, next-generation education, and philanthropy management to ensure smooth transfer of family values and wealth.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-products">
+                        <h3>
+                            <span class="zh-hant-content">推薦產品</span>
+                            <span class="zh-hans-content">推荐产品</span>
+                            <span class="en-content">Recommended Products</span>
+                        </h3>
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">私人版</span>
+                                    <span class="zh-hans-content">私人版</span>
+                                    <span class="en-content">Private Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">家族版</span>
+                                    <span class="zh-hans-content">家族版</span>
+                                    <span class="en-content">Family Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">家族治理系統</span>
+                                    <span class="zh-hans-content">家族治理系统</span>
+                                    <span class="en-content">Family Governance System</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">核心版</span>
+                                    <span class="zh-hans-content">核心版</span>
+                                    <span class="en-content">Core Edition</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-cta">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 多戶家族辦公室解決方案 -->
+    <section class="solution-section" id="mfo" style="display: none;">
+        <div class="container">
+            <div class="solution-container">
+                <div class="solution-image animate">
+                    <img src="images/solution/多戶家族辦公室解決方案.png" alt="多戶家族辦公室解決方案">
+                </div>
+                <div class="solution-content animate delay-1">
+                    <h2>
+                        <span class="zh-hant-content">多戶家族辦公室解決方案</span>
+                        <span class="zh-hans-content">多户家族办公室解决方案</span>
+                        <span class="en-content">Multi Family Office Solutions</span>
+                    </h2>
+                    <p>
+                        <span class="zh-hant-content">為服務多個高淨值家族的專業機構提供可擴展的資產管理和財富服務平台。我們的解決方案支持多客戶架構，同時保持每個家族的獨立性和隱私，讓多戶家族辦公室能夠高效管理複雜的客戶關係和多樣化的投資組合。</span>
+                        <span class="zh-hans-content">为服务多个高净值家族的专业机构提供可扩展的资产管理和财富服务平台。我们的解决方案支持多客户架构，同时保持每个家族的独立性和隐私，让多户家族办公室能够高效管理复杂的客户关系和多样化的投资组合。</span>
+                        <span class="en-content">Providing scalable asset management and wealth service platforms for professional institutions serving multiple high-net-worth families. Our solutions support multi-client architecture while maintaining the independence and privacy of each family, enabling multi-family offices to efficiently manage complex client relationships and diversified portfolios.</span>
+                    </p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <i class="fas fa-layer-group"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">多客戶架構</span>
+                                    <span class="zh-hans-content">多客户架构</span>
+                                    <span class="en-content">Multi-client Architecture</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">支持多家族管理，同時保持每個家族數據的隔離和安全，確保客戶隱私和數據安全。</span>
+                                    <span class="zh-hans-content">支持多家族管理，同时保持每个家族数据的隔离和安全，确保客户隐私和数据安全。</span>
+                                    <span class="en-content">Supporting multi-family management while maintaining isolation and security of each family's data, ensuring client privacy and data security.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-handshake"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">客戶關係管理</span>
+                                    <span class="zh-hans-content">客户关系管理</span>
+                                    <span class="en-content">Client Relationship Management</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">全面的CRM功能，幫助管理複雜的家族關係、偏好設置和服務歷史，提升客戶滿意度和忠誠度。</span>
+                                    <span class="zh-hans-content">全面的CRM功能，帮助管理复杂的家族关系、偏好设置和服务历史，提升客户满意度和忠诚度。</span>
+                                    <span class="en-content">Comprehensive CRM functionality to help manage complex family relationships, preferences, and service history, enhancing customer satisfaction and loyalty.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-tasks"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">可擴展的報告系統</span>
+                                    <span class="zh-hans-content">可扩展的报告系统</span>
+                                    <span class="en-content">Scalable Reporting System</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">自定義報告生成器，可根據不同家族的需求創建個性化報告，同時支持批量報告生成和分發。</span>
+                                    <span class="zh-hans-content">自定义报告生成器，可根据不同家族的需求创建个性化报告，同时支持批量报告生成和分发。</span>
+                                    <span class="en-content">Custom report generator that can create personalized reports based on the needs of different families, while supporting batch report generation and distribution.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-products">
+                        <h3>
+                            <span class="zh-hant-content">推薦產品</span>
+                            <span class="zh-hans-content">推荐产品</span>
+                            <span class="en-content">Recommended Products</span>
+                        </h3>
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">企業版</span>
+                                    <span class="zh-hans-content">企业版</span>
+                                    <span class="en-content">Enterprise Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">核心平台</span>
+                                    <span class="zh-hans-content">核心平台</span>
+                                    <span class="en-content">Core Platform</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">推薦配置</span>
+                                    <span class="zh-hans-content">推荐配置</span>
+                                    <span class="en-content">Recommended</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-cta">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 資產管理機構解決方案 -->
+    <section class="solution-section" id="am" style="display: none;">
+        <div class="container">
+            <div class="solution-container">
+                <div class="solution-image animate">
+                    <img src="images/solution/產管理機構解決方案.png" alt="資產管理機構解決方案">
+                </div>
+                <div class="solution-content animate delay-1">
+                    <h2>
+                        <span class="zh-hant-content">資產管理機構解決方案</span>
+                        <span class="zh-hans-content">资产管理机构解决方案</span>
+                        <span class="en-content">Asset Management Institution Solutions</span>
+                    </h2>
+                    <p>
+                        <span class="zh-hant-content">專業投資管理公司，包括基金管理公司、私募股權機構、對沖基金等。我們的解決方案為資產管理機構提供全面的工具，從投資分析、交易執行到客戶管理和合規報告，全方位提升運營效率和投資表現。</span>
+                        <span class="zh-hans-content">专业投资管理公司，包括基金管理公司、私募股权机构、对冲基金等。我们的解决方案为资产管理机构提供全面的工具，从投资分析、交易执行到客户管理和合规报告，全方位提升运营效率和投资表现。</span>
+                        <span class="en-content">Professional investment management companies, including fund management companies, private equity firms, hedge funds, etc. Our solutions provide asset management institutions with comprehensive tools, from investment analysis and trade execution to client management and compliance reporting, comprehensively improving operational efficiency and investment performance.</span>
+                    </p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <i class="fas fa-chart-bar"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">高級投資分析與回測</span>
+                                    <span class="zh-hans-content">高级投资分析与回测</span>
+                                    <span class="en-content">Advanced Investment Analysis and Backtesting</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">強大的數據分析和回測工具，支持複雜的投資策略開發和優化，提高投資決策的準確性。</span>
+                                    <span class="zh-hans-content">强大的数据分析和回测工具，支持复杂的投资策略开发和优化，提高投资决策的准确性。</span>
+                                    <span class="en-content">Powerful data analysis and backtesting tools supporting complex investment strategy development and optimization, improving the accuracy of investment decisions.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-cogs"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">自動化交易執行</span>
+                                    <span class="zh-hans-content">自动化交易执行</span>
+                                    <span class="en-content">Automated Trade Execution</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">高效的交易執行系統，支持多市場、多資產類別的交易，並提供智能執行算法優化交易成本。</span>
+                                    <span class="zh-hans-content">高效的交易执行系统，支持多市场、多资产类别的交易，并提供智能执行算法优化交易成本。</span>
+                                    <span class="en-content">Efficient trade execution system supporting multi-market, multi-asset class trading, and providing intelligent execution algorithms to optimize trading costs.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-products">
+                        <h3>
+                            <span class="zh-hant-content">推薦產品</span>
+                            <span class="zh-hans-content">推荐产品</span>
+                            <span class="en-content">Recommended Products</span>
+                        </h3>
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">私人版</span>
+                                    <span class="zh-hans-content">私人版</span>
+                                    <span class="en-content">Private Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">家族版</span>
+                                    <span class="zh-hans-content">家族版</span>
+                                    <span class="en-content">Family Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-sitemap"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">核心版</span>
+                                    <span class="zh-hans-content">核心版</span>
+                                    <span class="en-content">Core Edition</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 機構投資者解決方案 -->
+    <section class="solution-section" id="institutional" style="display: none;">
+        <div class="container">
+            <div class="solution-container">
+                <div class="solution-image animate">
+                    <img src="images/solution/機構投資者解決方案.png" alt="機構投資者解決方案">
+                </div>
+                <div class="solution-content animate delay-1">
+                    <h2>
+                        <span class="zh-hant-content">機構投資者解決方案</span>
+                        <span class="zh-hans-content">机构投资者解决方案</span>
+                        <span class="en-content">Institutional Investor Solutions</span>
+                    </h2>
+                    <p>
+                        <span class="zh-hant-content">為養老基金、保險公司、主權財富基金等大型機構投資者提供全方位的投資管理和風險控制解決方案。我們的平台能夠處理大規模資產配置、多資產類別分析和複雜的風險模型，滿足機構投資者對高效率、高透明度和嚴格合規的需求。</span>
+                        <span class="zh-hans-content">为养老基金、保险公司、主权财富基金等大型机构投资者提供全方位的投资管理和风险控制解决方案。我们的平台能够处理大规模资产配置、多资产类别分析和复杂的风险模型，满足机构投资者对高效率、高透明度和严格合规的需求。</span>
+                        <span class="en-content">Providing comprehensive investment management and risk control solutions for large institutional investors such as pension funds, insurance companies, and sovereign wealth funds. Our platform can handle large-scale asset allocation, multi-asset class analysis, and complex risk models, meeting institutional investors' demands for high efficiency, transparency, and strict compliance.</span>
+                    </p>
+                    <div class="solution-features">
+                        <div class="solution-feature">
+                            <i class="fas fa-chart-bar"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">大規模資產配置優化</span>
+                                    <span class="zh-hans-content">大规模资产配置优化</span>
+                                    <span class="en-content">Large-scale Asset Allocation Optimization</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">運用先進的量化模型和人工智能技術，優化跨資產類別的大規模投資組合，實現風險調整後的最佳回報。</span>
+                                    <span class="zh-hans-content">运用先进的量化模型和人工智能技术，优化跨资产类别的大规模投资组合，实现风险调整后的最佳回报。</span>
+                                    <span class="en-content">Utilizing advanced quantitative models and AI technology to optimize large-scale portfolios across asset classes, achieving the best risk-adjusted returns.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">高性能數據處理</span>
+                                    <span class="zh-hans-content">高性能数据处理</span>
+                                    <span class="en-content">High-performance Data Processing</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">處理和分析海量市場數據和投資組合數據，支持實時決策和高頻交易策略的執行。</span>
+                                    <span class="zh-hans-content">处理和分析海量市场数据和投资组合数据，支持实时决策和高频交易策略的执行。</span>
+                                    <span class="en-content">Processing and analyzing massive market and portfolio data, supporting real-time decision making and execution of high-frequency trading strategies.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">機構級風險管理</span>
+                                    <span class="zh-hans-content">机构级风险管理</span>
+                                    <span class="en-content">Institutional-grade Risk Management</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">全面的風險評估和壓力測試系統，包括市場風險、信用風險、流動性風險和操作風險的監控和管理。</span>
+                                    <span class="zh-hans-content">全面的风险评估和压力测试系统，包括市场风险、信用风险、流动性风险和操作风险的监控和管理。</span>
+                                    <span class="en-content">Comprehensive risk assessment and stress testing systems, including monitoring and management of market risk, credit risk, liquidity risk, and operational risk.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="solution-feature">
+                            <i class="fas fa-file-contract"></i>
+                            <div class="solution-feature-text">
+                                <h4>
+                                    <span class="zh-hant-content">監管報告自動化</span>
+                                    <span class="zh-hans-content">监管报告自动化</span>
+                                    <span class="en-content">Regulatory Reporting Automation</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">自動生成符合各地監管要求的報告，包括UCITS、AIFMD、Form PF、Form ADV等，大幅降低合規成本。</span>
+                                    <span class="zh-hans-content">自动生成符合各地监管要求的报告，包括UCITS、AIFMD、Form PF、Form ADV等，大幅降低合规成本。</span>
+                                    <span class="en-content">Automatically generating reports compliant with various regulatory requirements, including UCITS, AIFMD, Form PF, Form ADV, etc., significantly reducing compliance costs.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-products">
+                        <h3>
+                            <span class="zh-hant-content">推薦產品</span>
+                            <span class="zh-hans-content">推荐产品</span>
+                            <span class="en-content">Recommended Products</span>
+                        </h3>
+                        <div class="product-cards">
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">機構版</span>
+                                    <span class="zh-hans-content">机构版</span>
+                                    <span class="en-content">Institutional Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">量化交易平台</span>
+                                    <span class="zh-hans-content">量化交易平台</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">企業版</span>
+                                    <span class="zh-hans-content">企业版</span>
+                                    <span class="en-content">Enterprise Edition</span>
+                                </p>
+                            </div>
+                            <div class="product-card">
+                                <div class="product-card-icon">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <h4>
+                                    <span class="zh-hant-content">機構合規管理系統</span>
+                                    <span class="zh-hans-content">机构合规管理系统</span>
+                                    <span class="en-content">Institutional Compliance System</span>
+                                </h4>
+                                <p>
+                                    <span class="zh-hant-content">全球版</span>
+                                    <span class="zh-hans-content">全球版</span>
+                                    <span class="en-content">Global Edition</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="solution-cta">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解決方案比較 -->
+    <section class="section" style="background-color: var(--dark-color);">
+        <div class="container">
+            <h2 class="section-title animate">
+                <span class="zh-hant-content">解決方案比較</span>
+                <span class="zh-hans-content">解决方案比较</span>
+                <span class="en-content">Solution Comparison</span>
+            </h2>
+            <p class="section-subtitle animate delay-1">
+                <span class="zh-hant-content">根據您的機構類型選擇最適合的解決方案</span>
+                <span class="zh-hans-content">根据您的机构类型选择最适合的解决方案</span>
+                <span class="en-content">Choose the most suitable solution based on your institution type</span>
+            </p>
+            
+            <div class="table-responsive animate delay-2">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="zh-hant-content">功能 / 解決方案</span>
+                                <span class="zh-hans-content">功能 / 解决方案</span>
+                                <span class="en-content">Feature / Solution</span>
+                            </th>
+                            <th>
+                                <span class="zh-hant-content">單戶家族辦公室</span>
+                                <span class="zh-hans-content">单户家族办公室</span>
+                                <span class="en-content">Single Family Office</span>
+                            </th>
+                            <th>
+                                <span class="zh-hant-content">多戶家族辦公室</span>
+                                <span class="zh-hans-content">多户家族办公室</span>
+                                <span class="en-content">Multi Family Office</span>
+                            </th>
+                            <th>
+                                <span class="zh-hant-content">資產管理機構</span>
+                                <span class="zh-hans-content">资产管理机构</span>
+                                <span class="en-content">Asset Management</span>
+                            </th>
+                            <th>
+                                <span class="zh-hant-content">機構投資者</span>
+                                <span class="zh-hans-content">机构投资者</span>
+                                <span class="en-content">Institutional Investors</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">多家族管理架構</span>
+                                <span class="zh-hans-content">多家族管理架构</span>
+                                <span class="en-content">Multi-Family Structure</span>
+                            </td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">家族治理與傳承規劃</span>
+                                <span class="zh-hans-content">家族治理与传承规划</span>
+                                <span class="en-content">Family Governance</span>
+                            </td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-times cross-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">高級隱私保護</span>
+                                <span class="zh-hans-content">高级隐私保护</span>
+                                <span class="en-content">Advanced Privacy</span>
+                            </td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">量化交易功能</span>
+                                <span class="zh-hans-content">量化交易功能</span>
+                                <span class="en-content">Quantitative Trading</span>
+                            </td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">AI投資建議</span>
+                                <span class="zh-hans-content">AI投资建议</span>
+                                <span class="en-content">AI Investment Advice</span>
+                            </td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">客戶關係管理</span>
+                                <span class="zh-hans-content">客户关系管理</span>
+                                <span class="en-content">Client Relationship</span>
+                            </td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">合規報告自動化</span>
+                                <span class="zh-hans-content">合规报告自动化</span>
+                                <span class="en-content">Compliance Reporting</span>
+                            </td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">全球資產整合視圖</span>
+                                <span class="zh-hans-content">全球资产整合视图</span>
+                                <span class="en-content">Global Asset View</span>
+                            </td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="zh-hant-content">大規模資產配置</span>
+                                <span class="zh-hans-content">大规模资产配置</span>
+                                <span class="en-content">Large-scale Allocation</span>
+                            </td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-minus partial-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                            <td><i class="fas fa-check check-icon"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center animate delay-3" style="margin-top: 40px;">
+                <a href="contact.html" class="btn btn-primary">
+                    <span class="zh-hant-content">聯絡我們獲取更多信息</span>
+                    <span class="zh-hans-content">联系我们获取更多信息</span>
+                    <span class="en-content">Contact Us for More Information</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 區域 -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title animate">
+                <span class="zh-hant-content">準備好提升您的資產管理能力了嗎？</span>
+                <span class="zh-hans-content">准备好提升您的资产管理能力了吗？</span>
+                <span class="en-content">Ready to Enhance Your Asset Management Capabilities?</span>
+            </h2>
+            <p class="cta-description animate delay-1">
+                <span class="zh-hant-content">聯繫我們，了解Quantaryx Technologies如何幫助您的機構實現數字化轉型</span>
+                <span class="zh-hans-content">联系我们，了解Quantaryx Technologies如何帮助您的机构实现数字化转型</span>
+                <span class="en-content">Contact us to learn how Quantaryx Technologies can help your institution achieve digital transformation</span>
+            </p>
+            <div class="cta-buttons animate delay-2">
+                <a href="contact.html" class="btn btn-white">
+                    <span class="zh-hant-content">預約演示</span>
+                    <span class="zh-hans-content">预约演示</span>
+                    <span class="en-content">Book a Demo</span>
+                </a>
+                <a href="contact.html#contact-form" class="btn btn-transparent">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <!-- Main sections in a row -->
+                <div class="footer-sections-row">
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">公司</span>
+                            <span class="zh-hans-content">公司</span>
+                            <span class="en-content">Company</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="about.html">
+                                    <span class="zh-hant-content">關於我們</span>
+                                    <span class="zh-hans-content">关于我们</span>
+                                    <span class="en-content">About Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="about.html#team">
+                                    <span class="zh-hant-content">團隊</span>
+                                    <span class="zh-hans-content">团队</span>
+                                    <span class="en-content">Team</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="compliance.html">
+                                    <span class="zh-hant-content">法規與安全</span>
+                                    <span class="zh-hans-content">法规与安全</span>
+                                    <span class="en-content">Compliance & Security</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="blog.html">
+                                    <span class="zh-hant-content">創科視界</span>
+                                    <span class="zh-hans-content">创科视界</span>
+                                    <span class="en-content">Blog</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">產品</span>
+                            <span class="zh-hans-content">产品</span>
+                            <span class="en-content">Products</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="products.html#aurelia">
+                                    <span class="zh-hant-content">智能投資人管理平台</span>
+                                    <span class="zh-hans-content">智能投资人管理平台</span>
+                                    <span class="en-content">Intelligent Investor Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#wiselens">
+                                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                                    <span class="en-content">AI Investment Advisory</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#nurocrm">
+                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                                    <span class="zh-hans-content">AI销售与客户管理</span>
+                                    <span class="en-content">AI Sales & CRM</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="products.html#flamestone">
+                                    <span class="zh-hant-content">量化交易</span>
+                                    <span class="zh-hans-content">量化交易</span>
+                                    <span class="en-content">Quantitative Trading</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">解決方案</span>
+                            <span class="zh-hans-content">解决方案</span>
+                            <span class="en-content">Solutions</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="solutions.html#sfo">
+                                    <span class="zh-hant-content">單戶家族辦公室</span>
+                                    <span class="zh-hans-content">单户家族办公室</span>
+                                    <span class="en-content">Single Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#mfo">
+                                    <span class="zh-hant-content">多戶家族辦公室</span>
+                                    <span class="zh-hans-content">多户家族办公室</span>
+                                    <span class="en-content">Multi Family Office</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#am">
+                                    <span class="zh-hant-content">資產管理機構</span>
+                                    <span class="zh-hans-content">资产管理机构</span>
+                                    <span class="en-content">Asset Management</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="solutions.html#institutional">
+                                    <span class="zh-hant-content">機構投資者</span>
+                                    <span class="zh-hans-content">机构投资者</span>
+                                    <span class="en-content">Institutional Investors</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3 class="footer-title">
+                            <span class="zh-hant-content">聯絡</span>
+                            <span class="zh-hans-content">联系</span>
+                            <span class="en-content">Contact</span>
+                        </h3>
+                        <ul class="footer-links">
+                            <li class="footer-link">
+                                <a href="contact.html">
+                                    <span class="zh-hant-content">聯絡我們</span>
+                                    <span class="zh-hans-content">联系我们</span>
+                                    <span class="en-content">Contact Us</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#demo">
+                                    <span class="zh-hant-content">預約演示</span>
+                                    <span class="zh-hans-content">预约演示</span>
+                                    <span class="en-content">Book a Demo</span>
+                                </a>
+                            </li>
+                            <li class="footer-link">
+                                <a href="contact.html#support">
+                                    <span class="zh-hant-content">支援中心</span>
+                                    <span class="zh-hans-content">支持中心</span>
+                                    <span class="en-content">Support</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Company description below -->
+                <div class="footer-company-info">
+                    <a href="index.html" class="footer-logo">Quantaryx</a>
+                    <p class="footer-description">
+                        <span class="zh-hant-content">專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span>
+                        <span class="zh-hans-content">专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span>
+                        <span class="en-content">A fintech company focused on asset management and artificial intelligence, committed to providing modular, scalable, and compliant solutions for professional institutions.</span>
+                    </p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    <span class="zh-hant-content">&copy; 2025 Quantaryx Technologies. 版權所有。</span>
+                    <span class="zh-hans-content">&copy; 2025 Quantaryx Technologies. 版权所有。</span>
+                    <span class="en-content">&copy; 2025 Quantaryx Technologies. All rights reserved.</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/tech-animations.js"></script>
+    <script>
+        // 解决方案标签页切换
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.solution-tab');
+            const sections = document.querySelectorAll('.solution-section');
+            
+            // 处理 URL hash
+            function handleHash() {
+                const hash = window.location.hash.slice(1) || 'sfo';
+                showSection(hash);
+            }
+
+            // 显示指定的部分
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.style.display = section.id === sectionId ? 'block' : 'none';
+                });
+                
+                tabs.forEach(tab => {
+                    if(tab.getAttribute('data-target') === sectionId) {
+                        tab.classList.add('active');
+                    } else {
+                        tab.classList.remove('active');
+                    }
+                });
+            }
+
+            // 为标签添加点击事件
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('data-target');
+                    window.location.hash = targetId;
+                    showSection(targetId);
+                });
+            });
+
+            // 初始化时和 hash 变化时处理
+            window.addEventListener('hashchange', handleHash);
+            handleHash();
+        });
+    </script>
+</body>
+</html>

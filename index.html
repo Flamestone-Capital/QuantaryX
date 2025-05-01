@@ -1,849 +1,1115 @@
 <!DOCTYPE html>
 <html lang="zh-hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <script>
+      (function () {
+        var lang = localStorage.getItem("preferred-language") || "zh-hant";
+        document.documentElement.className = lang;
+        document.documentElement.lang = lang;
+        // Show body after language is set
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.style.visibility = "visible";
+        });
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quantaryx Technologies - 智慧金融，由此啟程</title>
-    <meta name="description" content="Quantaryx Technologies 是一家專注於資產管理與人工智慧的金融科技公司，致力於為Family Office、基金管理公司與金融機構提供模組化、可擴展並具備合規性的解決方案。">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Quantaryx Technologies 是一家專注於資產管理與人工智慧的金融科技公司，致力於為Family Office、基金管理公司與金融機構提供模組化、可擴展並具備合規性的解決方案。"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .zh-hant-content,
+      .zh-hans-content,
+      .en-content {
+        display: none !important;
+      }
+      html.zh-hant .zh-hant-content,
+      html.zh-hans .zh-hans-content,
+      html.en .en-content {
+        display: inline !important;
+      }
+    </style>
+  </head>
+  <body style="visibility: hidden">
     <!-- 導航欄 -->
     <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <span>Quantaryx</span>
-            </a>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="navbar-menu" id="navbar-menu">
-                <li class="navbar-item">
-                    <a href="index.html" class="navbar-link active">
-                        <span class="zh-hant-content">首頁</span>
-                        <span class="zh-hans-content">首页</span>
-                        <span class="en-content">Home</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="about.html" class="navbar-link">
-                        <span class="zh-hant-content">關於我們</span>
-                        <span class="zh-hans-content">关于我们</span>
-                        <span class="en-content">About Us</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="products.html" class="navbar-link">
-                        <span class="zh-hant-content">產品</span>
-                        <span class="zh-hans-content">产品</span>
-                        <span class="en-content">Products</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="solutions.html" class="navbar-link">
-                        <span class="zh-hant-content">解決方案</span>
-                        <span class="zh-hans-content">解决方案</span>
-                        <span class="en-content">Solutions</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="blog.html" class="navbar-link">
-                        <span class="zh-hant-content">創科視界</span>
-                        <span class="zh-hans-content">创科视界</span>
-                        <span class="en-content">Blog</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="compliance.html" class="navbar-link">
-                        <span class="zh-hant-content">法規與安全</span>
-                        <span class="zh-hans-content">法规与安全</span>
-                        <span class="en-content">Compliance & Security</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="contact.html" class="navbar-link">
-                        <span class="zh-hant-content">聯絡我們</span>
-                        <span class="zh-hans-content">联系我们</span>
-                        <span class="en-content">Contact Us</span>
-                    </a>
-                </li>
-                <li class="navbar-item language-selector">
-                    <select id="language-select">
-                        <option value="zh-hant">繁體中文</option>
-                        <option value="zh-hans">简体中文</option>
-                        <option value="en">English</option>
-                    </select>
-                </li>
-            </ul>
+      <div class="container navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <span>Quantaryx</span>
+        </a>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        <ul class="navbar-menu" id="navbar-menu">
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link active">
+              <span class="zh-hant-content">首頁</span>
+              <span class="zh-hans-content">首页</span>
+              <span class="en-content">Home</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link">
+              <span class="zh-hant-content">關於我們</span>
+              <span class="zh-hans-content">关于我们</span>
+              <span class="en-content">About Us</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="products.html" class="navbar-link">
+              <span class="zh-hant-content">產品</span>
+              <span class="zh-hans-content">产品</span>
+              <span class="en-content">Products</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="solutions.html" class="navbar-link">
+              <span class="zh-hant-content">解決方案</span>
+              <span class="zh-hans-content">解决方案</span>
+              <span class="en-content">Solutions</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="blog.html" class="navbar-link">
+              <span class="zh-hant-content">創科視界</span>
+              <span class="zh-hans-content">创科视界</span>
+              <span class="en-content">Blog</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="compliance.html" class="navbar-link">
+              <span class="zh-hant-content">法規與安全</span>
+              <span class="zh-hans-content">法规与安全</span>
+              <span class="en-content">Compliance & Security</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link">
+              <span class="zh-hant-content">聯絡我們</span>
+              <span class="zh-hans-content">联系我们</span>
+              <span class="en-content">Contact Us</span>
+            </a>
+          </li>
+          <li class="navbar-item language-selector">
+            <select id="language-select">
+              <option value="zh-hant">繁體中文</option>
+              <option value="zh-hans">简体中文</option>
+              <option value="en">English</option>
+            </select>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- 英雄區域 -->
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animate">
-                <span class="zh-hant-content">智慧金融，由此啟程</span>
-                <span class="zh-hans-content">智慧金融，由此启程</span>
-                <span class="en-content">Where Intelligent Finance Begins</span>
-            </h1>
-            <p class="hero-subtitle animate delay-1">
-                <span class="zh-hant-content">融合數據安全、法規遵循、人工智慧與極致體驗設計，引領專業機構邁向金融科技的下一階段</span>
-                <span class="zh-hans-content">融合数据安全、法规遵循、人工智能与极致体验设计，引领专业机构迈向金融科技的下一阶段</span>
-                <span class="en-content">Combining data security, regulatory compliance, artificial intelligence, and exceptional experience design to lead professional institutions into the next phase of financial technology</span>
-            </p>
-            <div class="hero-cta animate delay-2">
-                <a href="contact.html" class="btn btn-primary">
-                    <span class="zh-hant-content">預約演示</span>
-                    <span class="zh-hans-content">预约演示</span>
-                    <span class="en-content">Book a Demo</span>
-                </a>
-                <a href="products.html" class="btn btn-outline">
-                    <span class="zh-hant-content">探索產品</span>
-                    <span class="zh-hans-content">探索产品</span>
-                    <span class="en-content">Explore Products</span>
-                </a>
-            </div>
+      <div class="hero-content">
+        <h1 class="hero-title animate">
+          <span class="zh-hant-content">智慧金融，由此啟程</span>
+          <span class="zh-hans-content">智慧金融，由此启程</span>
+          <span class="en-content">Where Intelligent Finance Begins</span>
+        </h1>
+        <p class="hero-subtitle animate delay-1">
+          <span class="zh-hant-content"
+            >融合數據安全、法規遵循、人工智慧與極致體驗設計，引領專業機構邁向金融科技的下一階段</span
+          >
+          <span class="zh-hans-content"
+            >融合数据安全、法规遵循、人工智能与极致体验设计，引领专业机构迈向金融科技的下一阶段</span
+          >
+          <span class="en-content"
+            >Combining data security, regulatory compliance, artificial
+            intelligence, and exceptional experience design to lead professional
+            institutions into the next phase of financial technology</span
+          >
+        </p>
+        <div class="hero-cta animate delay-2">
+          <a href="contact.html" class="btn btn-primary">
+            <span class="zh-hant-content">預約演示</span>
+            <span class="zh-hans-content">预约演示</span>
+            <span class="en-content">Book a Demo</span>
+          </a>
+          <a href="products.html" class="btn btn-outline">
+            <span class="zh-hant-content">探索產品</span>
+            <span class="zh-hans-content">探索产品</span>
+            <span class="en-content">Explore Products</span>
+          </a>
         </div>
-        <div class="hero-background">
-            <div class="gradient-sphere"></div>
-        </div>
+      </div>
+      <div class="hero-background">
+        <div class="gradient-sphere"></div>
+      </div>
     </section>
 
     <!-- 產品特點 -->
     <section class="features section">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">為專業金融機構打造的解決方案</span>
-                <span class="zh-hans-content">为专业金融机构打造的解决方案</span>
-                <span class="en-content">Solutions Tailored for Professional Financial Institutions</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">我們的產品融合數據安全、法規遵循、人工智慧與極致體驗設計</span>
-                <span class="zh-hans-content">我们的产品融合数据安全、法规遵循、人工智能与极致体验设计</span>
-                <span class="en-content">Our products integrate data security, regulatory compliance, artificial intelligence, and exceptional experience design</span>
-            </p>
-            <div class="features-grid">
-                <div class="feature-card animate">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">
-                        <span class="zh-hant-content">企業級安全</span>
-                        <span class="zh-hans-content">企业级安全</span>
-                        <span class="en-content">Enterprise Security</span>
-                    </h3>
-                    <p class="feature-description">
-                        <span class="zh-hant-content">多層加密技術與嚴格的訪問控制，確保您的數據安全無虞</span>
-                        <span class="zh-hans-content">多层加密技术与严格的访问控制，确保您的数据安全无虞</span>
-                        <span class="en-content">Multi-layer encryption technology and strict access control to ensure your data is secure</span>
-                    </p>
-                </div>
-                <div class="feature-card animate delay-1">
-                    <div class="feature-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3 class="feature-title">
-                        <span class="zh-hant-content">法規合規</span>
-                        <span class="zh-hans-content">法规合规</span>
-                        <span class="en-content">Regulatory Compliance</span>
-                    </h3>
-                    <p class="feature-description">
-                        <span class="zh-hant-content">符合SFC、MAS等監管機構的要求，支援Cayman/HK/BVI基金架構</span>
-                        <span class="zh-hans-content">符合SFC、MAS等监管机构的要求，支持Cayman/HK/BVI基金架构</span>
-                        <span class="en-content">Compliant with SFC, MAS and other regulatory requirements, supporting Cayman/HK/BVI fund structures</span>
-                    </p>
-                </div>
-                <div class="feature-card animate delay-2">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="feature-title">
-                        <span class="zh-hant-content">AI驅動</span>
-                        <span class="zh-hans-content">AI驱动</span>
-                        <span class="en-content">AI-Powered</span>
-                    </h3>
-                    <p class="feature-description">
-                        <span class="zh-hant-content">先進的人工智慧技術，提供智能投資建議與客戶洞察</span>
-                        <span class="zh-hans-content">先进的人工智能技术，提供智能投资建议与客户洞察</span>
-                        <span class="en-content">Advanced artificial intelligence technology providing intelligent investment advice and client insights</span>
-                    </p>
-                </div>
-                <div class="feature-card animate delay-3">
-                    <div class="feature-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-                    <h3 class="feature-title">
-                        <span class="zh-hant-content">模組化設計</span>
-                        <span class="zh-hans-content">模块化设计</span>
-                        <span class="en-content">Modular Design</span>
-                    </h3>
-                    <p class="feature-description">
-                        <span class="zh-hant-content">靈活的模組化架構，可根據您的需求進行定制與擴展</span>
-                        <span class="zh-hans-content">灵活的模块化架构，可根据您的需求进行定制与扩展</span>
-                        <span class="en-content">Flexible modular architecture that can be customized and expanded according to your needs</span>
-                    </p>
-                </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">為專業金融機構打造的解決方案</span>
+          <span class="zh-hans-content">为专业金融机构打造的解决方案</span>
+          <span class="en-content"
+            >Solutions Tailored for Professional Financial Institutions</span
+          >
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content"
+            >我們的產品融合數據安全、法規遵循、人工智慧與極致體驗設計</span
+          >
+          <span class="zh-hans-content"
+            >我们的产品融合数据安全、法规遵循、人工智能与极致体验设计</span
+          >
+          <span class="en-content"
+            >Our products integrate data security, regulatory compliance,
+            artificial intelligence, and exceptional experience design</span
+          >
+        </p>
+        <div class="features-grid">
+          <div class="feature-card animate">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
             </div>
+            <h3 class="feature-title">
+              <span class="zh-hant-content">企業級安全</span>
+              <span class="zh-hans-content">企业级安全</span>
+              <span class="en-content">Enterprise Security</span>
+            </h3>
+            <p class="feature-description">
+              <span class="zh-hant-content"
+                >多層加密技術與嚴格的訪問控制，確保您的數據安全無虞</span
+              >
+              <span class="zh-hans-content"
+                >多层加密技术与严格的访问控制，确保您的数据安全无虞</span
+              >
+              <span class="en-content"
+                >Multi-layer encryption technology and strict access control to
+                ensure your data is secure</span
+              >
+            </p>
+          </div>
+          <div class="feature-card animate delay-1">
+            <div class="feature-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3 class="feature-title">
+              <span class="zh-hant-content">法規合規</span>
+              <span class="zh-hans-content">法规合规</span>
+              <span class="en-content">Regulatory Compliance</span>
+            </h3>
+            <p class="feature-description">
+              <span class="zh-hant-content"
+                >符合SFC、MAS等監管機構的要求，支援Cayman/HK/BVI基金架構</span
+              >
+              <span class="zh-hans-content"
+                >符合SFC、MAS等监管机构的要求，支持Cayman/HK/BVI基金架构</span
+              >
+              <span class="en-content"
+                >Compliant with SFC, MAS and other regulatory requirements,
+                supporting Cayman/HK/BVI fund structures</span
+              >
+            </p>
+          </div>
+          <div class="feature-card animate delay-2">
+            <div class="feature-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 class="feature-title">
+              <span class="zh-hant-content">AI驅動</span>
+              <span class="zh-hans-content">AI驱动</span>
+              <span class="en-content">AI-Powered</span>
+            </h3>
+            <p class="feature-description">
+              <span class="zh-hant-content"
+                >先進的人工智慧技術，提供智能投資建議與客戶洞察</span
+              >
+              <span class="zh-hans-content"
+                >先进的人工智能技术，提供智能投资建议与客户洞察</span
+              >
+              <span class="en-content"
+                >Advanced artificial intelligence technology providing
+                intelligent investment advice and client insights</span
+              >
+            </p>
+          </div>
+          <div class="feature-card animate delay-3">
+            <div class="feature-icon">
+              <i class="fas fa-expand-arrows-alt"></i>
+            </div>
+            <h3 class="feature-title">
+              <span class="zh-hant-content">模組化設計</span>
+              <span class="zh-hans-content">模块化设计</span>
+              <span class="en-content">Modular Design</span>
+            </h3>
+            <p class="feature-description">
+              <span class="zh-hant-content"
+                >靈活的模組化架構，可根據您的需求進行定制與擴展</span
+              >
+              <span class="zh-hans-content"
+                >灵活的模块化架构，可根据您的需求进行定制与扩展</span
+              >
+              <span class="en-content"
+                >Flexible modular architecture that can be customized and
+                expanded according to your needs</span
+              >
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- 產品展示 -->
     <section class="products section">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">產品套件</span>
-                <span class="zh-hans-content">产品套件</span>
-                <span class="en-content">Product Suite</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">打造全套金融投資解決方案</span>
-                <span class="zh-hans-content">打造全套金融投资解决方案</span>
-                <span class="en-content">Creating comprehensive financial investment solutions</span>
-            </p>
-            <div class="product-tabs animate delay-2">
-                <div class="product-tab active" data-tab="aurelia">
-                    <span class="zh-hant-content">智能投資人管理平台</span>
-                    <span class="zh-hans-content">智能投资人管理平台</span>
-                    <span class="en-content">Intelligent Investor Management</span>
-                </div>
-                <div class="product-tab" data-tab="wiselens">
-                    <span class="zh-hant-content">AI 智能投顧平台</span>
-                    <span class="zh-hans-content">AI 智能投顾平台</span>
-                    <span class="en-content">AI Investment Advisory</span>
-                </div>
-                <div class="product-tab" data-tab="nurocrm">
-                    <span class="zh-hant-content">AI銷售與客戶管理</span>
-                    <span class="zh-hans-content">AI销售与客户管理</span>
-                    <span class="en-content">AI Sales & CRM</span>
-                </div>
-                <div class="product-tab" data-tab="flamestone">
-                    <span class="zh-hant-content">量化交易</span>
-                    <span class="zh-hans-content">量化交易</span>
-                    <span class="en-content">Quantitative Trading</span>
-                </div>
-            </div>
-            
-            <!-- 智能投資人管理平台 -->
-            <div class="product-content active" id="aurelia">
-                <div class="product-image animate">
-                    <img src="images/products/智能投资人管理平台.png" alt="智能投資人管理平台">
-                </div>
-                <div class="product-info animate delay-1">
-                    <h3>
-                        <span class="zh-hant-content">智能投資人管理平台</span>
-                        <span class="zh-hans-content">智能投资人管理平台</span>
-                        <span class="en-content">Intelligent Investor Management Platform</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">專為專業資產管理人打造的全功能投資人管理平台，支援資產總覽、動態NAV、申贖追蹤與合規報告。</span>
-                        <span class="zh-hans-content">专为专业资产管理人打造的全功能投资人管理平台，支持资产总览、动态NAV、申赎追踪与合规报告。</span>
-                        <span class="en-content">A full-featured investor management platform designed for professional asset managers, supporting asset overview, dynamic NAV, subscription/redemption tracking, and compliance reporting.</span>
-                    </p>
-                    <div class="product-features">
-                        <div class="product-feature">
-                            <i class="fas fa-chart-line"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">投資組合與回報實時追蹤</span>
-                                <span class="zh-hans-content">投资组合与回报实时追踪</span>
-                                <span class="en-content">Real-time portfolio and return tracking</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-file-signature"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">文件管理與電子簽署</span>
-                                <span class="zh-hans-content">文件管理与电子签署</span>
-                                <span class="en-content">Document management and e-signature</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-money-bill-wave"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">分紅、KYC/AML 流程整合</span>
-                                <span class="zh-hans-content">分红、KYC/AML 流程整合</span>
-                                <span class="en-content">Dividend, KYC/AML process integration</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-building"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">支援Cayman/HK/BVI基金架構</span>
-                                <span class="zh-hans-content">支持Cayman/HK/BVI基金架构</span>
-                                <span class="en-content">Support for Cayman/HK/BVI fund structures</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-user-lock"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">投資人權限分級與通知系統</span>
-                                <span class="zh-hans-content">投资人权限分级与通知系统</span>
-                                <span class="en-content">Investor permission hierarchy and notification system</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="products.html#aurelia" class="btn btn-primary">
-                        <span class="zh-hant-content">了解更多</span>
-                        <span class="zh-hans-content">了解更多</span>
-                        <span class="en-content">Learn More</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- AI 智能投顧平台 -->
-            <div class="product-content" id="wiselens">
-                <div class="product-image animate">
-                    <img src="images/products/AI智能投顾平台.png" alt="AI 智能投顧平台">
-                </div>
-                <div class="product-info animate delay-1">
-                    <h3>
-                        <span class="zh-hant-content">AI 智能投顧平台</span>
-                        <span class="zh-hans-content">AI 智能投顾平台</span>
-                        <span class="en-content">AI Investment Advisory Platform</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">智慧投資建議系統，透過自然語言與大數據模型幫助使用者建立風險適配的ETF與股票組合。</span>
-                        <span class="zh-hans-content">智慧投资建议系统，通过自然语言与大数据模型帮助用户建立风险适配的ETF与股票组合。</span>
-                        <span class="en-content">An intelligent investment advisory system that helps users build risk-appropriate ETF and stock portfolios through natural language and big data models.</span>
-                    </p>
-                    <div class="product-features">
-                        <div class="product-feature">
-                            <i class="fas fa-robot"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">AI投資建議與資產配置模組</span>
-                                <span class="zh-hans-content">AI投资建议与资产配置模块</span>
-                                <span class="en-content">AI investment advice and asset allocation module</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-leaf"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">ESG、產業、估值等多維度因子選股</span>
-                                <span class="zh-hans-content">ESG、产业、估值等多维度因子选股</span>
-                                <span class="en-content">Multi-dimensional stock selection factors including ESG, industry, and valuation</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-history"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">投資組合回測與模擬追蹤</span>
-                                <span class="zh-hans-content">投资组合回测与模拟追踪</span>
-                                <span class="en-content">Portfolio backtesting and simulation tracking</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-microchip"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">可選用 GPT / Claude / 本地 LLM</span>
-                                <span class="zh-hans-content">可选用 GPT / Claude / 本地 LLM</span>
-                                <span class="en-content">Optional GPT / Claude / Local LLM</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">投資建議透明解釋 + 風險聲明</span>
-                                <span class="zh-hans-content">投资建议透明解释 + 风险声明</span>
-                                <span class="en-content">Transparent explanation of investment advice + risk disclaimer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="products.html#wiselens" class="btn btn-primary">
-                        <span class="zh-hant-content">了解更多</span>
-                        <span class="zh-hans-content">了解更多</span>
-                        <span class="en-content">Learn More</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- AI銷售與客戶管理系統 -->
-            <div class="product-content" id="nurocrm">
-                <div class="product-image animate">
-                    <img src="images/products/AI销售与客户管理.png" alt="AI銷售與客戶管理系統">
-                </div>
-                <div class="product-info animate delay-1">
-                    <h3>
-                        <span class="zh-hant-content">AI銷售與客戶管理系統</span>
-                        <span class="zh-hans-content">AI销售与客户管理系统</span>
-                        <span class="en-content">AI Sales & Customer Management System</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">將錄音、對話、客戶資料與AI整合，讓金融從業人員更有效率地了解客戶、追蹤互動與預測機會。</span>
-                        <span class="zh-hans-content">将录音、对话、客户资料与AI整合，让金融从业人员更有效率地了解客户、追踪互动与预测机会。</span>
-                        <span class="en-content">Integrating recordings, conversations, customer data, and AI to help financial professionals understand customers, track interactions, and predict opportunities more efficiently.</span>
-                    </p>
-                    <div class="product-features">
-                        <div class="product-feature">
-                            <i class="fas fa-microphone"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">語音轉文字＋自動生成客戶畫像</span>
-                                <span class="zh-hans-content">语音转文字＋自动生成客户画像</span>
-                                <span class="en-content">Speech-to-text + automatic customer profile generation</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-brain"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">AI預測潛在成交機會</span>
-                                <span class="zh-hans-content">AI预测潜在成交机会</span>
-                                <span class="en-content">AI prediction of potential transaction opportunities</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-clipboard-list"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">銷售會談問卷引導模塊</span>
-                                <span class="zh-hans-content">销售会谈问卷引导模块</span>
-                                <span class="en-content">Sales conversation questionnaire guidance module</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-lock"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">資料加密儲存與權限控管</span>
-                                <span class="zh-hans-content">资料加密存储与权限控管</span>
-                                <span class="en-content">Encrypted data storage and permission control</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-comments"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">整合Teams / WhatsApp / Outlook 通訊紀錄</span>
-                                <span class="zh-hans-content">整合Teams / WhatsApp / Outlook 通讯记录</span>
-                                <span class="en-content">Integration with Teams / WhatsApp / Outlook communication records</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="products.html#nurocrm" class="btn btn-primary">
-                        <span class="zh-hant-content">了解更多</span>
-                        <span class="zh-hans-content">了解更多</span>
-                        <span class="en-content">Learn More</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Flamestone量化交易 -->
-            <div class="product-content" id="flamestone">
-                <div class="product-image animate">
-                    <img src="images/products/量化交易.png" alt="Flamestone量化交易">
-                </div>
-                <div class="product-info animate delay-1">
-                    <h3>
-                        <span class="zh-hant-content">Flamestone量化交易</span>
-                        <span class="zh-hans-content">Flamestone量化交易</span>
-                        <span class="en-content">Flamestone Quantitative Trading</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">提供量化交易 trading bot， 量化回測， 自動化交易模型。</span>
-                        <span class="zh-hans-content">提供量化交易 trading bot， 量化回测， 自动化交易模型。</span>
-                        <span class="en-content">Providing quantitative trading bots, quantitative backtesting, and automated trading models.</span>
-                    </p>
-                    <div class="product-features">
-                        <div class="product-feature">
-                            <i class="fas fa-chart-bar"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">綜合數據和人工智慧分析</span>
-                                <span class="zh-hans-content">综合数据和人工智能分析</span>
-                                <span class="en-content">Comprehensive data and artificial intelligence analysis</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-robot"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">具有人工監督的自主交易系統</span>
-                                <span class="zh-hans-content">具有人工监督的自主交易系统</span>
-                                <span class="en-content">Autonomous trading system with human supervision</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">嚴格的風險管理</span>
-                                <span class="zh-hans-content">严格的风险管理</span>
-                                <span class="en-content">Strict risk management</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-cogs"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">自適應市場策略</span>
-                                <span class="zh-hans-content">自适应市场策略</span>
-                                <span class="en-content">Adaptive market strategies</span>
-                            </div>
-                        </div>
-                        <div class="product-feature">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <div class="product-feature-text">
-                                <span class="zh-hant-content">高頻交易支持</span>
-                                <span class="zh-hans-content">高频交易支持</span>
-                                <span class="en-content">High-frequency trading support</span>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="products.html#flamestone" class="btn btn-primary">
-                        <span class="zh-hant-content">了解更多</span>
-                        <span class="zh-hans-content">了解更多</span>
-                        <span class="en-content">Learn More</span>
-                    </a>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">產品套件</span>
+          <span class="zh-hans-content">产品套件</span>
+          <span class="en-content">Product Suite</span>
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content">打造全套金融投資解決方案</span>
+          <span class="zh-hans-content">打造全套金融投资解决方案</span>
+          <span class="en-content"
+            >Creating comprehensive financial investment solutions</span
+          >
+        </p>
+        <div class="product-tabs animate delay-2">
+          <div class="product-tab active" data-tab="aurelia">
+            <span class="zh-hant-content">智能投資人管理平台</span>
+            <span class="zh-hans-content">智能投资人管理平台</span>
+            <span class="en-content">Intelligent Investor Management</span>
+          </div>
+          <div class="product-tab" data-tab="wiselens">
+            <span class="zh-hant-content">AI 智能投顧平台</span>
+            <span class="zh-hans-content">AI 智能投顾平台</span>
+            <span class="en-content">AI Investment Advisory</span>
+          </div>
+          <div class="product-tab" data-tab="nurocrm">
+            <span class="zh-hant-content">AI銷售與客戶管理</span>
+            <span class="zh-hans-content">AI销售与客户管理</span>
+            <span class="en-content">AI Sales & CRM</span>
+          </div>
+          <div class="product-tab" data-tab="flamestone">
+            <span class="zh-hant-content">量化交易</span>
+            <span class="zh-hans-content">量化交易</span>
+            <span class="en-content">Quantitative Trading</span>
+          </div>
         </div>
+
+        <!-- 智能投資人管理平台 -->
+        <div class="product-content active" id="aurelia">
+          <div class="product-image animate">
+            <img
+              src="images/products/智能投资人管理平台.png"
+              alt="智能投資人管理平台"
+            />
+          </div>
+          <div class="product-info animate delay-1">
+            <h3>
+              <span class="zh-hant-content">智能投資人管理平台</span>
+              <span class="zh-hans-content">智能投资人管理平台</span>
+              <span class="en-content"
+                >Intelligent Investor Management Platform</span
+              >
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >專為專業資產管理人打造的全功能投資人管理平台，支援資產總覽、動態NAV、申贖追蹤與合規報告。</span
+              >
+              <span class="zh-hans-content"
+                >专为专业资产管理人打造的全功能投资人管理平台，支持资产总览、动态NAV、申赎追踪与合规报告。</span
+              >
+              <span class="en-content"
+                >A full-featured investor management platform designed for
+                professional asset managers, supporting asset overview, dynamic
+                NAV, subscription/redemption tracking, and compliance
+                reporting.</span
+              >
+            </p>
+            <div class="product-features">
+              <div class="product-feature">
+                <i class="fas fa-chart-line"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">投資組合與回報實時追蹤</span>
+                  <span class="zh-hans-content">投资组合与回报实时追踪</span>
+                  <span class="en-content"
+                    >Real-time portfolio and return tracking</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-file-signature"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">文件管理與電子簽署</span>
+                  <span class="zh-hans-content">文件管理与电子签署</span>
+                  <span class="en-content"
+                    >Document management and e-signature</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-money-bill-wave"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">分紅、KYC/AML 流程整合</span>
+                  <span class="zh-hans-content">分红、KYC/AML 流程整合</span>
+                  <span class="en-content"
+                    >Dividend, KYC/AML process integration</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-building"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">支援Cayman/HK/BVI基金架構</span>
+                  <span class="zh-hans-content">支持Cayman/HK/BVI基金架构</span>
+                  <span class="en-content"
+                    >Support for Cayman/HK/BVI fund structures</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-user-lock"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">投資人權限分級與通知系統</span>
+                  <span class="zh-hans-content">投资人权限分级与通知系统</span>
+                  <span class="en-content"
+                    >Investor permission hierarchy and notification system</span
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="products.html#aurelia" class="btn btn-primary">
+              <span class="zh-hant-content">了解更多</span>
+              <span class="zh-hans-content">了解更多</span>
+              <span class="en-content">Learn More</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- AI 智能投顧平台 -->
+        <div class="product-content" id="wiselens">
+          <div class="product-image animate">
+            <img
+              src="images/products/AI智能投顾平台.png"
+              alt="AI 智能投顧平台"
+            />
+          </div>
+          <div class="product-info animate delay-1">
+            <h3>
+              <span class="zh-hant-content">AI 智能投顧平台</span>
+              <span class="zh-hans-content">AI 智能投顾平台</span>
+              <span class="en-content">AI Investment Advisory Platform</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >智慧投資建議系統，透過自然語言與大數據模型幫助使用者建立風險適配的ETF與股票組合。</span
+              >
+              <span class="zh-hans-content"
+                >智慧投资建议系统，通过自然语言与大数据模型帮助用户建立风险适配的ETF与股票组合。</span
+              >
+              <span class="en-content"
+                >An intelligent investment advisory system that helps users
+                build risk-appropriate ETF and stock portfolios through natural
+                language and big data models.</span
+              >
+            </p>
+            <div class="product-features">
+              <div class="product-feature">
+                <i class="fas fa-robot"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">AI投資建議與資產配置模組</span>
+                  <span class="zh-hans-content">AI投资建议与资产配置模块</span>
+                  <span class="en-content"
+                    >AI investment advice and asset allocation module</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-leaf"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >ESG、產業、估值等多維度因子選股</span
+                  >
+                  <span class="zh-hans-content"
+                    >ESG、产业、估值等多维度因子选股</span
+                  >
+                  <span class="en-content"
+                    >Multi-dimensional stock selection factors including ESG,
+                    industry, and valuation</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-history"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">投資組合回測與模擬追蹤</span>
+                  <span class="zh-hans-content">投资组合回测与模拟追踪</span>
+                  <span class="en-content"
+                    >Portfolio backtesting and simulation tracking</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-microchip"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >可選用 GPT / Claude / 本地 LLM</span
+                  >
+                  <span class="zh-hans-content"
+                    >可选用 GPT / Claude / 本地 LLM</span
+                  >
+                  <span class="en-content"
+                    >Optional GPT / Claude / Local LLM</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-shield-alt"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >投資建議透明解釋 + 風險聲明</span
+                  >
+                  <span class="zh-hans-content"
+                    >投资建议透明解释 + 风险声明</span
+                  >
+                  <span class="en-content"
+                    >Transparent explanation of investment advice + risk
+                    disclaimer</span
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="products.html#wiselens" class="btn btn-primary">
+              <span class="zh-hant-content">了解更多</span>
+              <span class="zh-hans-content">了解更多</span>
+              <span class="en-content">Learn More</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- AI銷售與客戶管理系統 -->
+        <div class="product-content" id="nurocrm">
+          <div class="product-image animate">
+            <img
+              src="images/products/AI销售与客户管理.png"
+              alt="AI銷售與客戶管理系統"
+            />
+          </div>
+          <div class="product-info animate delay-1">
+            <h3>
+              <span class="zh-hant-content">AI銷售與客戶管理系統</span>
+              <span class="zh-hans-content">AI销售与客户管理系统</span>
+              <span class="en-content"
+                >AI Sales & Customer Management System</span
+              >
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >將錄音、對話、客戶資料與AI整合，讓金融從業人員更有效率地了解客戶、追蹤互動與預測機會。</span
+              >
+              <span class="zh-hans-content"
+                >将录音、对话、客户资料与AI整合，让金融从业人员更有效率地了解客户、追踪互动与预测机会。</span
+              >
+              <span class="en-content"
+                >Integrating recordings, conversations, customer data, and AI to
+                help financial professionals understand customers, track
+                interactions, and predict opportunities more efficiently.</span
+              >
+            </p>
+            <div class="product-features">
+              <div class="product-feature">
+                <i class="fas fa-microphone"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >語音轉文字＋自動生成客戶畫像</span
+                  >
+                  <span class="zh-hans-content"
+                    >语音转文字＋自动生成客户画像</span
+                  >
+                  <span class="en-content"
+                    >Speech-to-text + automatic customer profile
+                    generation</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-brain"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">AI預測潛在成交機會</span>
+                  <span class="zh-hans-content">AI预测潜在成交机会</span>
+                  <span class="en-content"
+                    >AI prediction of potential transaction opportunities</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-clipboard-list"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">銷售會談問卷引導模塊</span>
+                  <span class="zh-hans-content">销售会谈问卷引导模块</span>
+                  <span class="en-content"
+                    >Sales conversation questionnaire guidance module</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-lock"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">資料加密儲存與權限控管</span>
+                  <span class="zh-hans-content">资料加密存储与权限控管</span>
+                  <span class="en-content"
+                    >Encrypted data storage and permission control</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-comments"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >整合Teams / WhatsApp / Outlook 通訊紀錄</span
+                  >
+                  <span class="zh-hans-content"
+                    >整合Teams / WhatsApp / Outlook 通讯记录</span
+                  >
+                  <span class="en-content"
+                    >Integration with Teams / WhatsApp / Outlook communication
+                    records</span
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="products.html#nurocrm" class="btn btn-primary">
+              <span class="zh-hant-content">了解更多</span>
+              <span class="zh-hans-content">了解更多</span>
+              <span class="en-content">Learn More</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Flamestone量化交易 -->
+        <div class="product-content" id="flamestone">
+          <div class="product-image animate">
+            <img src="images/products/量化交易.png" alt="Flamestone量化交易" />
+          </div>
+          <div class="product-info animate delay-1">
+            <h3>
+              <span class="zh-hant-content">Flamestone量化交易</span>
+              <span class="zh-hans-content">Flamestone量化交易</span>
+              <span class="en-content">Flamestone Quantitative Trading</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >提供量化交易 trading bot， 量化回測， 自動化交易模型。</span
+              >
+              <span class="zh-hans-content"
+                >提供量化交易 trading bot， 量化回测， 自动化交易模型。</span
+              >
+              <span class="en-content"
+                >Providing quantitative trading bots, quantitative backtesting,
+                and automated trading models.</span
+              >
+            </p>
+            <div class="product-features">
+              <div class="product-feature">
+                <i class="fas fa-chart-bar"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">綜合數據和人工智慧分析</span>
+                  <span class="zh-hans-content">综合数据和人工智能分析</span>
+                  <span class="en-content"
+                    >Comprehensive data and artificial intelligence
+                    analysis</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-robot"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content"
+                    >具有人工監督的自主交易系統</span
+                  >
+                  <span class="zh-hans-content"
+                    >具有人工监督的自主交易系统</span
+                  >
+                  <span class="en-content"
+                    >Autonomous trading system with human supervision</span
+                  >
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-shield-alt"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">嚴格的風險管理</span>
+                  <span class="zh-hans-content">严格的风险管理</span>
+                  <span class="en-content">Strict risk management</span>
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-cogs"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">自適應市場策略</span>
+                  <span class="zh-hans-content">自适应市场策略</span>
+                  <span class="en-content">Adaptive market strategies</span>
+                </div>
+              </div>
+              <div class="product-feature">
+                <i class="fas fa-tachometer-alt"></i>
+                <div class="product-feature-text">
+                  <span class="zh-hant-content">高頻交易支持</span>
+                  <span class="zh-hans-content">高频交易支持</span>
+                  <span class="en-content">High-frequency trading support</span>
+                </div>
+              </div>
+            </div>
+            <a href="products.html#flamestone" class="btn btn-primary">
+              <span class="zh-hant-content">了解更多</span>
+              <span class="zh-hans-content">了解更多</span>
+              <span class="en-content">Learn More</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 客戶類型 -->
     <section class="clients section">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">為誰而設</span>
-                <span class="zh-hans-content">为谁而设</span>
-                <span class="en-content">Who We Serve</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">我們的解決方案專為以下機構設計</span>
-                <span class="zh-hans-content">我们的解决方案专为以下机构设计</span>
-                <span class="en-content">Our solutions are designed for the following institutions</span>
-            </p>
-            <div class="client-types">
-                <div class="client-type animate">
-                    <div class="client-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="client-title">
-                        <span class="zh-hant-content">單戶家族辦公室</span>
-                        <span class="zh-hans-content">单户家族办公室</span>
-                        <span class="en-content">Single Family Office</span>
-                    </h3>
-                    <p class="client-description">
-                        <span class="zh-hant-content">為單一超高淨值家族提供專屬服務的家族辦公室，專注於資產保值、傳承規劃與家族治理</span>
-                        <span class="zh-hans-content">为单一超高净值家族提供专属服务的家族办公室，专注于资产保值、传承规划与家族治理</span>
-                        <span class="en-content">Family offices providing exclusive services to a single ultra-high-net-worth family, focusing on asset preservation, succession planning, and family governance</span>
-                    </p>
-                    <a href="solutions.html#sfo" class="btn btn-outline">
-                        <span class="zh-hant-content">了解適用方案</span>
-                        <span class="zh-hans-content">了解适用方案</span>
-                        <span class="en-content">View Solutions</span>
-                    </a>
-                </div>
-                <div class="client-type animate delay-1">
-                    <div class="client-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3 class="client-title">
-                        <span class="zh-hant-content">多戶家族辦公室</span>
-                        <span class="zh-hans-content">多户家族办公室</span>
-                        <span class="en-content">Multi Family Office</span>
-                    </h3>
-                    <p class="client-description">
-                        <span class="zh-hant-content">為多個家族提供綜合性服務的機構，整合投資管理、稅務規劃、法律諮詢等專業服務</span>
-                        <span class="zh-hans-content">为多个家族提供综合性服务的机构，整合投资管理、税务规划、法律咨询等专业服务</span>
-                        <span class="en-content">Institutions providing comprehensive services to multiple families, integrating investment management, tax planning, legal consulting, and other professional services</span>
-                    </p>
-                    <a href="solutions.html#mfo" class="btn btn-outline">
-                        <span class="zh-hant-content">了解適用方案</span>
-                        <span class="zh-hans-content">了解适用方案</span>
-                        <span class="en-content">View Solutions</span>
-                    </a>
-                </div>
-                <div class="client-type animate delay-2">
-                    <div class="client-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="client-title">
-                        <span class="zh-hant-content">資產管理機構</span>
-                        <span class="zh-hans-content">资产管理机构</span>
-                        <span class="en-content">Asset Management Institutions</span>
-                    </h3>
-                    <p class="client-description">
-                        <span class="zh-hant-content">專業投資管理公司，包括基金管理公司、私募股權機構、對沖基金等</span>
-                        <span class="zh-hans-content">专业投资管理公司，包括基金管理公司、私募股权机构、对冲基金等</span>
-                        <span class="en-content">Professional investment management companies, including fund management companies, private equity firms, hedge funds, etc.</span>
-                    </p>
-                    <a href="solutions.html#am" class="btn btn-outline">
-                        <span class="zh-hant-content">了解適用方案</span>
-                        <span class="zh-hans-content">了解适用方案</span>
-                        <span class="en-content">View Solutions</span>
-                    </a>
-                </div>
-                <div class="client-type animate delay-3">
-                    <div class="client-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="client-title">
-                        <span class="zh-hant-content">機構投資者</span>
-                        <span class="zh-hans-content">机构投资者</span>
-                        <span class="en-content">Institutional Investors</span>
-                    </h3>
-                    <p class="client-description">
-                        <span class="zh-hant-content">包括養老基金、保險公司、主權財富基金等大型機構投資者，需要先進的投資分析和風險管理工具</span>
-                        <span class="zh-hans-content">包括养老基金、保险公司、主权财富基金等大型机构投资者，需要先进的投资分析和风险管理工具</span>
-                        <span class="en-content">Including pension funds, insurance companies, sovereign wealth funds and other large institutional investors requiring advanced investment analysis and risk management tools</span>
-                    </p>
-                    <a href="solutions.html#institutional" class="btn btn-outline">
-                        <span class="zh-hant-content">了解適用方案</span>
-                        <span class="zh-hans-content">了解适用方案</span>
-                        <span class="en-content">View Solutions</span>
-                    </a>
-                </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">為誰而設</span>
+          <span class="zh-hans-content">为谁而设</span>
+          <span class="en-content">Who We Serve</span>
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content">我們的解決方案專為以下機構設計</span>
+          <span class="zh-hans-content">我们的解决方案专为以下机构设计</span>
+          <span class="en-content"
+            >Our solutions are designed for the following institutions</span
+          >
+        </p>
+        <div class="client-types">
+          <div class="client-type animate">
+            <div class="client-icon">
+              <i class="fas fa-home"></i>
             </div>
+            <h3 class="client-title">
+              <span class="zh-hant-content">單戶家族辦公室</span>
+              <span class="zh-hans-content">单户家族办公室</span>
+              <span class="en-content">Single Family Office</span>
+            </h3>
+            <p class="client-description">
+              <span class="zh-hant-content"
+                >為單一超高淨值家族提供專屬服務的家族辦公室，專注於資產保值、傳承規劃與家族治理</span
+              >
+              <span class="zh-hans-content"
+                >为单一超高净值家族提供专属服务的家族办公室，专注于资产保值、传承规划与家族治理</span
+              >
+              <span class="en-content"
+                >Family offices providing exclusive services to a single
+                ultra-high-net-worth family, focusing on asset preservation,
+                succession planning, and family governance</span
+              >
+            </p>
+            <a href="solutions.html#sfo" class="btn btn-outline">
+              <span class="zh-hant-content">了解適用方案</span>
+              <span class="zh-hans-content">了解适用方案</span>
+              <span class="en-content">View Solutions</span>
+            </a>
+          </div>
+          <div class="client-type animate delay-1">
+            <div class="client-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="client-title">
+              <span class="zh-hant-content">多戶家族辦公室</span>
+              <span class="zh-hans-content">多户家族办公室</span>
+              <span class="en-content">Multi Family Office</span>
+            </h3>
+            <p class="client-description">
+              <span class="zh-hant-content"
+                >為多個家族提供綜合性服務的機構，整合投資管理、稅務規劃、法律諮詢等專業服務</span
+              >
+              <span class="zh-hans-content"
+                >为多个家族提供综合性服务的机构，整合投资管理、税务规划、法律咨询等专业服务</span
+              >
+              <span class="en-content"
+                >Institutions providing comprehensive services to multiple
+                families, integrating investment management, tax planning, legal
+                consulting, and other professional services</span
+              >
+            </p>
+            <a href="solutions.html#mfo" class="btn btn-outline">
+              <span class="zh-hant-content">了解適用方案</span>
+              <span class="zh-hans-content">了解适用方案</span>
+              <span class="en-content">View Solutions</span>
+            </a>
+          </div>
+          <div class="client-type animate delay-2">
+            <div class="client-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3 class="client-title">
+              <span class="zh-hant-content">資產管理機構</span>
+              <span class="zh-hans-content">资产管理机构</span>
+              <span class="en-content">Asset Management Institutions</span>
+            </h3>
+            <p class="client-description">
+              <span class="zh-hant-content"
+                >專業投資管理公司，包括基金管理公司、私募股權機構、對沖基金等</span
+              >
+              <span class="zh-hans-content"
+                >专业投资管理公司，包括基金管理公司、私募股权机构、对冲基金等</span
+              >
+              <span class="en-content"
+                >Professional investment management companies, including fund
+                management companies, private equity firms, hedge funds,
+                etc.</span
+              >
+            </p>
+            <a href="solutions.html#am" class="btn btn-outline">
+              <span class="zh-hant-content">了解適用方案</span>
+              <span class="zh-hans-content">了解适用方案</span>
+              <span class="en-content">View Solutions</span>
+            </a>
+          </div>
+          <div class="client-type animate delay-3">
+            <div class="client-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            <h3 class="client-title">
+              <span class="zh-hant-content">機構投資者</span>
+              <span class="zh-hans-content">机构投资者</span>
+              <span class="en-content">Institutional Investors</span>
+            </h3>
+            <p class="client-description">
+              <span class="zh-hant-content"
+                >包括養老基金、保險公司、主權財富基金等大型機構投資者，需要先進的投資分析和風險管理工具</span
+              >
+              <span class="zh-hans-content"
+                >包括养老基金、保险公司、主权财富基金等大型机构投资者，需要先进的投资分析和风险管理工具</span
+              >
+              <span class="en-content"
+                >Including pension funds, insurance companies, sovereign wealth
+                funds and other large institutional investors requiring advanced
+                investment analysis and risk management tools</span
+              >
+            </p>
+            <a href="solutions.html#institutional" class="btn btn-outline">
+              <span class="zh-hant-content">了解適用方案</span>
+              <span class="zh-hans-content">了解适用方案</span>
+              <span class="en-content">View Solutions</span>
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- CTA 區域 -->
     <section class="cta">
-        <div class="container">
-            <h2 class="cta-title animate">
-                <span class="zh-hant-content">準備好提升您的資產管理能力了嗎？</span>
-                <span class="zh-hans-content">准备好提升您的资产管理能力了吗？</span>
-                <span class="en-content">Ready to Enhance Your Asset Management Capabilities?</span>
-            </h2>
-            <p class="cta-description animate delay-1">
-                <span class="zh-hant-content">聯繫我們，了解Quantaryx Technologies如何幫助您的機構實現數字化轉型</span>
-                <span class="zh-hans-content">联系我们，了解Quantaryx Technologies如何帮助您的机构实现数字化转型</span>
-                <span class="en-content">Contact us to learn how Quantaryx Technologies can help your institution achieve digital transformation</span>
-            </p>
-            <div class="cta-buttons animate delay-2">
-                <a href="contact.html" class="btn btn-white">
-                    <span class="zh-hant-content">預約演示</span>
-                    <span class="zh-hans-content">预约演示</span>
-                    <span class="en-content">Book a Demo</span>
-                </a>
-                <a href="contact.html#contact-form" class="btn btn-transparent">
-                    <span class="zh-hant-content">聯絡我們</span>
-                    <span class="zh-hans-content">联系我们</span>
-                    <span class="en-content">Contact Us</span>
-                </a>
-            </div>
+      <div class="container">
+        <h2 class="cta-title animate">
+          <span class="zh-hant-content">準備好提升您的資產管理能力了嗎？</span>
+          <span class="zh-hans-content">准备好提升您的资产管理能力了吗？</span>
+          <span class="en-content"
+            >Ready to Enhance Your Asset Management Capabilities?</span
+          >
+        </h2>
+        <p class="cta-description animate delay-1">
+          <span class="zh-hant-content"
+            >聯繫我們，了解Quantaryx
+            Technologies如何幫助您的機構實現數字化轉型</span
+          >
+          <span class="zh-hans-content"
+            >联系我们，了解Quantaryx
+            Technologies如何帮助您的机构实现数字化转型</span
+          >
+          <span class="en-content"
+            >Contact us to learn how Quantaryx Technologies can help your
+            institution achieve digital transformation</span
+          >
+        </p>
+        <div class="cta-buttons animate delay-2">
+          <a href="contact.html" class="btn btn-white">
+            <span class="zh-hant-content">預約演示</span>
+            <span class="zh-hans-content">预约演示</span>
+            <span class="en-content">Book a Demo</span>
+          </a>
+          <a href="contact.html#contact-form" class="btn btn-transparent">
+            <span class="zh-hant-content">聯絡我們</span>
+            <span class="zh-hans-content">联系我们</span>
+            <span class="en-content">Contact Us</span>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- 合作夥伴 -->
     <section class="partners">
-        <div class="container">
-            <h2 class="partners-title animate">
-                <span class="zh-hant-content">合作夥伴</span>
-                <span class="zh-hans-content">合作伙伴</span>
-                <span class="en-content">Our Partners</span>
-            </h2>
-            <div class="partners-container">
-                <div class="partners-track">
-                    <div class="partner-logo">
-                        <img src="images/fengxin_investment.jpeg" alt="Fengxin Investment">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/leo_asset_management.jpeg" alt="Leo Asset Management">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/citic_securities.jpeg" alt="CITIC Securities">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/oriental_patron.png" alt="Oriental Patron">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/flamestone_capital.png" alt="Flamestone Capital">
-                    </div>
-                    <!-- 重复一次用于无缝滚动 -->
-                    <div class="partner-logo">
-                        <img src="images/fengxin_investment.jpeg" alt="Fengxin Investment">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/leo_asset_management.jpeg" alt="Leo Asset Management">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/citic_securities.jpeg" alt="CITIC Securities">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/oriental_patron.png" alt="Oriental Patron">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="images/flamestone_capital.png" alt="Flamestone Capital">
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="partners-title animate">
+          <span class="zh-hant-content">合作夥伴</span>
+          <span class="zh-hans-content">合作伙伴</span>
+          <span class="en-content">Our Partners</span>
+        </h2>
+        <div class="partners-container">
+          <div class="partners-track">
+            <div class="partner-logo">
+              <img
+                src="images/fengxin_investment.jpeg"
+                alt="Fengxin Investment"
+              />
             </div>
+            <div class="partner-logo">
+              <img
+                src="images/leo_asset_management.jpeg"
+                alt="Leo Asset Management"
+              />
+            </div>
+            <div class="partner-logo">
+              <img src="images/citic_securities.jpeg" alt="CITIC Securities" />
+            </div>
+            <div class="partner-logo">
+              <img src="images/oriental_patron.png" alt="Oriental Patron" />
+            </div>
+            <div class="partner-logo">
+              <img
+                src="images/flamestone_capital.png"
+                alt="Flamestone Capital"
+              />
+            </div>
+            <!-- 重复一次用于无缝滚动 -->
+            <div class="partner-logo">
+              <img
+                src="images/fengxin_investment.jpeg"
+                alt="Fengxin Investment"
+              />
+            </div>
+            <div class="partner-logo">
+              <img
+                src="images/leo_asset_management.jpeg"
+                alt="Leo Asset Management"
+              />
+            </div>
+            <div class="partner-logo">
+              <img src="images/citic_securities.jpeg" alt="CITIC Securities" />
+            </div>
+            <div class="partner-logo">
+              <img src="images/oriental_patron.png" alt="Oriental Patron" />
+            </div>
+            <div class="partner-logo">
+              <img
+                src="images/flamestone_capital.png"
+                alt="Flamestone Capital"
+              />
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- 頁腳 -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <!-- Main sections in a row -->
-                <div class="footer-sections-row">
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">公司</span>
-                            <span class="zh-hans-content">公司</span>
-                            <span class="en-content">Company</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="about.html">
-                                    <span class="zh-hant-content">關於我們</span>
-                                    <span class="zh-hans-content">关于我们</span>
-                                    <span class="en-content">About Us</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="about.html#team">
-                                    <span class="zh-hant-content">團隊</span>
-                                    <span class="zh-hans-content">团队</span>
-                                    <span class="en-content">Team</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="compliance.html">
-                                    <span class="zh-hant-content">法規與安全</span>
-                                    <span class="zh-hans-content">法规与安全</span>
-                                    <span class="en-content">Compliance & Security</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="blog.html">
-                                    <span class="zh-hant-content">創科視界</span>
-                                    <span class="zh-hans-content">创科视界</span>
-                                    <span class="en-content">Blog</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">產品</span>
-                            <span class="zh-hans-content">产品</span>
-                            <span class="en-content">Products</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="products.html#aurelia">
-                                    <span class="zh-hant-content">智能投資人管理平台</span>
-                                    <span class="zh-hans-content">智能投资人管理平台</span>
-                                    <span class="en-content">Intelligent Investor Management</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#wiselens">
-                                    <span class="zh-hant-content">AI 智能投顧平台</span>
-                                    <span class="zh-hans-content">AI 智能投顾平台</span>
-                                    <span class="en-content">AI Investment Advisory</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#nurocrm">
-                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
-                                    <span class="zh-hans-content">AI销售与客户管理</span>
-                                    <span class="en-content">AI Sales & CRM</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#flamestone">
-                                    <span class="zh-hant-content">量化交易</span>
-                                    <span class="zh-hans-content">量化交易</span>
-                                    <span class="en-content">Quantitative Trading</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">解決方案</span>
-                            <span class="zh-hans-content">解决方案</span>
-                            <span class="en-content">Solutions</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="solutions.html#sfo">
-                                    <span class="zh-hant-content">Single Family Office</span>
-                                    <span class="zh-hans-content">Single Family Office</span>
-                                    <span class="en-content">Single Family Office</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#mfo">
-                                    <span class="zh-hant-content">Multi Family Office</span>
-                                    <span class="zh-hans-content">Multi Family Office</span>
-                                    <span class="en-content">Multi Family Office</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#am">
-                                    <span class="zh-hant-content">資產管理機構</span>
-                                    <span class="zh-hans-content">资产管理机构</span>
-                                    <span class="en-content">Asset Management</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#institutional">
-                                    <span class="zh-hant-content">機構投資者</span>
-                                    <span class="zh-hans-content">机构投资者</span>
-                                    <span class="en-content">Institutional Investors</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">聯絡</span>
-                            <span class="zh-hans-content">联系</span>
-                            <span class="en-content">Contact</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="contact.html">
-                                    <span class="zh-hant-content">聯絡我們</span>
-                                    <span class="zh-hans-content">联系我们</span>
-                                    <span class="en-content">Contact Us</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="contact.html#demo">
-                                    <span class="zh-hant-content">預約演示</span>
-                                    <span class="zh-hans-content">预约演示</span>
-                                    <span class="en-content">Book a Demo</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="contact.html#support">
-                                    <span class="zh-hant-content">支援中心</span>
-                                    <span class="zh-hans-content">支持中心</span>
-                                    <span class="en-content">Support</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Company description below -->
-                <div class="footer-company-info">
-                    <a href="index.html" class="footer-logo">Quantaryx</a>
-                    <p class="footer-description">
-                        <span class="zh-hant-content">專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span>
-                        <span class="zh-hans-content">专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span>
-                        <span class="en-content">A fintech company focused on asset management and artificial intelligence, committed to providing modular, scalable, and compliant solutions for professional institutions.</span>
-                    </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-container">
+          <!-- Main sections in a row -->
+          <div class="footer-sections-row">
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">公司</span>
+                <span class="zh-hans-content">公司</span>
+                <span class="en-content">Company</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="about.html">
+                    <span class="zh-hant-content">關於我們</span>
+                    <span class="zh-hans-content">关于我们</span>
+                    <span class="en-content">About Us</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="about.html#team">
+                    <span class="zh-hant-content">團隊</span>
+                    <span class="zh-hans-content">团队</span>
+                    <span class="en-content">Team</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="compliance.html">
+                    <span class="zh-hant-content">法規與安全</span>
+                    <span class="zh-hans-content">法规与安全</span>
+                    <span class="en-content">Compliance & Security</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="blog.html">
+                    <span class="zh-hant-content">創科視界</span>
+                    <span class="zh-hans-content">创科视界</span>
+                    <span class="en-content">Blog</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="footer-bottom">
-                <p>
-                    <span class="zh-hant-content">&copy; 2025 Quantaryx Technologies. 版權所有。</span>
-                    <span class="zh-hans-content">&copy; 2025 Quantaryx Technologies. 版权所有。</span>
-                    <span class="en-content">&copy; 2025 Quantaryx Technologies. All rights reserved.</span>
-                </p>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">產品</span>
+                <span class="zh-hans-content">产品</span>
+                <span class="en-content">Products</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="products.html#aurelia">
+                    <span class="zh-hant-content">智能投資人管理平台</span>
+                    <span class="zh-hans-content">智能投资人管理平台</span>
+                    <span class="en-content"
+                      >Intelligent Investor Management</span
+                    >
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#wiselens">
+                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                    <span class="en-content">AI Investment Advisory</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#nurocrm">
+                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                    <span class="zh-hans-content">AI销售与客户管理</span>
+                    <span class="en-content">AI Sales & CRM</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#flamestone">
+                    <span class="zh-hant-content">量化交易</span>
+                    <span class="zh-hans-content">量化交易</span>
+                    <span class="en-content">Quantitative Trading</span>
+                  </a>
+                </li>
+              </ul>
             </div>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">解決方案</span>
+                <span class="zh-hans-content">解决方案</span>
+                <span class="en-content">Solutions</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="solutions.html#sfo">
+                    <span class="zh-hant-content">Single Family Office</span>
+                    <span class="zh-hans-content">Single Family Office</span>
+                    <span class="en-content">Single Family Office</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#mfo">
+                    <span class="zh-hant-content">Multi Family Office</span>
+                    <span class="zh-hans-content">Multi Family Office</span>
+                    <span class="en-content">Multi Family Office</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#am">
+                    <span class="zh-hant-content">資產管理機構</span>
+                    <span class="zh-hans-content">资产管理机构</span>
+                    <span class="en-content">Asset Management</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#institutional">
+                    <span class="zh-hant-content">機構投資者</span>
+                    <span class="zh-hans-content">机构投资者</span>
+                    <span class="en-content">Institutional Investors</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">聯絡</span>
+                <span class="zh-hans-content">联系</span>
+                <span class="en-content">Contact</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="contact.html">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="contact.html#demo">
+                    <span class="zh-hant-content">預約演示</span>
+                    <span class="zh-hans-content">预约演示</span>
+                    <span class="en-content">Book a Demo</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="contact.html#support">
+                    <span class="zh-hant-content">支援中心</span>
+                    <span class="zh-hans-content">支持中心</span>
+                    <span class="en-content">Support</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Company description below -->
+          <div class="footer-company-info">
+            <a href="index.html" class="footer-logo">Quantaryx</a>
+            <p class="footer-description">
+              <span class="zh-hant-content"
+                >專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span
+              >
+              <span class="zh-hans-content"
+                >专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span
+              >
+              <span class="en-content"
+                >A fintech company focused on asset management and artificial
+                intelligence, committed to providing modular, scalable, and
+                compliant solutions for professional institutions.</span
+              >
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            <span class="zh-hant-content"
+              >&copy; 2025 Quantaryx Technologies. 版權所有。</span
+            >
+            <span class="zh-hans-content"
+              >&copy; 2025 Quantaryx Technologies. 版权所有。</span
+            >
+            <span class="en-content"
+              >&copy; 2025 Quantaryx Technologies. All rights reserved.</span
+            >
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/tech-animations.js"></script>
-</body>
+  </body>
 </html>

@@ -1,1089 +1,1255 @@
 <!DOCTYPE html>
 <html lang="zh-hant">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>聯絡我們 - Quantaryx Technologies</title>
-    <meta name="description" content="與Quantaryx Technologies聯絡，預約產品演示，洽談合作機會，或獲取技術支援。我們的專業團隊隨時為您提供協助。">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta
+      name="description"
+      content="與Quantaryx Technologies聯絡，預約產品演示，洽談合作機會，或獲取技術支援。我們的專業團隊隨時為您提供協助。"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var lang = localStorage.getItem("preferred-language") || "zh-hant";
+        document.documentElement.className = lang;
+        document.documentElement.lang = lang;
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.style.visibility = "visible";
+        });
+      })();
+    </script>
     <style>
-        /* 聯絡頁面特定樣式 */
-        .contact-header {
-            padding: 150px 0 80px;
-            background-color: var(--dark-color);
-            text-align: center;
-        }
-        
-        .contact-header h1 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .contact-header p {
-            color: #aaa;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .contact-section {
-            padding: 100px 0;
-        }
-        
-        .contact-section:nth-child(even) {
-            background-color: var(--dark-color);
-        }
-        
-        .contact-section:nth-child(odd) {
-            background-color: #0c0c0c;
-        }
-        
+      .zh-hant-content,
+      .zh-hans-content,
+      .en-content {
+        display: none !important;
+      }
+      html.zh-hant .zh-hant-content,
+      html.zh-hans .zh-hans-content,
+      html.en .en-content {
+        display: inline !important;
+      }
+      /* 聯絡頁面特定樣式 */
+      .contact-header {
+        padding: 150px 0 80px;
+        background-color: var(--dark-color);
+        text-align: center;
+      }
+
+      .contact-header h1 {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .contact-header p {
+        color: #aaa;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .contact-section {
+        padding: 100px 0;
+      }
+
+      .contact-section:nth-child(even) {
+        background-color: var(--dark-color);
+      }
+
+      .contact-section:nth-child(odd) {
+        background-color: #0c0c0c;
+      }
+
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .contact-info {
+        color: white;
+      }
+
+      .contact-info h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+      }
+
+      .contact-info p {
+        color: #aaa;
+        margin-bottom: 30px;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .contact-details {
+        margin-top: 40px;
+      }
+
+      .contact-detail {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+
+      .contact-detail i {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+
+      .contact-detail-text h4 {
+        color: white;
+        margin-bottom: 5px;
+        font-size: 1.2rem;
+      }
+
+      .contact-detail-text p {
+        color: #aaa;
+        margin-bottom: 0;
+        font-size: 1rem;
+      }
+
+      .contact-form {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-form h3 {
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-label {
+        display: block;
+        color: white;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        color: white;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .form-submit {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        width: 100%;
+      }
+
+      .form-submit:hover {
+        background-color: #0058c1;
+        transform: translateY(-3px);
+      }
+
+      .demo-card:hover {
+        transform: translateY(-10px);
+        background-color: rgba(0, 112, 243, 0.1);
+        border-color: rgba(0, 112, 243, 0.2);
+      }
+
+      .demo-card-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .demo-card h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .demo-card p {
+        color: #aaa;
+      }
+
+      .office-locations {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .office-location {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 30px;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .office-location:hover {
+        transform: translateY(-10px);
+        background-color: rgba(0, 112, 243, 0.1);
+        border-color: rgba(0, 112, 243, 0.2);
+      }
+
+      .office-location h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .office-location h3 i {
+        color: var(--primary-color);
+        margin-right: 10px;
+      }
+
+      .office-location p {
+        color: #aaa;
+        margin-bottom: 5px;
+        font-size: 1rem;
+      }
+
+      .office-location .office-contact {
+        margin-top: 20px;
+      }
+
+      .support-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .support-option {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        padding: 30px;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100%;
+      }
+
+      .support-option:hover {
+        transform: translateY(-10px);
+        background-color: rgba(0, 112, 243, 0.1);
+        border-color: rgba(0, 112, 243, 0.2);
+      }
+
+      .support-option-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+      }
+
+      .support-option h3 {
+        color: white;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .support-option p {
+        color: #aaa;
+        margin-bottom: 25px;
+        font-size: 1rem;
+      }
+
+      .support-option .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .map-container {
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .map-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.1);
+        pointer-events: none;
+      }
+
+      @media (max-width: 992px) {
         .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+          grid-template-columns: 1fr;
+          gap: 40px;
         }
-        
-        .contact-info {
-            color: white;
+
+        .contact-header h1 {
+          font-size: 2.5rem;
         }
-        
+
         .contact-info h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+          font-size: 2rem;
         }
-        
-        .contact-info p {
-            color: #aaa;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        .contact-details {
-            margin-top: 40px;
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-        
-        .contact-detail i {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .contact-detail-text h4 {
-            color: white;
-            margin-bottom: 5px;
-            font-size: 1.2rem;
-        }
-        
-        .contact-detail-text p {
-            color: #aaa;
-            margin-bottom: 0;
-            font-size: 1rem;
-        }
-        
+
         .contact-form {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 30px;
         }
-        
+
         .contact-form h3 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+          font-size: 1.5rem;
         }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-label {
-            display: block;
-            color: white;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            color: white;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .form-submit {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-        }
-        
-        .form-submit:hover {
-            background-color: #0058c1;
-            transform: translateY(-3px);
-        }
-        
-        .demo-card:hover {
-            transform: translateY(-10px);
-            background-color: rgba(0, 112, 243, 0.1);
-            border-color: rgba(0, 112, 243, 0.2);
-        }
-        
-        .demo-card-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .demo-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .demo-card p {
-            color: #aaa;
-        }
-        
-        .office-locations {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .office-location {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .office-location:hover {
-            transform: translateY(-10px);
-            background-color: rgba(0, 112, 243, 0.1);
-            border-color: rgba(0, 112, 243, 0.2);
-        }
-        
-        .office-location h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .office-location h3 i {
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-        
-        .office-location p {
-            color: #aaa;
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-        
-        .office-location .office-contact {
-            margin-top: 20px;
-        }
-        
-        .support-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 50px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .support-option {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 100%;
-        }
-        
-        .support-option:hover {
-            transform: translateY(-10px);
-            background-color: rgba(0, 112, 243, 0.1);
-            border-color: rgba(0, 112, 243, 0.2);
-        }
-        
-        .support-option-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .support-option h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .support-option p {
-            color: #aaa;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-        
-        .support-option .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 0.9rem;
-        }
-        
+
         .map-container {
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
+          height: 300px;
         }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+      }
+
+      @media (max-width: 576px) {
+        .contact-header h1 {
+          font-size: 2rem;
         }
-        
-        .map-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.1);
-            pointer-events: none;
+
+        .contact-info h2 {
+          font-size: 1.8rem;
         }
-        
-        @media (max-width: 992px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .contact-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .contact-info h2 {
-                font-size: 2rem;
-            }
-            
-            .contact-form {
-                padding: 30px;
-            }
-            
-            .contact-form h3 {
-                font-size: 1.5rem;
-            }
-            
-            .map-container {
-                height: 300px;
-            }
+
+        .contact-detail {
+          flex-direction: column;
         }
-        
-        @media (max-width: 576px) {
-            .contact-header h1 {
-                font-size: 2rem;
-            }
-            
-            .contact-info h2 {
-                font-size: 1.8rem;
-            }
-            
-            .contact-detail {
-                flex-direction: column;
-            }
-            
-            .contact-detail i {
-                margin-bottom: 10px;
-            }
-            
-            .contact-form {
-                padding: 20px;
-            }
-            
-            .form-control {
-                padding: 12px;
-            }
-            
-            .map-container {
-                height: 250px;
-            }
+
+        .contact-detail i {
+          margin-bottom: 10px;
         }
-        
-        @media (max-width: 768px) {
-            .support-options {
-                grid-template-columns: 1fr;
-            }
+
+        .contact-form {
+          padding: 20px;
         }
+
+        .form-control {
+          padding: 12px;
+        }
+
+        .map-container {
+          height: 250px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .support-options {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body style="visibility: hidden">
     <!-- 導航欄 -->
     <nav class="navbar">
-        <div class="container navbar-container">
-            <a href="index.html" class="navbar-logo">
-                <span>Quantaryx</span>
-            </a>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="navbar-menu" id="navbar-menu">
-                <li class="navbar-item">
-                    <a href="index.html" class="navbar-link">
-                        <span class="zh-hant-content">首頁</span>
-                        <span class="zh-hans-content">首页</span>
-                        <span class="en-content">Home</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="about.html" class="navbar-link">
-                        <span class="zh-hant-content">關於我們</span>
-                        <span class="zh-hans-content">关于我们</span>
-                        <span class="en-content">About Us</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="products.html" class="navbar-link">
-                        <span class="zh-hant-content">產品</span>
-                        <span class="zh-hans-content">产品</span>
-                        <span class="en-content">Products</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="solutions.html" class="navbar-link">
-                        <span class="zh-hant-content">解決方案</span>
-                        <span class="zh-hans-content">解决方案</span>
-                        <span class="en-content">Solutions</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="blog.html" class="navbar-link">
-                        <span class="zh-hant-content">創科視界</span>
-                        <span class="zh-hans-content">创科视界</span>
-                        <span class="en-content">Blog</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="compliance.html" class="navbar-link">
-                        <span class="zh-hant-content">法規與安全</span>
-                        <span class="zh-hans-content">法规与安全</span>
-                        <span class="en-content">Compliance & Security</span>
-                    </a>
-                </li>
-                <li class="navbar-item">
-                    <a href="contact.html" class="navbar-link active">
-                        <span class="zh-hant-content">聯絡我們</span>
-                        <span class="zh-hans-content">联系我们</span>
-                        <span class="en-content">Contact Us</span>
-                    </a>
-                </li>
-                <li class="navbar-item language-selector">
-                    <select id="language-select">
-                        <option value="zh-hant">繁體中文</option>
-                        <option value="zh-hans">简体中文</option>
-                        <option value="en">English</option>
-                    </select>
-                </li>
-            </ul>
+      <div class="container navbar-container">
+        <a href="index.html" class="navbar-logo">
+          <span>Quantaryx</span>
+        </a>
+        <div class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+        <ul class="navbar-menu" id="navbar-menu">
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-link">
+              <span class="zh-hant-content">首頁</span>
+              <span class="zh-hans-content">首页</span>
+              <span class="en-content">Home</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="about.html" class="navbar-link">
+              <span class="zh-hant-content">關於我們</span>
+              <span class="zh-hans-content">关于我们</span>
+              <span class="en-content">About Us</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="products.html" class="navbar-link">
+              <span class="zh-hant-content">產品</span>
+              <span class="zh-hans-content">产品</span>
+              <span class="en-content">Products</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="solutions.html" class="navbar-link">
+              <span class="zh-hant-content">解決方案</span>
+              <span class="zh-hans-content">解决方案</span>
+              <span class="en-content">Solutions</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="blog.html" class="navbar-link">
+              <span class="zh-hant-content">創科視界</span>
+              <span class="zh-hans-content">创科视界</span>
+              <span class="en-content">Blog</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="compliance.html" class="navbar-link">
+              <span class="zh-hant-content">法規與安全</span>
+              <span class="zh-hans-content">法规与安全</span>
+              <span class="en-content">Compliance & Security</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="contact.html" class="navbar-link active">
+              <span class="zh-hant-content">聯絡我們</span>
+              <span class="zh-hans-content">联系我们</span>
+              <span class="en-content">Contact Us</span>
+            </a>
+          </li>
+          <li class="navbar-item language-selector">
+            <select id="language-select">
+              <option value="zh-hant">繁體中文</option>
+              <option value="zh-hans">简体中文</option>
+              <option value="en">English</option>
+            </select>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- 聯絡頁面標題 -->
     <header class="contact-header">
-        <div class="container">
-            <h1 class="animate">
-                <span class="zh-hant-content">聯絡我們</span>
-                <span class="zh-hans-content">联系我们</span>
-                <span class="en-content">Contact Us</span>
-            </h1>
-            <p class="animate delay-1">
-                <span class="zh-hant-content">我們的專業團隊隨時為您提供協助，無論是產品諮詢、技術支援還是合作機會</span>
-                <span class="zh-hans-content">我们的专业团队随时为您提供协助，无论是产品咨询、技术支持还是合作机会</span>
-                <span class="en-content">Our professional team is always ready to assist you, whether for product inquiries, technical support, or partnership opportunities</span>
-            </p>
-        </div>
+      <div class="container">
+        <h1 class="animate">
+          <span class="zh-hant-content">聯絡我們</span>
+          <span class="zh-hans-content">联系我们</span>
+          <span class="en-content">Contact Us</span>
+        </h1>
+        <p class="animate delay-1">
+          <span class="zh-hant-content"
+            >我們的專業團隊隨時為您提供協助，無論是產品諮詢、技術支援還是合作機會</span
+          >
+          <span class="zh-hans-content"
+            >我们的专业团队随时为您提供协助，无论是产品咨询、技术支持还是合作机会</span
+          >
+          <span class="en-content"
+            >Our professional team is always ready to assist you, whether for
+            product inquiries, technical support, or partnership
+            opportunities</span
+          >
+        </p>
+      </div>
     </header>
 
     <!-- 聯絡表單 -->
     <section class="contact-section">
-        <div class="container">
-            <div class="contact-container">
-                <div class="contact-info animate">
-                    <h2>
-                        <span class="zh-hant-content">與我們取得聯繫</span>
-                        <span class="zh-hans-content">与我们取得联系</span>
-                        <span class="en-content">Get in Touch</span>
-                    </h2>
-                    <p>
-                        <span class="zh-hant-content">無論您是想了解更多關於我們的產品和服務，還是希望探討潛在的合作機會，我們都期待聽到您的聲音。請填寫表單或直接通過以下方式與我們聯繫。</span>
-                        <span class="zh-hans-content">无论您是想了解更多关于我们的产品和服务，还是希望探讨潜在的合作机会，我们都期待听到您的声音。请填写表单或直接通过以下方式与我们联系。</span>
-                        <span class="en-content">Whether you want to learn more about our products and services, or wish to explore potential partnership opportunities, we look forward to hearing from you. Please fill out the form or contact us directly through the following channels.</span>
-                    </p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <i class="fas fa-envelope"></i>
-                            <div class="contact-detail-text">
-                                <h4>
-                                    <span class="zh-hant-content">電子郵件</span>
-                                    <span class="zh-hans-content">电子邮件</span>
-                                    <span class="en-content">Email</span>
-                                </h4>
-                                <p>info@quantaryx.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-phone-alt"></i>
-                            <div class="contact-detail-text">
-                                <h4>
-                                    <span class="zh-hant-content">電話</span>
-                                    <span class="zh-hans-content">电话</span>
-                                    <span class="en-content">Phone</span>
-                                </h4>
-                                <p>+852 3757 9782</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div class="contact-detail-text">
-                                <h4>
-                                    <span class="zh-hant-content">總部地址</span>
-                                    <span class="zh-hans-content">总部地址</span>
-                                    <span class="en-content">Headquarters</span>
-                                </h4>
-                                <p>
-                                    <span class="zh-hant-content">香港中環港景街1號國際金融中心一期20樓</span>
-                                    <span class="zh-hans-content">香港中环港景街1号国际金融中心一期20楼</span>
-                                    <span class="en-content">20/F, One International Finance Centre, 1 Harbour View Street, Central, Hong Kong</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-clock"></i>
-                            <div class="contact-detail-text">
-                                <h4>
-                                    <span class="zh-hant-content">營業時間</span>
-                                    <span class="zh-hans-content">营业时间</span>
-                                    <span class="en-content">Business Hours</span>
-                                </h4>
-                                <p>
-                                    <span class="zh-hant-content">週一至週五: 上午9點 - 下午6點</span>
-                                    <span class="zh-hans-content">周一至周五: 上午9点 - 下午6点</span>
-                                    <span class="en-content">Monday to Friday: 9:00 AM - 6:00 PM</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+      <div class="container">
+        <div class="contact-container">
+          <div class="contact-info animate">
+            <h2>
+              <span class="zh-hant-content">與我們取得聯繫</span>
+              <span class="zh-hans-content">与我们取得联系</span>
+              <span class="en-content">Get in Touch</span>
+            </h2>
+            <p>
+              <span class="zh-hant-content"
+                >無論您是想了解更多關於我們的產品和服務，還是希望探討潛在的合作機會，我們都期待聽到您的聲音。請填寫表單或直接通過以下方式與我們聯繫。</span
+              >
+              <span class="zh-hans-content"
+                >无论您是想了解更多关于我们的产品和服务，还是希望探讨潜在的合作机会，我们都期待听到您的声音。请填写表单或直接通过以下方式与我们联系。</span
+              >
+              <span class="en-content"
+                >Whether you want to learn more about our products and services,
+                or wish to explore potential partnership opportunities, we look
+                forward to hearing from you. Please fill out the form or contact
+                us directly through the following channels.</span
+              >
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail">
+                <i class="fas fa-envelope"></i>
+                <div class="contact-detail-text">
+                  <h4>
+                    <span class="zh-hant-content">電子郵件</span>
+                    <span class="zh-hans-content">电子邮件</span>
+                    <span class="en-content">Email</span>
+                  </h4>
+                  <p>info@quantaryx.com</p>
                 </div>
-                
-                <div class="contact-form animate delay-1">
-                    <h3>
-                        <span class="zh-hant-content">發送訊息</span>
-                        <span class="zh-hans-content">发送消息</span>
-                        <span class="en-content">Send a Message</span>
-                    </h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">
-                                <span class="zh-hant-content">姓名</span>
-                                <span class="zh-hans-content">姓名</span>
-                                <span class="en-content">Name</span>
-                            </label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">
-                                <span class="zh-hant-content">電子郵件</span>
-                                <span class="zh-hans-content">电子邮件</span>
-                                <span class="en-content">Email</span>
-                            </label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company" class="form-label">
-                                <span class="zh-hant-content">公司</span>
-                                <span class="zh-hans-content">公司</span>
-                                <span class="en-content">Company</span>
-                            </label>
-                            <input type="text" id="company" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject" class="form-label">
-                                <span class="zh-hant-content">主題</span>
-                                <span class="zh-hans-content">主题</span>
-                                <span class="en-content">Subject</span>
-                            </label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">
-                                <span class="zh-hant-content">訊息</span>
-                                <span class="zh-hans-content">消息</span>
-                                <span class="en-content">Message</span>
-                            </label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="form-submit">
-                            <span class="zh-hant-content">發送訊息</span>
-                            <span class="zh-hans-content">发送消息</span>
-                            <span class="en-content">Send Message</span>
-                        </button>
-                    </form>
+              </div>
+              <div class="contact-detail">
+                <i class="fas fa-phone-alt"></i>
+                <div class="contact-detail-text">
+                  <h4>
+                    <span class="zh-hant-content">電話</span>
+                    <span class="zh-hans-content">电话</span>
+                    <span class="en-content">Phone</span>
+                  </h4>
+                  <p>+852 3757 9782</p>
                 </div>
+              </div>
+              <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="contact-detail-text">
+                  <h4>
+                    <span class="zh-hant-content">總部地址</span>
+                    <span class="zh-hans-content">总部地址</span>
+                    <span class="en-content">Headquarters</span>
+                  </h4>
+                  <p>
+                    <span class="zh-hant-content"
+                      >香港中環港景街1號國際金融中心一期20樓</span
+                    >
+                    <span class="zh-hans-content"
+                      >香港中环港景街1号国际金融中心一期20楼</span
+                    >
+                    <span class="en-content"
+                      >20/F, One International Finance Centre, 1 Harbour View
+                      Street, Central, Hong Kong</span
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="contact-detail">
+                <i class="fas fa-clock"></i>
+                <div class="contact-detail-text">
+                  <h4>
+                    <span class="zh-hant-content">營業時間</span>
+                    <span class="zh-hans-content">营业时间</span>
+                    <span class="en-content">Business Hours</span>
+                  </h4>
+                  <p>
+                    <span class="zh-hant-content"
+                      >週一至週五: 上午9點 - 下午6點</span
+                    >
+                    <span class="zh-hans-content"
+                      >周一至周五: 上午9点 - 下午6点</span
+                    >
+                    <span class="en-content"
+                      >Monday to Friday: 9:00 AM - 6:00 PM</span
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="contact-form animate delay-1">
+            <h3>
+              <span class="zh-hant-content">發送訊息</span>
+              <span class="zh-hans-content">发送消息</span>
+              <span class="en-content">Send a Message</span>
+            </h3>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name" class="form-label">
+                  <span class="zh-hant-content">姓名</span>
+                  <span class="zh-hans-content">姓名</span>
+                  <span class="en-content">Name</span>
+                </label>
+                <input type="text" id="name" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">
+                  <span class="zh-hant-content">電子郵件</span>
+                  <span class="zh-hans-content">电子邮件</span>
+                  <span class="en-content">Email</span>
+                </label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="company" class="form-label">
+                  <span class="zh-hant-content">公司</span>
+                  <span class="zh-hans-content">公司</span>
+                  <span class="en-content">Company</span>
+                </label>
+                <input type="text" id="company" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="subject" class="form-label">
+                  <span class="zh-hant-content">主題</span>
+                  <span class="zh-hans-content">主题</span>
+                  <span class="en-content">Subject</span>
+                </label>
+                <input type="text" id="subject" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">
+                  <span class="zh-hant-content">訊息</span>
+                  <span class="zh-hans-content">消息</span>
+                  <span class="en-content">Message</span>
+                </label>
+                <textarea id="message" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <span class="zh-hant-content">發送訊息</span>
+                <span class="zh-hans-content">发送消息</span>
+                <span class="en-content">Send Message</span>
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- 地圖 -->
     <section class="contact-section">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">我們的位置</span>
-                <span class="zh-hans-content">我们的位置</span>
-                <span class="en-content">Our Location</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">位於香港金融中心的核心地帶</span>
-                <span class="zh-hans-content">位于香港金融中心的核心地带</span>
-                <span class="en-content">Located in the heart of Hong Kong's financial district</span>
-            </p>
-            
-            <div class="map-container animate delay-2">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.9962434788697!2d114.15683661541868!3d22.28496998532738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404006400000001%3A0x5a0634d92f8c5d09!2sInternational%20Finance%20Centre!5e0!3m2!1sen!2sus!4v1650123456789!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-                <div class="map-overlay"></div>
-            </div>
-            
-            <div class="office-locations">
-                <div class="office-location animate delay-3">
-                    <h3>
-                        <i class="fas fa-building"></i>
-                        <span class="zh-hant-content">香港總部</span>
-                        <span class="zh-hans-content">香港总部</span>
-                        <span class="en-content">Hong Kong HQ</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">香港中環港景街1號</span>
-                        <span class="zh-hans-content">香港中环港景街1号</span>
-                        <span class="en-content">1 Harbour View Street, Central</span>
-                    </p>
-                    <p>
-                        <span class="zh-hant-content">國際金融中心一期20樓</span>
-                        <span class="zh-hans-content">国际金融中心一期20楼</span>
-                        <span class="en-content">20/F, One International Finance Centre</span>
-                    </p>
-                    <p>
-                        <span class="zh-hant-content">香港特別行政區</span>
-                        <span class="zh-hans-content">香港特别行政区</span>
-                        <span class="en-content">Hong Kong SAR</span>
-                    </p>
-                    <div class="office-contact">
-                        <p>+852 3757 9782</p>
-                        <p>hk@quantaryx.com</p>
-                    </div>
-                </div>
-                
-                
-                <div class="office-location animate delay-5">
-                    <h3>
-                        <i class="fas fa-building"></i>
-                        <span class="zh-hant-content">深圳辦事處</span>
-                        <span class="zh-hans-content">深圳办事处</span>
-                        <span class="en-content">Shenzhen Office</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">中國深圳市南山区</span>
-                        <span class="zh-hans-content">中国深圳市南山区</span>
-                        <span class="en-content">Nanshan District, Shenzhen</span>
-                    </p>
-                    <p>
-                        <span class="zh-hant-content">僑身路僑城坊1棟19樓</span>
-                        <span class="zh-hans-content">侨身路侨城坊1栋19楼</span>
-                        <span class="en-content">Block 1, 19th Floor, Qiao Cheng Fang, Qiao Shen Road</span>
-                    </p>
-                    <p>
-                        <span class="zh-hant-content">中國大陸</span>
-                        <span class="zh-hans-content">中国大陆</span>
-                        <span class="en-content">Mainland China</span>
-                    </p>
-                    <div class="office-contact">
-                        <p>+86 21 5123 4567</p>
-                        <p>cn@quantaryx.com</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">我們的位置</span>
+          <span class="zh-hans-content">我们的位置</span>
+          <span class="en-content">Our Location</span>
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content">位於香港金融中心的核心地帶</span>
+          <span class="zh-hans-content">位于香港金融中心的核心地带</span>
+          <span class="en-content"
+            >Located in the heart of Hong Kong's financial district</span
+          >
+        </p>
+
+        <div class="map-container animate delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.9962434788697!2d114.15683661541868!3d22.28496998532738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3404006400000001%3A0x5a0634d92f8c5d09!2sInternational%20Finance%20Centre!5e0!3m2!1sen!2sus!4v1650123456789!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+          <div class="map-overlay"></div>
         </div>
+
+        <div class="office-locations">
+          <div class="office-location animate delay-3">
+            <h3>
+              <i class="fas fa-building"></i>
+              <span class="zh-hant-content">香港總部</span>
+              <span class="zh-hans-content">香港总部</span>
+              <span class="en-content">Hong Kong HQ</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content">香港中環港景街1號</span>
+              <span class="zh-hans-content">香港中环港景街1号</span>
+              <span class="en-content">1 Harbour View Street, Central</span>
+            </p>
+            <p>
+              <span class="zh-hant-content">國際金融中心一期20樓</span>
+              <span class="zh-hans-content">国际金融中心一期20楼</span>
+              <span class="en-content"
+                >20/F, One International Finance Centre</span
+              >
+            </p>
+            <p>
+              <span class="zh-hant-content">香港特別行政區</span>
+              <span class="zh-hans-content">香港特别行政区</span>
+              <span class="en-content">Hong Kong SAR</span>
+            </p>
+            <div class="office-contact">
+              <p>+852 3757 9782</p>
+              <p>hk@quantaryx.com</p>
+            </div>
+          </div>
+
+          <div class="office-location animate delay-5">
+            <h3>
+              <i class="fas fa-building"></i>
+              <span class="zh-hant-content">深圳辦事處</span>
+              <span class="zh-hans-content">深圳办事处</span>
+              <span class="en-content">Shenzhen Office</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content">中國深圳市南山区</span>
+              <span class="zh-hans-content">中国深圳市南山区</span>
+              <span class="en-content">Nanshan District, Shenzhen</span>
+            </p>
+            <p>
+              <span class="zh-hant-content">僑身路僑城坊1棟19樓</span>
+              <span class="zh-hans-content">侨身路侨城坊1栋19楼</span>
+              <span class="en-content"
+                >Block 1, 19th Floor, Qiao Cheng Fang, Qiao Shen Road</span
+              >
+            </p>
+            <p>
+              <span class="zh-hant-content">中國大陸</span>
+              <span class="zh-hans-content">中国大陆</span>
+              <span class="en-content">Mainland China</span>
+            </p>
+            <div class="office-contact">
+              <p>+86 21 5123 4567</p>
+              <p>cn@quantaryx.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- 預約演示 -->
     <section class="contact-section" id="demo">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">預約產品演示</span>
-                <span class="zh-hans-content">预约产品演示</span>
-                <span class="en-content">Book a Product Demo</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">親身體驗我們的產品如何為您的業務創造價值</span>
-                <span class="zh-hans-content">亲身体验我们的产品如何为您的业务创造价值</span>
-                <span class="en-content">Experience firsthand how our products can create value for your business</span>
-            </p>
-            
-            <div class="demo-cards">
-                <div class="demo-card animate">
-                    <div class="demo-card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">智能投資人管理平台</span>
-                        <span class="zh-hans-content">智能投资人管理平台</span>
-                        <span class="en-content">Intelligent Investor Management</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">了解我們的投資人管理平台如何幫助您簡化投資人關係管理，提高運營效率，並確保合規性。</span>
-                        <span class="zh-hans-content">了解我们的投资人管理平台如何帮助您简化投资人关系管理，提高运营效率，并确保合规性。</span>
-                        <span class="en-content">Learn how our investor management platform can help you streamline investor relations, improve operational efficiency, and ensure compliance.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="demo-card animate">
-                    <div class="demo-card-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">AI 智能投顧平台</span>
-                        <span class="zh-hans-content">AI 智能投顾平台</span>
-                        <span class="en-content">AI Investment Advisory</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">探索我們的AI投顧平台如何利用自然語言處理和大數據分析，為客戶提供個性化的投資建議。</span>
-                        <span class="zh-hans-content">探索我们的AI投顾平台如何利用自然语言处理和大数据分析，为客户提供个性化的投资建议。</span>
-                        <span class="en-content">Explore how our AI advisory platform uses natural language processing and big data analysis to provide personalized investment recommendations.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="demo-card animate">
-                    <div class="demo-card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">AI銷售與客戶管理</span>
-                        <span class="zh-hans-content">AI销售与客户管理</span>
-                        <span class="en-content">AI Sales & CRM</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">體驗我們的AI驅動的CRM系統如何幫助您優化客戶關係管理，提高銷售效率，並增強客戶滿意度。</span>
-                        <span class="zh-hans-content">体验我们的AI驱动的CRM系统如何帮助您优化客户关系管理，提高销售效率，并增强客户满意度。</span>
-                        <span class="en-content">Experience how our AI-driven CRM system can help you optimize customer relationship management, improve sales efficiency, and enhance customer satisfaction.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="demo-card animate">
-                    <div class="demo-card-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">量化交易</span>
-                        <span class="zh-hans-content">量化交易</span>
-                        <span class="en-content">Quantitative Trading</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">了解我們的量化交易平台如何利用先進的算法和機器學習技術，幫助您開發、測試和部署交易策略。</span>
-                        <span class="zh-hans-content">了解我们的量化交易平台如何利用先进的算法和机器学习技术，帮助您开发、测试和部署交易策略。</span>
-                        <span class="en-content">Learn how our quantitative trading platform uses advanced algorithms and machine learning techniques to help you develop, test, and deploy trading strategies.</span>
-                    </p>
-                    
-                </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">預約產品演示</span>
+          <span class="zh-hans-content">预约产品演示</span>
+          <span class="en-content">Book a Product Demo</span>
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content"
+            >親身體驗我們的產品如何為您的業務創造價值</span
+          >
+          <span class="zh-hans-content"
+            >亲身体验我们的产品如何为您的业务创造价值</span
+          >
+          <span class="en-content"
+            >Experience firsthand how our products can create value for your
+            business</span
+          >
+        </p>
+
+        <div class="demo-cards">
+          <div class="demo-card animate">
+            <div class="demo-card-icon">
+              <i class="fas fa-users"></i>
             </div>
+            <h3>
+              <span class="zh-hant-content">智能投資人管理平台</span>
+              <span class="zh-hans-content">智能投资人管理平台</span>
+              <span class="en-content">Intelligent Investor Management</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >了解我們的投資人管理平台如何幫助您簡化投資人關係管理，提高運營效率，並確保合規性。</span
+              >
+              <span class="zh-hans-content"
+                >了解我们的投资人管理平台如何帮助您简化投资人关系管理，提高运营效率，并确保合规性。</span
+              >
+              <span class="en-content"
+                >Learn how our investor management platform can help you
+                streamline investor relations, improve operational efficiency,
+                and ensure compliance.</span
+              >
+            </p>
+          </div>
+
+          <div class="demo-card animate">
+            <div class="demo-card-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">AI 智能投顧平台</span>
+              <span class="zh-hans-content">AI 智能投顾平台</span>
+              <span class="en-content">AI Investment Advisory</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >探索我們的AI投顧平台如何利用自然語言處理和大數據分析，為客戶提供個性化的投資建議。</span
+              >
+              <span class="zh-hans-content"
+                >探索我们的AI投顾平台如何利用自然语言处理和大数据分析，为客户提供个性化的投资建议。</span
+              >
+              <span class="en-content"
+                >Explore how our AI advisory platform uses natural language
+                processing and big data analysis to provide personalized
+                investment recommendations.</span
+              >
+            </p>
+          </div>
+
+          <div class="demo-card animate">
+            <div class="demo-card-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">AI銷售與客戶管理</span>
+              <span class="zh-hans-content">AI销售与客户管理</span>
+              <span class="en-content">AI Sales & CRM</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >體驗我們的AI驅動的CRM系統如何幫助您優化客戶關係管理，提高銷售效率，並增強客戶滿意度。</span
+              >
+              <span class="zh-hans-content"
+                >体验我们的AI驱动的CRM系统如何帮助您优化客户关系管理，提高销售效率，并增强客户满意度。</span
+              >
+              <span class="en-content"
+                >Experience how our AI-driven CRM system can help you optimize
+                customer relationship management, improve sales efficiency, and
+                enhance customer satisfaction.</span
+              >
+            </p>
+          </div>
+
+          <div class="demo-card animate">
+            <div class="demo-card-icon">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">量化交易</span>
+              <span class="zh-hans-content">量化交易</span>
+              <span class="en-content">Quantitative Trading</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >了解我們的量化交易平台如何利用先進的算法和機器學習技術，幫助您開發、測試和部署交易策略。</span
+              >
+              <span class="zh-hans-content"
+                >了解我们的量化交易平台如何利用先进的算法和机器学习技术，帮助您开发、测试和部署交易策略。</span
+              >
+              <span class="en-content"
+                >Learn how our quantitative trading platform uses advanced
+                algorithms and machine learning techniques to help you develop,
+                test, and deploy trading strategies.</span
+              >
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- 支援中心 -->
     <section class="contact-section" id="support">
-        <div class="container">
-            <h2 class="section-title animate">
-                <span class="zh-hant-content">支援中心</span>
-                <span class="zh-hans-content">支持中心</span>
-                <span class="en-content">Support Center</span>
-            </h2>
-            <p class="section-subtitle animate delay-1">
-                <span class="zh-hant-content">我們提供多種支援選項，確保您獲得所需的幫助</span>
-                <span class="zh-hans-content">我们提供多种支持选项，确保您获得所需的帮助</span>
-                <span class="en-content">We offer various support options to ensure you get the help you need</span>
-            </p>
-            
-            <div class="support-options">
-                <div class="support-option animate delay-2">
-                    <div class="support-option-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">技術支援</span>
-                        <span class="zh-hans-content">技术支持</span>
-                        <span class="en-content">Technical Support</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">我們的技術支援團隊隨時準備解答您的問題，提供故障排除和技術指導。我們提供電話、電子郵件和在線聊天支援。</span>
-                        <span class="zh-hans-content">我们的技术支持团队随时准备解答您的问题，提供故障排除和技术指导。我们提供电话、电子邮件和在线聊天支持。</span>
-                        <span class="en-content">Our technical support team is ready to answer your questions, provide troubleshooting, and technical guidance. We offer support via phone, email, and online chat.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="support-option animate delay-3">
-                    <div class="support-option-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">知識庫</span>
-                        <span class="zh-hans-content">知识库</span>
-                        <span class="en-content">Knowledge Base</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">瀏覽我們豐富的知識庫，包含詳細的產品文檔、教程、常見問題解答和最佳實踐指南，幫助您充分利用我們的產品。</span>
-                        <span class="zh-hans-content">浏览我们丰富的知识库，包含详细的产品文档、教程、常见问题解答和最佳实践指南，帮助您充分利用我们的产品。</span>
-                        <span class="en-content">Browse our extensive knowledge base containing detailed product documentation, tutorials, FAQs, and best practice guides to help you get the most out of our products.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="support-option animate delay-4">
-                    <div class="support-option-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">培訓與認證</span>
-                        <span class="zh-hans-content">培训与认证</span>
-                        <span class="en-content">Training & Certification</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">參加我們的培訓課程和認證計劃，提升您的技能和專業知識。我們提供在線和現場培訓選項，以滿足不同的學習需求。</span>
-                        <span class="zh-hans-content">参加我们的培训课程和认证计划，提升您的技能和专业知识。我们提供在线和现场培训选项，以满足不同的学习需求。</span>
-                        <span class="en-content">Join our training courses and certification programs to enhance your skills and expertise. We offer online and on-site training options to accommodate different learning needs.</span>
-                    </p>
-                    
-                </div>
-                
-                <div class="support-option animate delay-5">
-                    <div class="support-option-icon">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3>
-                        <span class="zh-hant-content">專業服務</span>
-                        <span class="zh-hans-content">专业服务</span>
-                        <span class="en-content">Professional Services</span>
-                    </h3>
-                    <p>
-                        <span class="zh-hant-content">我們的專業服務團隊提供定制化的實施、集成和諮詢服務，幫助您最大化我們產品的價值。聯繫我們討論您的具體需求。</span>
-                        <span class="zh-hans-content">我们的专业服务团队提供定制化的实施、集成和咨询服务，帮助您最大化我们产品的价值。联系我们讨论您的具体需求。</span>
-                        <span class="en-content">Our professional services team offers customized implementation, integration, and consulting services to help you maximize the value of our products. Contact us to discuss your specific needs.</span>
-                    </p>
-                    
-                </div>
+      <div class="container">
+        <h2 class="section-title animate">
+          <span class="zh-hant-content">支援中心</span>
+          <span class="zh-hans-content">支持中心</span>
+          <span class="en-content">Support Center</span>
+        </h2>
+        <p class="section-subtitle animate delay-1">
+          <span class="zh-hant-content"
+            >我們提供多種支援選項，確保您獲得所需的幫助</span
+          >
+          <span class="zh-hans-content"
+            >我们提供多种支持选项，确保您获得所需的帮助</span
+          >
+          <span class="en-content"
+            >We offer various support options to ensure you get the help you
+            need</span
+          >
+        </p>
+
+        <div class="support-options">
+          <div class="support-option animate delay-2">
+            <div class="support-option-icon">
+              <i class="fas fa-headset"></i>
             </div>
+            <h3>
+              <span class="zh-hant-content">技術支援</span>
+              <span class="zh-hans-content">技术支持</span>
+              <span class="en-content">Technical Support</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >我們的技術支援團隊隨時準備解答您的問題，提供故障排除和技術指導。我們提供電話、電子郵件和在線聊天支援。</span
+              >
+              <span class="zh-hans-content"
+                >我们的技术支持团队随时准备解答您的问题，提供故障排除和技术指导。我们提供电话、电子邮件和在线聊天支持。</span
+              >
+              <span class="en-content"
+                >Our technical support team is ready to answer your questions,
+                provide troubleshooting, and technical guidance. We offer
+                support via phone, email, and online chat.</span
+              >
+            </p>
+          </div>
+
+          <div class="support-option animate delay-3">
+            <div class="support-option-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">知識庫</span>
+              <span class="zh-hans-content">知识库</span>
+              <span class="en-content">Knowledge Base</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >瀏覽我們豐富的知識庫，包含詳細的產品文檔、教程、常見問題解答和最佳實踐指南，幫助您充分利用我們的產品。</span
+              >
+              <span class="zh-hans-content"
+                >浏览我们丰富的知识库，包含详细的产品文档、教程、常见问题解答和最佳实践指南，帮助您充分利用我们的产品。</span
+              >
+              <span class="en-content"
+                >Browse our extensive knowledge base containing detailed product
+                documentation, tutorials, FAQs, and best practice guides to help
+                you get the most out of our products.</span
+              >
+            </p>
+          </div>
+
+          <div class="support-option animate delay-4">
+            <div class="support-option-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">培訓與認證</span>
+              <span class="zh-hans-content">培训与认证</span>
+              <span class="en-content">Training & Certification</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >參加我們的培訓課程和認證計劃，提升您的技能和專業知識。我們提供在線和現場培訓選項，以滿足不同的學習需求。</span
+              >
+              <span class="zh-hans-content"
+                >参加我们的培训课程和认证计划，提升您的技能和专业知识。我们提供在线和现场培训选项，以满足不同的学习需求。</span
+              >
+              <span class="en-content"
+                >Join our training courses and certification programs to enhance
+                your skills and expertise. We offer online and on-site training
+                options to accommodate different learning needs.</span
+              >
+            </p>
+          </div>
+
+          <div class="support-option animate delay-5">
+            <div class="support-option-icon">
+              <i class="fas fa-users-cog"></i>
+            </div>
+            <h3>
+              <span class="zh-hant-content">專業服務</span>
+              <span class="zh-hans-content">专业服务</span>
+              <span class="en-content">Professional Services</span>
+            </h3>
+            <p>
+              <span class="zh-hant-content"
+                >我們的專業服務團隊提供定制化的實施、集成和諮詢服務，幫助您最大化我們產品的價值。聯繫我們討論您的具體需求。</span
+              >
+              <span class="zh-hans-content"
+                >我们的专业服务团队提供定制化的实施、集成和咨询服务，帮助您最大化我们产品的价值。联系我们讨论您的具体需求。</span
+              >
+              <span class="en-content"
+                >Our professional services team offers customized
+                implementation, integration, and consulting services to help you
+                maximize the value of our products. Contact us to discuss your
+                specific needs.</span
+              >
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- CTA 區域 -->
     <section class="cta">
-        <div class="container">
-            <h2 class="cta-title animate">
-                <span class="zh-hant-content">準備好開始您的智能金融之旅了嗎？</span>
-                <span class="zh-hans-content">准备好开始您的智能金融之旅了吗？</span>
-                <span class="en-content">Ready to Start Your Intelligent Finance Journey?</span>
-            </h2>
-            <p class="cta-description animate delay-1">
-                <span class="zh-hant-content">聯繫我們，了解Quantaryx Technologies如何幫助您的業務實現數字化轉型</span>
-                <span class="zh-hans-content">联系我们，了解Quantaryx Technologies如何帮助您的业务实现数字化转型</span>
-                <span class="en-content">Contact us to learn how Quantaryx Technologies can help your business achieve digital transformation</span>
-            </p>
-            <div class="cta-buttons animate delay-2">
-                <a href="#" class="btn btn-white">
-                    <span class="zh-hant-content">預約諮詢</span>
-                    <span class="zh-hans-content">预约咨询</span>
-                    <span class="en-content">Schedule a Consultation</span>
-                </a>
-                <a href="#demo" class="btn btn-transparent">
-                    <span class="zh-hant-content">產品演示</span>
-                    <span class="zh-hans-content">产品演示</span>
-                    <span class="en-content">Product Demo</span>
-                </a>
-            </div>
+      <div class="container">
+        <h2 class="cta-title animate">
+          <span class="zh-hant-content">準備好開始您的智能金融之旅了嗎？</span>
+          <span class="zh-hans-content">准备好开始您的智能金融之旅了吗？</span>
+          <span class="en-content"
+            >Ready to Start Your Intelligent Finance Journey?</span
+          >
+        </h2>
+        <p class="cta-description animate delay-1">
+          <span class="zh-hant-content"
+            >聯繫我們，了解Quantaryx
+            Technologies如何幫助您的業務實現數字化轉型</span
+          >
+          <span class="zh-hans-content"
+            >联系我们，了解Quantaryx
+            Technologies如何帮助您的业务实现数字化转型</span
+          >
+          <span class="en-content"
+            >Contact us to learn how Quantaryx Technologies can help your
+            business achieve digital transformation</span
+          >
+        </p>
+        <div class="cta-buttons animate delay-2">
+          <a href="#" class="btn btn-white">
+            <span class="zh-hant-content">預約諮詢</span>
+            <span class="zh-hans-content">预约咨询</span>
+            <span class="en-content">Schedule a Consultation</span>
+          </a>
+          <a href="#demo" class="btn btn-transparent">
+            <span class="zh-hant-content">產品演示</span>
+            <span class="zh-hans-content">产品演示</span>
+            <span class="en-content">Product Demo</span>
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- 頁腳 -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <!-- Main sections in a row -->
-                <div class="footer-sections-row">
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">公司</span>
-                            <span class="zh-hans-content">公司</span>
-                            <span class="en-content">Company</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="about.html">
-                                    <span class="zh-hant-content">關於我們</span>
-                                    <span class="zh-hans-content">关于我们</span>
-                                    <span class="en-content">About Us</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="about.html#team">
-                                    <span class="zh-hant-content">團隊</span>
-                                    <span class="zh-hans-content">团队</span>
-                                    <span class="en-content">Team</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="compliance.html">
-                                    <span class="zh-hant-content">法規與安全</span>
-                                    <span class="zh-hans-content">法规与安全</span>
-                                    <span class="en-content">Compliance & Security</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="blog.html">
-                                    <span class="zh-hant-content">創科視界</span>
-                                    <span class="zh-hans-content">创科视界</span>
-                                    <span class="en-content">创科视界</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">產品</span>
-                            <span class="zh-hans-content">产品</span>
-                            <span class="en-content">Products</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="products.html#aurelia">
-                                    <span class="zh-hant-content">智能投資人管理平台</span>
-                                    <span class="zh-hans-content">智能投资人管理平台</span>
-                                    <span class="en-content">Intelligent Investor Management</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#wiselens">
-                                    <span class="zh-hant-content">AI 智能投顧平台</span>
-                                    <span class="zh-hans-content">AI 智能投顾平台</span>
-                                    <span class="en-content">AI Investment Advisory</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#nurocrm">
-                                    <span class="zh-hant-content">AI銷售與客戶管理</span>
-                                    <span class="zh-hans-content">AI销售与客户管理</span>
-                                    <span class="en-content">AI Sales & CRM</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="products.html#flamestone">
-                                    <span class="zh-hant-content">量化交易</span>
-                                    <span class="zh-hans-content">量化交易</span>
-                                    <span class="en-content">Quantitative Trading</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">解決方案</span>
-                            <span class="zh-hans-content">解决方案</span>
-                            <span class="en-content">Solutions</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="solutions.html#sfo">
-                                    <span class="zh-hant-content">Single Family Office</span>
-                                    <span class="zh-hans-content">Single Family Office</span>
-                                    <span class="en-content">Single Family Office</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#mfo">
-                                    <span class="zh-hant-content">Multi Family Office</span>
-                                    <span class="zh-hans-content">Multi Family Office</span>
-                                    <span class="en-content">Multi Family Office</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#am">
-                                    <span class="zh-hant-content">資產管理機構</span>
-                                    <span class="zh-hans-content">资产管理机构</span>
-                                    <span class="en-content">Asset Management</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="solutions.html#institutional">
-                                    <span class="zh-hant-content">機構投資者</span>
-                                    <span class="zh-hans-content">机构投资者</span>
-                                    <span class="en-content">Institutional Investors</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-section">
-                        <h3 class="footer-title">
-                            <span class="zh-hant-content">聯絡</span>
-                            <span class="zh-hans-content">联系</span>
-                            <span class="en-content">Contact</span>
-                        </h3>
-                        <ul class="footer-links">
-                            <li class="footer-link">
-                                <a href="contact.html">
-                                    <span class="zh-hant-content">聯絡我們</span>
-                                    <span class="zh-hans-content">联系我们</span>
-                                    <span class="en-content">Contact Us</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="contact.html#demo">
-                                    <span class="zh-hant-content">預約演示</span>
-                                    <span class="zh-hans-content">预约演示</span>
-                                    <span class="en-content">Book a Demo</span>
-                                </a>
-                            </li>
-                            <li class="footer-link">
-                                <a href="contact.html#support">
-                                    <span class="zh-hant-content">支援中心</span>
-                                    <span class="zh-hans-content">支持中心</span>
-                                    <span class="en-content">Support</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Company description below -->
-                <div class="footer-company-info">
-                    <a href="index.html" class="footer-logo">Quantaryx</a>
-                    <p class="footer-description">
-                        <span class="zh-hant-content">專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span>
-                        <span class="zh-hans-content">专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span>
-                        <span class="en-content">A fintech company focused on asset management and artificial intelligence, committed to providing modular, scalable, and compliant solutions for professional institutions.</span>
-                    </p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-container">
+          <!-- Main sections in a row -->
+          <div class="footer-sections-row">
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">公司</span>
+                <span class="zh-hans-content">公司</span>
+                <span class="en-content">Company</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="about.html">
+                    <span class="zh-hant-content">關於我們</span>
+                    <span class="zh-hans-content">关于我们</span>
+                    <span class="en-content">About Us</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="about.html#team">
+                    <span class="zh-hant-content">團隊</span>
+                    <span class="zh-hans-content">团队</span>
+                    <span class="en-content">Team</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="compliance.html">
+                    <span class="zh-hant-content">法規與安全</span>
+                    <span class="zh-hans-content">法规与安全</span>
+                    <span class="en-content">Compliance & Security</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="blog.html">
+                    <span class="zh-hant-content">創科視界</span>
+                    <span class="zh-hans-content">创科视界</span>
+                    <span class="en-content">创科视界</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <div class="footer-bottom">
-                <p>
-                    <span class="zh-hant-content">&copy; 2025 Quantaryx Technologies. 版權所有。</span>
-                    <span class="zh-hans-content">&copy; 2025 Quantaryx Technologies. 版权所有。</span>
-                    <span class="en-content">&copy; 2025 Quantaryx Technologies. All rights reserved.</span>
-                </p>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">產品</span>
+                <span class="zh-hans-content">产品</span>
+                <span class="en-content">Products</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="products.html#aurelia">
+                    <span class="zh-hant-content">智能投資人管理平台</span>
+                    <span class="zh-hans-content">智能投资人管理平台</span>
+                    <span class="en-content"
+                      >Intelligent Investor Management</span
+                    >
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#wiselens">
+                    <span class="zh-hant-content">AI 智能投顧平台</span>
+                    <span class="zh-hans-content">AI 智能投顾平台</span>
+                    <span class="en-content">AI Investment Advisory</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#nurocrm">
+                    <span class="zh-hant-content">AI銷售與客戶管理</span>
+                    <span class="zh-hans-content">AI销售与客户管理</span>
+                    <span class="en-content">AI Sales & CRM</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="products.html#flamestone">
+                    <span class="zh-hant-content">量化交易</span>
+                    <span class="zh-hans-content">量化交易</span>
+                    <span class="en-content">Quantitative Trading</span>
+                  </a>
+                </li>
+              </ul>
             </div>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">解決方案</span>
+                <span class="zh-hans-content">解决方案</span>
+                <span class="en-content">Solutions</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="solutions.html#sfo">
+                    <span class="zh-hant-content">Single Family Office</span>
+                    <span class="zh-hans-content">Single Family Office</span>
+                    <span class="en-content">Single Family Office</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#mfo">
+                    <span class="zh-hant-content">Multi Family Office</span>
+                    <span class="zh-hans-content">Multi Family Office</span>
+                    <span class="en-content">Multi Family Office</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#am">
+                    <span class="zh-hant-content">資產管理機構</span>
+                    <span class="zh-hans-content">资产管理机构</span>
+                    <span class="en-content">Asset Management</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="solutions.html#institutional">
+                    <span class="zh-hant-content">機構投資者</span>
+                    <span class="zh-hans-content">机构投资者</span>
+                    <span class="en-content">Institutional Investors</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="footer-title">
+                <span class="zh-hant-content">聯絡</span>
+                <span class="zh-hans-content">联系</span>
+                <span class="en-content">Contact</span>
+              </h3>
+              <ul class="footer-links">
+                <li class="footer-link">
+                  <a href="contact.html">
+                    <span class="zh-hant-content">聯絡我們</span>
+                    <span class="zh-hans-content">联系我们</span>
+                    <span class="en-content">Contact Us</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="contact.html#demo">
+                    <span class="zh-hant-content">預約演示</span>
+                    <span class="zh-hans-content">预约演示</span>
+                    <span class="en-content">Book a Demo</span>
+                  </a>
+                </li>
+                <li class="footer-link">
+                  <a href="contact.html#support">
+                    <span class="zh-hant-content">支援中心</span>
+                    <span class="zh-hans-content">支持中心</span>
+                    <span class="en-content">Support</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Company description below -->
+          <div class="footer-company-info">
+            <a href="index.html" class="footer-logo">Quantaryx</a>
+            <p class="footer-description">
+              <span class="zh-hant-content"
+                >專注於資產管理與人工智慧的金融科技公司，致力於為專業機構提供模組化、可擴展並具備合規性的解決方案。</span
+              >
+              <span class="zh-hans-content"
+                >专注于资产管理与人工智能的金融科技公司，致力于为专业机构提供模块化、可扩展并具备合规性的解决方案。</span
+              >
+              <span class="en-content"
+                >A fintech company focused on asset management and artificial
+                intelligence, committed to providing modular, scalable, and
+                compliant solutions for professional institutions.</span
+              >
+            </p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>
+            <span class="zh-hant-content"
+              >&copy; 2025 Quantaryx Technologies. 版權所有。</span
+            >
+            <span class="zh-hans-content"
+              >&copy; 2025 Quantaryx Technologies. 版权所有。</span
+            >
+            <span class="en-content"
+              >&copy; 2025 Quantaryx Technologies. All rights reserved.</span
+            >
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 表單提交處理
-            const contactForm = document.getElementById('contactForm');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // 在實際應用中，這裡會有表單數據的處理和提交邏輯
-                    // 這裡僅作為示例，顯示一個成功消息
-                    
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    console.log('表單提交:', { name, email, subject, message });
-                    
-                    // 清空表單
-                    contactForm.reset();
-                    
-                    // 顯示成功消息（在實際應用中可以使用更好的UI反饋）
-                    alert('您的訊息已成功發送！我們將盡快與您聯繫。');
-                });
+      document.addEventListener("DOMContentLoaded", function () {
+        // 表單提交處理
+        const contactForm = document.getElementById("contactForm");
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // 在實際應用中，這裡會有表單數據的處理和提交邏輯
+            // 這裡僅作為示例，顯示一個成功消息
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+
+            console.log("表單提交:", { name, email, subject, message });
+
+            // 清空表單
+            contactForm.reset();
+
+            // 顯示成功消息（在實際應用中可以使用更好的UI反饋）
+            alert("您的訊息已成功發送！我們將盡快與您聯繫。");
+          });
+        }
+
+        // 平滑滾動到錨點
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: "smooth",
+              });
             }
-            
-            // 平滑滾動到錨點
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>
